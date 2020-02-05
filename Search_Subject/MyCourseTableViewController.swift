@@ -1,5 +1,5 @@
 //
-//  SearchResultTableViewController.swift
+//  MyCourseTableViewController.swift
 //  Search_Subject
 //
 //  Created by koreanhole on 2020/02/06.
@@ -8,42 +8,28 @@
 
 import UIKit
 
-class SearchResultTableViewController: UITableViewController {
-    @IBOutlet weak var prof_nm: UILabel!
-    @IBOutlet weak var subject_div: UILabel!
-    @IBOutlet weak var class_div: UILabel!
-    @IBOutlet weak var credit: UILabel!
-    
-    var subjectItem = [String:String]()
+class MyCourseTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.largeTitleDisplayMode = .automatic
-        self.title = subjectItem["subject_nm"]
-        prof_nm.text = subjectItem["prof_nm"]
-        subject_div.text = subjectItem["subject_div"]
-        class_div.text = subjectItem["class_div"]!+"분반"
-        credit.text = subjectItem["credit"]!+"학점"
-        
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
-/*
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
-    }*/
+        return 0
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,15 +76,14 @@ class SearchResultTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    
+    */
 
 }

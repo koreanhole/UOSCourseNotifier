@@ -8,13 +8,18 @@
 
 import UIKit
 
-class SubjectTableViewController: UITableViewController, XMLParserDelegate {
-    @IBOutlet weak var searchBar: UISearchBar!
+class SubjectTableViewController: UITableViewController, XMLParserDelegate, UISearchResultsUpdating {
     
-    
+    let searchController = UISearchController(searchResultsController: nil)
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+        
+        searchController.searchResultsUpdater = self
+        self.definesPresentationContext = true
+        self.navigationItem.titleView = searchController.searchBar
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.automaticallyShowsCancelButton = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -28,10 +33,16 @@ class SubjectTableViewController: UITableViewController, XMLParserDelegate {
                                         "subject_div" : "", "credit" : "", "dept" : "", "prof_nm" : ""]
     var subjectItems = [[String:String]]()
     
-    func requestSubjectInfo(){
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            requestSubjectInfo(searchTerm: searchText)
+            tableView.reloadData()
+        }
+    }
+    
+    func requestSubjectInfo(searchTerm: String){
         self.tableView.reloadData()
         subjectItems = [[String:String]]()
-        let searchTerm = searchBar.text ?? ""
         let query: [String: String] = [
             "apiKey": "202001610WYX35223",
             "year": "2020",
@@ -101,7 +112,6 @@ class SubjectTableViewController: UITableViewController, XMLParserDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
 
     }
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -153,13 +163,5 @@ class SubjectTableViewController: UITableViewController, XMLParserDelegate {
         // Pass the selected object to the new view controller.
     }
     @IBAction func unwindToSubjectTableView(segue: UIStoryboardSegue) {
-    }
-    
-
-}
-extension SubjectTableViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        requestSubjectInfo()
-        searchBar.resignFirstResponder()
     }
 }

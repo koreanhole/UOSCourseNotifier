@@ -10,18 +10,13 @@
         <scene sceneID="3PL-fl-NsT">
             <objects>
                 <tableViewController id="Y3V-YY-4g0" customClass="SubjectTableViewController" customModule="Search_Subject" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r0S-jU-cQz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r0S-jU-cQz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="bBq-BZ-Y4Q">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="subjectCell" textLabel="So5-X6-z8F" detailTextLabel="1f9-Du-3d9" style="IBUITableViewCellStyleSubtitle" id="z8X-4f-iZa">
-                                <rect key="frame" x="0.0" y="72" width="414" height="55.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z8X-4f-iZa" id="bLY-hD-Wlu">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
@@ -54,9 +49,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="교과목 검색" largeTitleDisplayMode="always" id="jgy-aU-Jv0"/>
-                    <connections>
-                        <outlet property="searchBar" destination="bBq-BZ-Y4Q" id="P6J-4X-AJm"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9h-M8-sbi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,7 +192,7 @@
         <!--내 강의-->
         <scene sceneID="8uq-C8-Rh0">
             <objects>
-                <tableViewController id="Uq3-Ke-qR3" sceneMemberID="viewController">
+                <tableViewController id="Uq3-Ke-qR3" customClass="MyCourseTableViewController" customModule="UOS강의검색" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BSn-eE-5hj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,13 +218,13 @@
             </objects>
             <point key="canvasLocation" x="1632" y="818"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--내 강의-->
         <scene sceneID="xa8-56-uNo">
             <objects>
                 <navigationController id="t9K-wm-O3Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="sdi-93-nmq"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xfu-Mu-Si4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <tabBarItem key="tabBarItem" title="내 강의" image="square.split.2x2.fill" catalog="system" id="sdi-93-nmq"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xfu-Mu-Si4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -243,11 +235,11 @@
             </objects>
             <point key="canvasLocation" x="713" y="818"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--검색-->
         <scene sceneID="dP8-qt-KUK">
             <objects>
                 <navigationController id="pAb-hV-bbo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="7cT-ta-mQl"/>
+                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="7cT-ta-mQl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F87-RD-qHn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -279,4 +271,8 @@
             <point key="canvasLocation" x="-197.10144927536234" y="31.473214285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="square.split.2x2.fill" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

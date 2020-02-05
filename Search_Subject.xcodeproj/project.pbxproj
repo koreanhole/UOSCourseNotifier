@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AD52109423EB18AD0044DB42 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD52109323EB18AD0044DB42 /* SearchResultTableViewController.swift */; };
+		AD52109A23EB398F0044DB42 /* MyCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD52109923EB398F0044DB42 /* MyCourseTableViewController.swift */; };
 		ADCDE7DB23EAA37000D6C7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */; };
 		ADCDE7DD23EAA37000D6C7EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7DC23EAA37000D6C7EC /* SceneDelegate.swift */; };
 		ADCDE7E223EAA37000D6C7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCDE7E023EAA37000D6C7EC /* Main.storyboard */; };
@@ -19,7 +20,8 @@
 
 /* Begin PBXFileReference section */
 		AD52109323EB18AD0044DB42 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
-		ADCDE7D723EAA37000D6C7EC /* Search_Subject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Search_Subject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD52109923EB398F0044DB42 /* MyCourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseTableViewController.swift; sourceTree = "<group>"; };
+		ADCDE7D723EAA37000D6C7EC /* UOS강의검색.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UOS강의검색.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADCDE7DC23EAA37000D6C7EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ADCDE7E123EAA37000D6C7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		AD52109B23EB39A60044DB42 /* MyCourse */ = {
+			isa = PBXGroup;
+			children = (
+				AD52109923EB398F0044DB42 /* MyCourseTableViewController.swift */,
+			);
+			name = MyCourse;
+			sourceTree = "<group>";
+		};
 		ADCDE7CE23EAA37000D6C7EC = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +71,7 @@
 		ADCDE7D823EAA37000D6C7EC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADCDE7D723EAA37000D6C7EC /* Search_Subject.app */,
+				ADCDE7D723EAA37000D6C7EC /* UOS강의검색.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +82,7 @@
 				ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */,
 				ADCDE7DC23EAA37000D6C7EC /* SceneDelegate.swift */,
 				ADCDE7E023EAA37000D6C7EC /* Main.storyboard */,
+				AD52109B23EB39A60044DB42 /* MyCourse */,
 				AD52109523EB2AD10044DB42 /* Search */,
 				ADCDE7E323EAA37500D6C7EC /* Assets.xcassets */,
 				ADCDE7E523EAA37500D6C7EC /* LaunchScreen.storyboard */,
@@ -98,7 +109,7 @@
 			);
 			name = Search_Subject;
 			productName = Search_Subject;
-			productReference = ADCDE7D723EAA37000D6C7EC /* Search_Subject.app */;
+			productReference = ADCDE7D723EAA37000D6C7EC /* UOS강의검색.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -156,6 +167,7 @@
 				ADCDE7EF23EAA53600D6C7EC /* URL+Helper.swift in Sources */,
 				ADCDE7DB23EAA37000D6C7EC /* AppDelegate.swift in Sources */,
 				ADCDE7DD23EAA37000D6C7EC /* SceneDelegate.swift in Sources */,
+				AD52109A23EB398F0044DB42 /* MyCourseTableViewController.swift in Sources */,
 				AD52109423EB18AD0044DB42 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +320,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "koreanhole.Search-Subject";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "UOS강의검색";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -326,7 +338,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "koreanhole.Search-Subject";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "UOS강의검색";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
