@@ -13,18 +13,32 @@ class SearchResultTableViewController: UITableViewController {
     @IBOutlet weak var subject_div: UILabel!
     @IBOutlet weak var class_div: UILabel!
     @IBOutlet weak var credit: UILabel!
+    @IBOutlet weak var dept: UILabel!
     
     var subjectItem = [String:String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .automatic
+        let searchClosure = {(result: [String:String]) -> Void in
+            self.title = result["subject_nm"]
+            self.prof_nm.text = result["prof_nm"]
+            self.subject_div.text = result["subject_div"]
+            self.class_div.text = result["class_div"]!+"분반"
+            self.credit.text = result["credit"]!+"학점"
+            self.dept.text = result["sub_dept"]
+        }
+        CourseData.getCourseInfoFB(subject: subjectItem, completion: searchClosure)
+
+        
+        /*
         self.title = subjectItem["subject_nm"]
         prof_nm.text = subjectItem["prof_nm"]
         subject_div.text = subjectItem["subject_div"]
         class_div.text = subjectItem["class_div"]!+"분반"
         credit.text = subjectItem["credit"]!+"학점"
-        
+        dept.text = subjectItem["dept"]
+         */
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
