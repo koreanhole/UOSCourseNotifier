@@ -33,12 +33,13 @@ class CourseTableViewCell: UITableViewCell {
         subjectNameLabel.text = subjectItems["subject_nm"]
         self.subjectItems = subjectItems
         let professor_name = subjectItems["prof_nm"]!
+        let class_div = subjectItems["class_div"]! + "분반"
         if professor_name.isEmpty {
             //professorNameLabel.text = "교수 미정"
-             professorNameLabel.text = "교수 미정"
+             professorNameLabel.text = "교수 미정" + " (\(class_div))"
         } else {
             //professorNameLabel.text = subjectItems[indexPath.row]["prof_nm"]
-             professorNameLabel.text = professor_name
+             professorNameLabel.text = professor_name + " (\(class_div))"
         }
 }
     @IBAction func addButtonClicked(_ sender: UIButton) {

@@ -9,39 +9,37 @@
 import UIKit
 import Firebase
 
-class SubjectTableViewController: UITableViewController, UISearchResultsUpdating {
+class SubjectTableViewController: UITableViewController, UISearchBarDelegate {
     var xmlParser = XMLParser()
     var currentElement = ""
     var subjectItem: [String:String] = ["subject_no" : "", "subject_nm" : "", "class_div" : "",
                                         "subject_div" : "", "credit" : "", "dept" : "", "prof_nm" : ""]
     var subjectItems = [[String:String]]()
-    var k = String()
     
     let searchController = UISearchController(searchResultsController: nil)
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchController.searchResultsUpdater = self
+        //searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         self.definesPresentationContext = true
         //self.navigationItem.titleView?.addSubview(searchController.searchBar)
         self.navigationItem.titleView = searchController.searchBar
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.automaticallyShowsCancelButton = true
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
             requestSubjectInfo(searchTerm: searchText)
             tableView.reloadData()
         }
     }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        subjectItems = [[String:String]]()
+        tableView.reloadData()
+    }
+
     
     
 

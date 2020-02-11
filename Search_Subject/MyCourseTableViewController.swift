@@ -13,9 +13,7 @@ class MyCourseTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.reloadData()
-        self.tableView.allowsSelection = true
-        // Uncomment the following line to preserve selection between presentations
+                // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -24,6 +22,11 @@ class MyCourseTableViewController: UITableViewController {
         if !CourseData.loadFromFile().isEmpty {
             CourseData.sharedCourse.savedData = CourseData.loadFromFile()
         }
+        
+        
+        self.tableView.reloadData()
+        self.tableView.allowsSelection = true
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,13 +46,18 @@ class MyCourseTableViewController: UITableViewController {
         return 1
     }
 
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCourse", for: indexPath) as! MyCourseTableViewCell
-        cell.layer.cornerRadius = 10
-        cell.layer.masksToBounds = true
+        //course data 새로고침
+        for index in 0..<CourseData.sharedCourse.savedData.count {
+            let searchClosure = {(result: [String:String]) -> Void in
+                CourseData.sharedCourse.savedData[index] = result
+            }
+            CourseData.getCourseInfoFB(subject: CourseData.sharedCourse.savedData[index], completion: searchClosure)
+        }
         cell.update(with: CourseData.sharedCourse.savedData[indexPath.section])
-        cell.showsReorderControl = true
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
         //cell.update(with: MyData.sharedCourse.data[indexPath.section][0], professor_name: MyData.sharedCourse.data[indexPath.section][1])
         //cell.textLabel?.text = "확률과통계 (01분반)"
@@ -59,6 +67,7 @@ class MyCourseTableViewController: UITableViewController {
 
         return cell
     }
+    
 
     @objc func refresh(sender:AnyObject)
     {
@@ -67,20 +76,30 @@ class MyCourseTableViewController: UITableViewController {
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
-    func displayAlert() {
-        let alertController = UIAlertController(title: "Choose Image Source", message: nil, preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "수강신청 어플로 가기", style: .default, handler: {_ in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }))
         alert.addAction(UIAlertAction(title: "강의계획표", style: .default, handler: {_ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
         alert.addAction(UIAlertAction(title: "상세정보", style: .default, handler: {_ in
+            self.performSegue(withIdentifier: "showDetail", sender: self)
             self.tableView.deselectRow(at: indexPath, animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
+            let deleteAlert = UIAlertController(title: "정말 삭제하시겠습니까?", message: CourseData.sharedCourse.savedData[indexPath.section]["subject_nm"], preferredStyle: .alert)
+            deleteAlert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
+                CourseData.sharedCourse.savedData.remove(at: indexPath.section)
+                //tableView.deleteRows(at: [indexPath], with: .automatic)
+                let indexSet = IndexSet(arrayLiteral: indexPath.section)
+                tableView.deleteSections(indexSet, with: .automatic)
+                CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
+            }))
+            deleteAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            self.present(deleteAlert, animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: {_ in
             self.tableView.deselectRow(at: indexPath, animated: true)
@@ -101,6 +120,7 @@ class MyCourseTableViewController: UITableViewController {
    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             CourseData.sharedCourse.savedData.remove(at: indexPath.section)
+            //tableView.deleteRows(at: [indexPath], with: .automatic)
             let indexSet = IndexSet(arrayLiteral: indexPath.section)
             tableView.deleteSections(indexSet, with: .automatic)
             CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
@@ -135,14 +155,27 @@ class MyCourseTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDetail" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let navController = segue.destination as! UINavigationController
+            let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
+
+            
+            SearchResultTableViewController.subjectItem = CourseData.sharedCourse.savedData[indexPath.section] 
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    @IBAction func unwindToSubjectTableView(segue: UIStoryboardSegue) {
+        self.tableView.reloadData()
+    }
+    
 
 }
+

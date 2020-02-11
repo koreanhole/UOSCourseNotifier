@@ -19,32 +19,32 @@ class CourseData: Codable {
     
     static func saveToFile(data: [[String:String]]) {
         let propertyListEncoder = PropertyListEncoder()
-        let encodedEmojis = try? propertyListEncoder.encode(data)
+        let encodedCourseData = try? propertyListEncoder.encode(data)
         
-        try? encodedEmojis?.write(to: CourseData.archiveUrl, options: .noFileProtection)
+        try? encodedCourseData?.write(to: CourseData.archiveUrl, options: .noFileProtection)
     }
     static func loadFromFile() -> [[String:String]] {
-        var emojisFromDisk: [[String:String]] = [[:]]
+        var CourseDataFromDisk: [[String:String]] = [[:]]
         let propertyListDecoder = PropertyListDecoder()
-        if let retrievedEmojiData = try? Data(contentsOf: CourseData.archiveUrl),
-            let decodedEmojis = try? propertyListDecoder.decode([[String:String]].self.self, from: retrievedEmojiData){
-                emojisFromDisk = decodedEmojis
+        if let retrievedCourseData = try? Data(contentsOf: CourseData.archiveUrl),
+            let decodedCourseData = try? propertyListDecoder.decode([[String:String]].self.self, from: retrievedCourseData){
+                CourseDataFromDisk = decodedCourseData
         }
-        return emojisFromDisk
+        return CourseDataFromDisk
     }
     
     static func getCourseInfoFB(subject: [String:String], completion: @escaping ([String:String]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
         if subject["subject_div"] == "전공선택" || subject["subject_div"] == "전공필수" {
-            let boardRef = ref.child("course").child("전공").child(subject["subject_nm"]!+subject["class_div"]!)
+            let boardRef = ref.child("course").child("전공").child(subject["subject_nm"]!).child(subject["class_div"]!)
             boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
                 }
             })
         } else {
-            let boardRef = ref.child("course").child("교양").child(subject["subject_nm"]!+subject["class_div"]!)
+            let boardRef = ref.child("course").child("교양").child(subject["subject_nm"]!).child(subject["class_div"]!)
             boardRef.observe(_: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
