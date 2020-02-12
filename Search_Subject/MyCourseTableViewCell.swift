@@ -30,7 +30,7 @@ class MyCourseTableViewCell: UITableViewCell {
         let remainingSeat = courseInfo["remaining_seat"] ?? ""
         subjectNameLabel.text = subject_name
         professorNameLabel.text = professor_name + "(\(class_div)분반)"
-        if remainingSeat.isEmpty {
+        if remainingSeat.isEmpty || Int(remainingSeat) == 0 {
             remainingSeatLabel.text = "남은자리: 0명"
             subjectNameLabel.textColor = UIColor.systemRed
         } else {

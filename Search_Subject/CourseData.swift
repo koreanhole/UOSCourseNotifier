@@ -52,4 +52,14 @@ class CourseData: Codable {
             })
         }
     }
+    static func getCultInfoFB( completion: @escaping ([String:String]) -> Void){
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let boardRef = ref.child("course").child("교양")
+        boardRef.observe(_: .value, with: { (snapshot) in
+            if let courseDict = snapshot.value as? [String:String] {
+                completion(courseDict)
+            }
+        })
+    }
 }

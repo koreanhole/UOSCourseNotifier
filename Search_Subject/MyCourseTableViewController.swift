@@ -10,6 +10,8 @@ import UIKit
 import QuartzCore
 
 class MyCourseTableViewController: UITableViewController {
+    @IBOutlet var filterSegmentedControl: UISegmentedControl!
+    let courseOptions = ["내 강의", "교양", "전공"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,17 +19,24 @@ class MyCourseTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         if !CourseData.loadFromFile().isEmpty {
             CourseData.sharedCourse.savedData = CourseData.loadFromFile()
         }
-        
-        
-        self.tableView.reloadData()
+        fetchingCourseData()
         self.tableView.allowsSelection = true
 
     }
+    func fetchingCourseData() {
+        for index in 0..<CourseData.sharedCourse.savedData.count {
+            let searchClosure = {(result: [String:String]) -> Void in
+                CourseData.sharedCourse.savedData[index] = result
+                self.tableView.reloadData()
+            }
+            CourseData.getCourseInfoFB(subject: CourseData.sharedCourse.savedData[index], completion: searchClosure)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -51,14 +60,9 @@ class MyCourseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCourse", for: indexPath) as! MyCourseTableViewCell
         //course data 새로고침
-        for index in 0..<CourseData.sharedCourse.savedData.count {
-            let searchClosure = {(result: [String:String]) -> Void in
-                CourseData.sharedCourse.savedData[index] = result
-            }
-            CourseData.getCourseInfoFB(subject: CourseData.sharedCourse.savedData[index], completion: searchClosure)
-        }
-        cell.update(with: CourseData.sharedCourse.savedData[indexPath.section])
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
+        cell.update(with: CourseData.sharedCourse.savedData[indexPath.section])
+        
         //cell.update(with: MyData.sharedCourse.data[indexPath.section][0], professor_name: MyData.sharedCourse.data[indexPath.section][1])
         //cell.textLabel?.text = "확률과통계 (01분반)"
         //cell.detailTextLabel?.text = "유하진"
@@ -72,8 +76,8 @@ class MyCourseTableViewController: UITableViewController {
     @objc func refresh(sender:AnyObject)
     {
         // Updating your data here...
-
-        self.tableView.reloadData()
+        fetchingCourseData()
+        CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
         self.refreshControl?.endRefreshing()
     }
 
@@ -154,7 +158,21 @@ class MyCourseTableViewController: UITableViewController {
         return true
     }
     */
+    @IBAction func filterOptionUpdated(_ sender: UISegmentedControl) {
+        let courseType = courseOptions[filterSegmentedControl.selectedSegmentIndex]
+        if courseType == "내 강의" {
+            print("내 강의")
+            fetchingCourseData()
+            CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
+        } else if courseType == "교양" {
+            print("교양")
+        } else if courseType == "전공" {
+            print("전공")
+        }
+        self.tableView.reloadData()
 
+    }
+    
     
     // MARK: - Navigation
 
@@ -173,9 +191,7 @@ class MyCourseTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     @IBAction func unwindToSubjectTableView(segue: UIStoryboardSegue) {
-        self.tableView.reloadData()
+        fetchingCourseData()
     }
-    
-
 }
 
