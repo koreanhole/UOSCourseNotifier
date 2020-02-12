@@ -14,7 +14,6 @@
 		AD52109D23ED26380044DB42 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD52109C23ED26380044DB42 /* CourseTableViewCell.swift */; };
 		AD5210A123ED39310044DB42 /* MyCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5210A023ED39310044DB42 /* MyCourseTableViewCell.swift */; };
 		AD5210A323ED49890044DB42 /* CourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5210A223ED49890044DB42 /* CourseData.swift */; };
-		AD8A8F2123F2706300C4F661 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A8F2023F2706200C4F661 /* SearchResult.swift */; };
 		AD9AC94223F1A05600BEACBE /* SearchSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9AC94123F1A05600BEACBE /* SearchSubject.swift */; };
 		ADCDE7DB23EAA37000D6C7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */; };
 		ADCDE7DD23EAA37000D6C7EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7DC23EAA37000D6C7EC /* SceneDelegate.swift */; };
@@ -34,7 +33,6 @@
 		AD52109C23ED26380044DB42 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		AD5210A023ED39310044DB42 /* MyCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseTableViewCell.swift; sourceTree = "<group>"; };
 		AD5210A223ED49890044DB42 /* CourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseData.swift; sourceTree = "<group>"; };
-		AD8A8F2023F2706200C4F661 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		AD9AC94123F1A05600BEACBE /* SearchSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubject.swift; sourceTree = "<group>"; };
 		ADCDE7D723EAA37000D6C7EC /* UOS강의검색.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UOS강의검색.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 			children = (
 				ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */,
 				AD0E444623F29B1C0055EAD6 /* Data */,
-				AD8A8F2023F2706200C4F661 /* SearchResult.swift */,
 				ADCDE7DC23EAA37000D6C7EC /* SceneDelegate.swift */,
 				ADCDE7E023EAA37000D6C7EC /* Main.storyboard */,
 				AD52109B23EB39A60044DB42 /* MyCourse */,
@@ -240,7 +237,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD8A8F2123F2706300C4F661 /* SearchResult.swift in Sources */,
 				AD5210A323ED49890044DB42 /* CourseData.swift in Sources */,
 				ADCDE7F123EAA88C00D6C7EC /* SubjectTableViewController.swift in Sources */,
 				ADCDE7EF23EAA53600D6C7EC /* URL+Helper.swift in Sources */,

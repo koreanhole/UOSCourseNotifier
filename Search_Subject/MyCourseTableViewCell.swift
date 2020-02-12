@@ -13,6 +13,11 @@ class MyCourseTableViewCell: UITableViewCell {
     @IBOutlet var subjectNameLabel: UILabel!
     @IBOutlet var professorNameLabel: UILabel!
     @IBOutlet var remainingSeatLabel: UILabel!
+    
+    @IBOutlet var majoCultSubjectNameLabel: UILabel!
+    @IBOutlet var majorCultProfessorNameLabel: UILabel!
+    @IBOutlet var majorCultRemainingSeatLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,7 +28,7 @@ class MyCourseTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func update (with courseInfo: [String:String]) {
+    func updateMyCourseCell (with courseInfo: [String:String]) {
         let subject_name = courseInfo["subject_nm"]
         let professor_name = courseInfo["prof_nm"] ?? ""
         let class_div = courseInfo["class_div"] ?? ""
@@ -36,6 +41,21 @@ class MyCourseTableViewCell: UITableViewCell {
         } else {
             remainingSeatLabel.text = "남은자리: \(remainingSeat)명"
             subjectNameLabel.textColor = UIColor.systemBlue
+        }
+    }
+    func updateMajorCultCell (with courseInfo: [String:String]) {
+        let subject_name = courseInfo["subject_nm"]
+        let professor_name = courseInfo["prof_nm"] ?? ""
+        let class_div = courseInfo["class_div"] ?? ""
+        let remainingSeat = courseInfo["remaining_seat"] ?? ""
+        majoCultSubjectNameLabel.text = subject_name
+        majorCultProfessorNameLabel.text = professor_name + "(\(class_div)분반)"
+        if remainingSeat.isEmpty || Int(remainingSeat) == 0 {
+            majorCultRemainingSeatLabel.text = "남은자리: 0명"
+            majoCultSubjectNameLabel.textColor = UIColor.systemRed
+        } else {
+            majorCultRemainingSeatLabel.text = "남은자리: \(remainingSeat)명"
+            majoCultSubjectNameLabel.textColor = UIColor.systemBlue
         }
     }
     

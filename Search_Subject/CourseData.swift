@@ -14,6 +14,7 @@ class CourseData: Codable {
     
     static let sharedCourse = CourseData()
     var savedData = [[String:String]]()
+    var cultData = [[String:String]]()
     
     static let archiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("note_test").appendingPathExtension("plist")
     
@@ -52,14 +53,20 @@ class CourseData: Codable {
             })
         }
     }
-    static func getCultInfoFB( completion: @escaping ([String:String]) -> Void){
+    static func getCultInfoFB( completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let boardRef = ref.child("course").child("교양")
         boardRef.observe(_: .value, with: { (snapshot) in
-            if let courseDict = snapshot.value as? [String:String] {
-                completion(courseDict)
+            var temp_dict = [[String:String]]()
+            for snap in snapshot.children {
+                let recipeSnap = snap as! DataSnapshot
+                let dict = recipeSnap.value as! [String:AnyObject]
+                for dict_child in dict {
+                    temp_dict.append(dict_child.value as! [String:String])
+                }
             }
+            completion(temp_dict)
         })
     }
 }
