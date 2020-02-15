@@ -52,15 +52,7 @@ class MyCourseTableViewController: UITableViewController {
         CourseData.getCultInfoFB(completion: searchClosure)
     }
     
-    func fetchingMajorData() {
-        self.refreshControl?.beginRefreshing()
-        let searchClosure = {(result: [[String:String]]) -> Void in
-            CourseData.sharedCourse.majorData = result
-            self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
-        }
-        CourseData.getMajorInfoFB(completion: searchClosure)
-    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -81,7 +73,7 @@ class MyCourseTableViewController: UITableViewController {
             return 1
         //전공
         case 2:
-            return 1
+            return 2
         default:
             return 0
         }
@@ -98,7 +90,14 @@ class MyCourseTableViewController: UITableViewController {
             return CourseData.sharedCourse.cultData.count
         //전공
         case 2:
-            return CourseData.sharedCourse.majorData.count
+            switch section {
+            case 0:
+                return CourseData.sharedCourse.myDept_list.count
+            case 1:
+                return CourseData.sharedCourse.dept_list.count
+            default:
+                return 0
+            }
         default:
             return 0
         }
@@ -108,6 +107,7 @@ class MyCourseTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = MyCourseTableViewCell()
+
         switch segment {
         //내강의
         case 0:
@@ -123,17 +123,33 @@ class MyCourseTableViewController: UITableViewController {
             return cell
         //전공
         case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: "majorCult", for: indexPath) as! MyCourseTableViewCell
-            cell.updateMajorCultCell(with: CourseData.sharedCourse.majorData[indexPath.row])
+            cell = tableView.dequeueReusableCell(withIdentifier: "deptList", for: indexPath) as! MyCourseTableViewCell
+            if indexPath.section == 0 {
+                cell = tableView.dequeueReusableCell(withIdentifier: "myDeptList", for: indexPath) as! MyCourseTableViewCell
+                cell.updateDeptListCell(with: CourseData.sharedCourse.myDept_list[indexPath.row])
+                cell.favoritButton.isHidden = true
+            } else if indexPath.section == 1 {
+                cell = tableView.dequeueReusableCell(withIdentifier: "deptList", for: indexPath) as! MyCourseTableViewCell
+                cell.updateDeptListCell(with: CourseData.sharedCourse.dept_list[indexPath.row])
+            }
+            if CourseData.sharedCourse.myDept_list.contains(CourseData.sharedCourse.dept_list[indexPath.row]) {
+                cell.favoritButton.setImage(UIImage(systemName: "star"), for: .normal)
+                cell.favoritButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
+                cell.favoritButton.isSelected = true
+            } else {
+                cell.favoritButton.setImage(UIImage(systemName: "star"), for: .normal)
+                cell.favoritButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
+                cell.favoritButton.isSelected = false
+            }
             return cell
         default:
             return cell
         }
     }
+
     
 
-    @objc func refresh(sender:AnyObject)
-    {
+    @objc func refresh(sender:AnyObject){
         // Updating your data here...
         switch segment {
         case 0:
@@ -142,7 +158,8 @@ class MyCourseTableViewController: UITableViewController {
         case 1:
             fetchingCultData()
         case 2:
-            fetchingMajorData()
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         default:
             return
         }
@@ -160,8 +177,8 @@ class MyCourseTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "showDetail", sender: self)
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
-        
-        if segment == 0 {
+        switch segment {
+        case 0:
             alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
                 let deleteAlert = UIAlertController(title: "정말 삭제하시겠습니까?", message: CourseData.sharedCourse.savedData[indexPath.row]["subject_nm"], preferredStyle: .alert)
                 deleteAlert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
@@ -174,8 +191,7 @@ class MyCourseTableViewController: UITableViewController {
                 deleteAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
                 self.present(deleteAlert, animated: true, completion: nil)
             }))
-        }
-        if segment == 1 {
+        case 1:
             alert.addAction(UIAlertAction(title: "내 강의에 추가", style: .default, handler: {_ in
                 CourseData.sharedCourse.savedData.append(CourseData.sharedCourse.cultData[indexPath.row])
                 let addAlert = UIAlertController(title: "내 강의에 추가하였습니다.", message: CourseData.sharedCourse.cultData[indexPath.row]["subject_nm"], preferredStyle: .alert)
@@ -183,15 +199,12 @@ class MyCourseTableViewController: UITableViewController {
                 self.tableView.deselectRow(at: indexPath, animated: true)
                 self.present(addAlert, animated: true, completion: nil)
             }))
-        }
-        if segment == 2 {
-            alert.addAction(UIAlertAction(title: "내 강의에 추가", style: .default, handler: {_ in
-                CourseData.sharedCourse.savedData.append(CourseData.sharedCourse.majorData[indexPath.row])
-                let addAlert2 = UIAlertController(title: "내 강의에 추가하였습니다.", message: CourseData.sharedCourse.majorData[indexPath.row]["subject_nm"], preferredStyle: .alert)
-                addAlert2.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
-                self.tableView.deselectRow(at: indexPath, animated: true)
-                self.present(addAlert2, animated: true, completion: nil)
-            }))
+        case 2:
+            self.performSegue(withIdentifier: "showDeptRemainingSeat", sender: self)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            return
+        default:
+            return
         }
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: {_ in
             self.tableView.deselectRow(at: indexPath, animated: true)
@@ -230,7 +243,7 @@ class MyCourseTableViewController: UITableViewController {
             return .none
         //전공
         case 2:
-            return .none
+            return .delete
         default:
             return .none
         }
@@ -262,14 +275,16 @@ class MyCourseTableViewController: UITableViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             self.navigationItem.rightBarButtonItem = self.editButton
+            self.navigationItem.rightBarButtonItem?.title = "편집"
             segment = 0
         case 1:
             segment = 1
             fetchingCultData()
+            self.setEditing(false, animated: true)
             self.navigationItem.rightBarButtonItem = nil
         case 2:
             segment = 2
-            fetchingMajorData()
+            self.setEditing(false, animated: true)
             self.navigationItem.rightBarButtonItem = nil
         default:
             break
@@ -285,23 +300,24 @@ class MyCourseTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = tableView.indexPathForSelectedRow!
         let navController = segue.destination as! UINavigationController
-        let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
         
         if segue.identifier == "showDetail" {
+            let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
             switch segment {
             case 0:
                 SearchResultTableViewController.subjectItem = CourseData.sharedCourse.savedData[indexPath.row]
             case 1:
                 SearchResultTableViewController.subjectItem = CourseData.sharedCourse.cultData[indexPath.row]
-            case 2:
-                SearchResultTableViewController.subjectItem = CourseData.sharedCourse.majorData[indexPath.row]
             default:
                 break
             }
-            
-
-            
-            
+        } else if segue.identifier == "showDeptRemainingSeat" {
+            let DeptRemainingSeatTableViewController = navController.topViewController as! DeptRemainingSeatTableViewController
+            if indexPath.section == 0 {
+                DeptRemainingSeatTableViewController.deptName = CourseData.sharedCourse.myDept_list[indexPath.row]
+            } else if indexPath.section == 1 {
+                DeptRemainingSeatTableViewController.deptName = CourseData.sharedCourse.dept_list[indexPath.row]
+            }
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.

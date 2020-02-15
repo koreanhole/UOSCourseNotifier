@@ -16,6 +16,8 @@ class CourseData: Codable {
     var savedData = [[String:String]]()
     var cultData = [[String:String]]()
     var majorData = [[String:String]]()
+    var dept_list = ["건축공학과", "건축학과", "경영학과", "경영학과(EMBA)", "경영학부", "경제학과", "경제학부", "공간정보공학과", "공과대학(학과)", "교통공학과", "교통관리학과", "국사학과", "국어국문학과", "국제관계학과", "국제교육원(학사-과)", "국제도시개발프로그램", "글로벌건설학과", "기계공학과", "기계정보공학과", "도시계획학과", "도시공학과", "도시사회학과", "도시행정학과", "문화예술관광학과", "물리학과", "방재공학과", "법학과", "법학과(LLM)", "법학전문대학원", "부동산학과", "사회복지학과", "산업디자인학과", "생명과학과", "세무학과", "소방방재학과", "수학과", "수학교육전공", "스포츠과학과", "신소재공학과", "역사교육전공", "영어교육전공", "영어영문학과", "음악학과", "재난과학과", "전자전기컴퓨터공학과", "전자전기컴퓨터공학부", "조경학과", "중국어문화학과", "철학과", "첨단녹색도시개발학과", "컴퓨터과학과", "컴퓨터과학부", "토목공학과", "통계학과", "행정학과", "행정학과(EMPA)", "화학공학과", "환경공학과", "환경공학부", "환경원예학과", "환경조각학과"]
+    var myDept_list = [String]()
 
     
     static let archiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("note_test").appendingPathExtension("plist")
@@ -71,7 +73,7 @@ class CourseData: Codable {
             completion(temp_dict)
         })
     }
-    static func getMajorInfoFB( completion: @escaping ([[String:String]]) -> Void){
+    static func getMajorInfoFB(deptName:String, completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let boardRef = ref.child("course").child("전공")
@@ -80,8 +82,11 @@ class CourseData: Codable {
             for snap in snapshot.children {
                 let recipeSnap = snap as! DataSnapshot
                 let dict = recipeSnap.value as! [String:AnyObject]
-                for dict_child in dict.values {
-                    temp_dict.append(dict_child as! [String : String])
+                for child in dict.values {
+                    let dict_child = child as! [String:String]
+                    if dict_child["sub_dept"] == deptName {
+                        temp_dict.append(dict_child)
+                    }
                 }
             }
             completion(temp_dict)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MyCourseTableViewCell: UITableViewCell {
 
@@ -17,6 +18,10 @@ class MyCourseTableViewCell: UITableViewCell {
     @IBOutlet var majoCultSubjectNameLabel: UILabel!
     @IBOutlet var majorCultProfessorNameLabel: UILabel!
     @IBOutlet var majorCultRemainingSeatLabel: UILabel!
+    
+    @IBOutlet var favoritButton: UIButton!
+    @IBOutlet var deptList_nameLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -66,6 +71,23 @@ class MyCourseTableViewCell: UITableViewCell {
             majoCultSubjectNameLabel.textColor = UIColor.systemBlue
         }
     }
-    
-
+    func updateDeptListCell (with deptName: String) {
+        deptList_nameLabel.text = deptName
+    }
+    @IBAction func favoriteButtonClicked(_ sender: UIButton) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        //저장된 학과에서 제거
+        if (sender.isSelected){
+            sender.isSelected = false
+            let index = CourseData.sharedCourse.myDept_list.firstIndex(of: self.deptList_nameLabel.text!)!
+            CourseData.sharedCourse.myDept_list.remove(at: index)
+         }
+        // 저장된 학과에 추가
+        else {
+            sender.isSelected = true
+            CourseData.sharedCourse.myDept_list.append(self.deptList_nameLabel.text!)
+        }
+        CourseData.sharedCourse.myDept_list = CourseData.sharedCourse.myDept_list.dropDuplicates()
+    }
 }
