@@ -34,7 +34,11 @@ class MyCourseTableViewCell: UITableViewCell {
         let class_div = courseInfo["class_div"] ?? ""
         let remainingSeat = courseInfo["remaining_seat"] ?? ""
         subjectNameLabel.text = subject_name
-        professorNameLabel.text = professor_name + "(\(class_div)분반)"
+        if professor_name == "" {
+             professorNameLabel.text = "교수 미정" + " (\(class_div))"
+        } else {
+             professorNameLabel.text = professor_name + " (\(class_div))"
+        }
         if remainingSeat.isEmpty || Int(remainingSeat) == 0 {
             remainingSeatLabel.text = "남은자리: 0명"
             subjectNameLabel.textColor = UIColor.systemRed
@@ -49,7 +53,11 @@ class MyCourseTableViewCell: UITableViewCell {
         let class_div = courseInfo["class_div"] ?? ""
         let remainingSeat = courseInfo["remaining_seat"] ?? ""
         majoCultSubjectNameLabel.text = subject_name
-        majorCultProfessorNameLabel.text = professor_name + "(\(class_div)분반)"
+        if professor_name == "" {
+             majorCultProfessorNameLabel.text = "교수 미정" + " (\(class_div))"
+        } else {
+             majorCultProfessorNameLabel.text = professor_name + " (\(class_div))"
+        }
         if remainingSeat.isEmpty || Int(remainingSeat) == 0 {
             majorCultRemainingSeatLabel.text = "남은자리: 0명"
             majoCultSubjectNameLabel.textColor = UIColor.systemRed

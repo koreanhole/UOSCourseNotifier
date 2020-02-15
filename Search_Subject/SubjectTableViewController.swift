@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SubjectTableViewController: UITableViewController, UISearchBarDelegate {
+class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate {
     var xmlParser = XMLParser()
     var currentElement = ""
     var subjectItem: [String:String] = ["subject_no" : "", "subject_nm" : "", "class_div" : "",
@@ -21,14 +21,35 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         //searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
         self.definesPresentationContext = true
         //self.navigationItem.titleView?.addSubview(searchController.searchBar)
         self.navigationItem.titleView = searchController.searchBar
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.automaticallyShowsCancelButton = true
+        searchController.searchBar.delegate = self
+        searchController.delegate = self
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchController.isActive = true
+    }
+ 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        searchController.definesPresentationContext = true
+    }
+ 
+    
+    func didPresentSearchController(_ searchController: UISearchController) {
+        DispatchQueue.main.async {
+            searchController.searchBar.becomeFirstResponder()
+        }
+    }
+ 
+ 
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
             requestSubjectInfo(searchTerm: searchText)
@@ -58,22 +79,7 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subjectCell", for: indexPath) as! CourseTableViewCell
-        /*
-        let subjectName = subjectItems[indexPath.row]["subject_nm"]!
-        let classDiv = subjectItems[indexPath.row]["class_div"]!
-        let profName = subjectItems[indexPath.row]["prof_nm"]!
-        let string = "\(profName) (\(classDiv)분반)"
-        //subjectNameLabel.text = string*/
         cell.update(with: subjectItems[indexPath.row])
-
-        /*cell.textLabel?.text = string
-        if subjectItems[indexPath.row]["prof_nm"]!.isEmpty {
-            //professorNameLabel.text = "교수 미정"
-            cell.detailTextLabel?.text = "교수 미정"
-        } else {
-            //professorNameLabel.text = subjectItems[indexPath.row]["prof_nm"]
-            cell.detailTextLabel?.text = subjectItems[indexPath.row]["prof_nm"]
-        }*/
         
         return cell
     }
