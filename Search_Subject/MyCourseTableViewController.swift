@@ -11,6 +11,8 @@ import QuartzCore
 import AVFoundation
 
 class MyCourseTableViewController: UITableViewController {
+
+    
     
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var editButton: UIBarButtonItem!
@@ -403,6 +405,9 @@ class MyCourseTableViewController: UITableViewController {
     }
     @IBAction func unwindToSubjectTableView(segue: UIStoryboardSegue) {
         fetchingCourseData()
+    }
+    @IBAction func unwindWhenSearchCompleted(segue: UIStoryboardSegue) {
+        self.tableView.reloadData()
     }
     @IBAction func editButtonClicked(_ sender: UIBarButtonItem) {
         tableView.setEditing(!tableView.isEditing, animated: true)

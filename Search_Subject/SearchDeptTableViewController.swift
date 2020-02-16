@@ -12,6 +12,7 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
     
     let searchController = UISearchController(searchResultsController: nil)
     var searchResult = CourseData.sharedCourse.dept_list
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
         self.definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.automaticallyShowsCancelButton = true
+        searchController.automaticallyShowsCancelButton = false
         searchController.searchBar.delegate = self
         searchController.delegate = self
         searchController.searchBar.placeholder = "검색"
@@ -30,15 +31,6 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        if let firstVC = presentingViewController as? MyCourseTableViewController {
-            DispatchQueue.main.async {
-                firstVC.tableView.reloadData()
-            }
-        }
     }
 
     // MARK: - Table view data source
@@ -76,11 +68,19 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
             alert.message = searchResult[indexPath.row]
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
                 CourseData.sharedCourse.myDept_list.append(self.searchResult[indexPath.row])
-                self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "searchCompleted", sender: self)
             }))
         }
         present(alert, animated: true, completion: nil)
         self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchResult = CourseData.sharedCourse.dept_list.filter({$0.prefix(searchText.count) == searchText})
+        self.tableView.reloadData()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchResult = CourseData.sharedCourse.dept_list
+        self.tableView.reloadData()
     }
 
     /*

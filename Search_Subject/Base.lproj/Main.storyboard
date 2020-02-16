@@ -747,9 +747,16 @@
                             <outlet property="delegate" destination="mYg-XS-X55" id="uzy-ML-jib"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="전체 전공" prompt="즐겨찾기에 추가하려는 전공 선택" id="fRP-GR-x4S"/>
+                    <navigationItem key="navigationItem" title="전체 전공" prompt="즐겨찾기에 추가하려는 전공 선택" id="fRP-GR-x4S">
+                        <barButtonItem key="rightBarButtonItem" title="완료" style="done" id="1wF-7O-1Z9">
+                            <connections>
+                                <segue destination="9tv-sN-kZS" kind="unwind" identifier="searchCompleted" unwindAction="unwindWhenSearchCompletedWithSegue:" id="8FF-Vh-xVK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tb-OH-JUB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="9tv-sN-kZS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3629" y="1232"/>
         </scene>
