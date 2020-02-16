@@ -88,7 +88,7 @@
         <scene sceneID="A1G-eI-itA">
             <objects>
                 <tableViewController title="검색결과" id="9J3-Ca-O7C" customClass="SearchResultTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8pv-gd-xWi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" estimatedSectionFooterHeight="5" id="8pv-gd-xWi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,7 +118,7 @@
                             <tableViewSection headerTitle="교수명" id="Th4-Am-bZf">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="prof_nm" textLabel="Nha-cu-BbZ" style="IBUITableViewCellStyleDefault" id="jgf-o3-k2b">
-                                        <rect key="frame" x="20" y="154.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="138" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgf-o3-k2b" id="wQq-pW-lUS">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -139,7 +139,7 @@
                             <tableViewSection headerTitle="분반" id="oNA-2H-Vfb">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="class_div" textLabel="aIV-bp-OkJ" style="IBUITableViewCellStyleDefault" id="5A3-OJ-Ywp">
-                                        <rect key="frame" x="20" y="253.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="220.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5A3-OJ-Ywp" id="DJP-Bb-uvc">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -160,7 +160,7 @@
                             <tableViewSection headerTitle="교과구분" id="OUW-v9-Egk">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="subject_div" textLabel="hij-Xu-N0K" style="IBUITableViewCellStyleDefault" id="JPt-jk-cgu">
-                                        <rect key="frame" x="20" y="352.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="303" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JPt-jk-cgu" id="EZA-UJ-JCF">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -181,7 +181,7 @@
                             <tableViewSection headerTitle="학점" id="EVI-vd-pKt">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="credit" textLabel="dl2-kM-6oJ" style="IBUITableViewCellStyleDefault" id="Tj9-eR-9zm">
-                                        <rect key="frame" x="20" y="451.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="385.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tj9-eR-9zm" id="SI8-Cl-CW9">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -202,7 +202,7 @@
                             <tableViewSection headerTitle="여석" id="HQa-5H-T8s">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="remainingSeat" textLabel="LzC-1d-zsO" style="IBUITableViewCellStyleDefault" id="R6u-r6-WLv">
-                                        <rect key="frame" x="20" y="550.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="468" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R6u-r6-WLv" id="qgq-hY-W50">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -223,7 +223,7 @@
                             <tableViewSection headerTitle="수강인원" id="OwA-ve-TJ5">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="tlsn_count" textLabel="qrU-pD-vgv" style="IBUITableViewCellStyleDefault" id="hec-E7-Hbj">
-                                        <rect key="frame" x="20" y="649.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="550.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hec-E7-Hbj" id="Us4-Df-eCj">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -244,7 +244,7 @@
                             <tableViewSection headerTitle="수강정원" id="gXg-c2-xyG">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="tlsn_limit_count" textLabel="hhG-Ag-sWf" style="IBUITableViewCellStyleDefault" id="qfv-QV-1YO">
-                                        <rect key="frame" x="20" y="748.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="633" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qfv-QV-1YO" id="K4p-nD-Jrl">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -265,7 +265,7 @@
                             <tableViewSection headerTitle="학년" id="uHV-qX-c0r">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="shyr" textLabel="TDR-20-QQ3" style="IBUITableViewCellStyleDefault" id="waq-G5-evT">
-                                        <rect key="frame" x="0.0" y="847.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="715.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="waq-G5-evT" id="Xbd-C9-jRR">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -286,7 +286,7 @@
                             <tableViewSection headerTitle="강의시간 및 강의실" id="czV-C0-azy" userLabel="강의시간및강의실">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="etc_permit_yn" textLabel="bOY-aB-AhG" style="IBUITableViewCellStyleDefault" id="2O2-Gf-bXQ" userLabel="class_nm">
-                                        <rect key="frame" x="0.0" y="946.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="798" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2O2-Gf-bXQ" id="Wdo-6y-O6w">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -307,7 +307,7 @@
                             <tableViewSection headerTitle="복수전공 가능" id="b5L-CU-YAl">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="sec_permit_yn" textLabel="B4Z-Bl-p3V" style="IBUITableViewCellStyleDefault" id="d6f-WA-jiM">
-                                        <rect key="frame" x="0.0" y="1045.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="880.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d6f-WA-jiM" id="RqR-DC-6l1">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -328,7 +328,7 @@
                             <tableViewSection headerTitle="타과 가능" id="GCY-c4-Xxv">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="etc_permit_yn" textLabel="Avx-5g-XME" style="IBUITableViewCellStyleDefault" id="cEX-IV-7Ho">
-                                        <rect key="frame" x="0.0" y="1144.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="963" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cEX-IV-7Ho" id="lQb-gV-WFk">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -353,7 +353,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="lOO-X3-tnR">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="IKW-pw-Idd">
+                        <barButtonItem key="rightBarButtonItem" title="완료" style="done" id="IKW-pw-Idd">
                             <connections>
                                 <segue destination="f5d-l7-9e8" kind="unwind" unwindAction="unwindToSubjectTableViewWithSegue:" id="rkp-21-jve"/>
                             </connections>
@@ -496,6 +496,7 @@
                                 <connections>
                                     <outlet property="deptList_nameLabel" destination="v51-EE-2pl" id="gVB-Oe-jst"/>
                                     <outlet property="favoritButton" destination="k5N-9N-gzd" id="jw4-Xq-HbZ"/>
+                                    <segue destination="yNK-89-qPe" kind="show" identifier="showDeptRemainingSeat" trigger="accessoryAction" id="xMY-dh-zxg"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myDeptList" rowHeight="50" id="r6q-2l-Re5" userLabel="myDeptList" customClass="MyCourseTableViewCell" customModule="UOS강의검색" customModuleProvider="target">
@@ -635,7 +636,6 @@
                         <outlet property="editButton" destination="hMC-Cb-83Q" id="4T8-M0-ij3"/>
                         <outlet property="filterSegmentedControl" destination="MQi-vA-IcN" id="S20-Cc-SB2"/>
                         <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="3i5-WS-HKX"/>
-                        <segue destination="9uk-DV-gks" kind="presentation" identifier="showDeptRemainingSeat" modalPresentationStyle="automatic" id="4RS-da-mfA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCD-ZF-27G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -647,7 +647,7 @@
             <objects>
                 <tableViewController id="yNK-89-qPe" customClass="DeptRemainingSeatTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uN6-O6-2UE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -706,7 +706,9 @@
                             <outlet property="delegate" destination="yNK-89-qPe" id="d4P-gI-Tn3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Owi-uq-7WP"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Owi-uq-7WP">
+                        <barButtonItem key="backBarButtonItem" title="뒤로" id="2TR-ry-4nZ"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="Z9J-FH-OtD"/>
                     </connections>
@@ -777,23 +779,6 @@
             </objects>
             <point key="canvasLocation" x="2629" y="1232"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9FR-v5-ajo">
-            <objects>
-                <navigationController id="9uk-DV-gks" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Rgw-bL-ORG"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gId-zi-8eg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="yNK-89-qPe" kind="relationship" relationship="rootViewController" id="WoS-Te-CZx"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uF5-sd-Nw4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2630" y="526"/>
-        </scene>
         <!--알림-->
         <scene sceneID="eoB-ic-igV">
             <objects>
@@ -817,7 +802,7 @@
                             <outlet property="delegate" destination="SL6-uP-ZuW" id="tM2-VB-WEa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="알림" id="Mjn-5c-53s"/>
+                    <navigationItem key="navigationItem" title="알림" largeTitleDisplayMode="always" id="Mjn-5c-53s"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9jk-33-MQC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -846,7 +831,7 @@
                             <outlet property="delegate" destination="jnK-xt-buC" id="SbU-rh-ei6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="설정" id="XFd-dp-QMB"/>
+                    <navigationItem key="navigationItem" title="설정" largeTitleDisplayMode="always" id="XFd-dp-QMB"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AbK-R8-dtO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -892,7 +877,7 @@
                 <navigationController id="t9K-wm-O3Q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="빈자리" image="archivebox" catalog="system" id="sdi-93-nmq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xfu-Mu-Si4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -950,6 +935,6 @@
         <image name="plus.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3i5-WS-HKX"/>
+        <segue reference="Z9J-FH-OtD"/>
     </inferredMetricsTieBreakers>
 </document>

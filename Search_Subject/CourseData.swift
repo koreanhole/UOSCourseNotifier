@@ -21,7 +21,7 @@ class CourseData: Codable {
 
     
     static let myCourseArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myCourse").appendingPathExtension("plist")
-    static let myDeptArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myCourse").appendingPathExtension("plist")
+    static let myDeptArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myDeptList").appendingPathExtension("plist")
     
     // [String:String]의 딕셔너리 타입의 배열을 저장하는 코드
     static func saveToFile(data: [[String:String]]) {

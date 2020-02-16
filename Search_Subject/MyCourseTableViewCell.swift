@@ -44,7 +44,7 @@ class MyCourseTableViewCell: UITableViewCell {
         } else {
              professorNameLabel.text = professor_name + " (\(class_div))"
         }
-        if remainingSeat.isEmpty || Int(remainingSeat) == 0 {
+        if remainingSeat.isEmpty || Int(remainingSeat)! < 0 {
             remainingSeatLabel.text = "남은자리: 0명"
             subjectNameLabel.textColor = UIColor.systemRed
         } else {

@@ -17,6 +17,9 @@ class DeptRemainingSeatTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = deptName
         fetchingMajorData()
+        
+        //backbutton 텍스트 수정
+        self.navigationController?.navigationBar.topItem?.title = "전공"
 
 
         // Uncomment the following line to preserve selection between presentations
@@ -62,9 +65,6 @@ class DeptRemainingSeatTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "수강신청 어플로 가기", style: .default, handler: {_ in
-            self.tableView.deselectRow(at: indexPath, animated: true)
-        }))
         alert.addAction(UIAlertAction(title: "강의계획표", style: .default, handler: {_ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
@@ -140,6 +140,8 @@ class DeptRemainingSeatTableViewController: UITableViewController {
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+    }
+    @IBAction func unwindToSubjectTableView(segue: UIStoryboardSegue) {
     }
 
 }

@@ -131,7 +131,7 @@ class MyCourseTableViewController: UITableViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: "deptList", for: indexPath) as! MyCourseTableViewCell
             CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
             if indexPath.section == 0 {
-                cell = tableView.dequeueReusableCell(withIdentifier: "myDeptList", for: indexPath) as! MyCourseTableViewCell
+                cell = tableView.dequeueReusableCell(withIdentifier: "deptList", for: indexPath) as! MyCourseTableViewCell
                 cell.updateDeptListCell(with: CourseData.sharedCourse.myDept_list[indexPath.row])
             } else if indexPath.section == 1 {
                 cell = tableView.dequeueReusableCell(withIdentifier: "deptList", for: indexPath) as! MyCourseTableViewCell
@@ -145,7 +145,7 @@ class MyCourseTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 60))
         let label = UILabel()
         label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
         switch segment {
@@ -169,7 +169,7 @@ class MyCourseTableViewController: UITableViewController {
         case 1:
             return 0
         case 2:
-            return 50
+            return 60
         default:
             return 0
         }
@@ -194,9 +194,6 @@ class MyCourseTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "수강신청 어플로 가기", style: .default, handler: {_ in
-            self.tableView.deselectRow(at: indexPath, animated: true)
-        }))
         alert.addAction(UIAlertAction(title: "강의계획표", style: .default, handler: {_ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
@@ -392,8 +389,8 @@ class MyCourseTableViewController: UITableViewController {
             }
         } else if segue.identifier == "showDeptRemainingSeat" {
             let indexPath = tableView.indexPathForSelectedRow!
-            let navController = segue.destination as! UINavigationController
-            let DeptRemainingSeatTableViewController = navController.topViewController as! DeptRemainingSeatTableViewController
+            
+            let DeptRemainingSeatTableViewController = segue.destination as! DeptRemainingSeatTableViewController
             if indexPath.section == 0 {
                 DeptRemainingSeatTableViewController.deptName = CourseData.sharedCourse.myDept_list[indexPath.row]
             } else if indexPath.section == 1 {
