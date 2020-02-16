@@ -16,6 +16,8 @@
 		AD5210A323ED49890044DB42 /* CourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5210A223ED49890044DB42 /* CourseData.swift */; };
 		AD87F2EE23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2ED23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift */; };
 		AD87F2F223F84AD900384D56 /* extension_Array_dropDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2F123F84AD900384D56 /* extension_Array_dropDuplicates.swift */; };
+		AD87F2FB23F92F9600384D56 /* SearchDeptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2FA23F92F9600384D56 /* SearchDeptTableViewCell.swift */; };
+		AD87F2FD23F92FAC00384D56 /* SearchDeptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2FC23F92FAC00384D56 /* SearchDeptTableViewController.swift */; };
 		AD9AC94223F1A05600BEACBE /* SearchSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9AC94123F1A05600BEACBE /* SearchSubject.swift */; };
 		ADCDE7DB23EAA37000D6C7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */; };
 		ADCDE7DD23EAA37000D6C7EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7DC23EAA37000D6C7EC /* SceneDelegate.swift */; };
@@ -37,6 +39,8 @@
 		AD5210A223ED49890044DB42 /* CourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseData.swift; sourceTree = "<group>"; };
 		AD87F2ED23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeptRemainingSeatTableViewController.swift; sourceTree = "<group>"; };
 		AD87F2F123F84AD900384D56 /* extension_Array_dropDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension_Array_dropDuplicates.swift; sourceTree = "<group>"; };
+		AD87F2FA23F92F9600384D56 /* SearchDeptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeptTableViewCell.swift; sourceTree = "<group>"; };
+		AD87F2FC23F92FAC00384D56 /* SearchDeptTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeptTableViewController.swift; sourceTree = "<group>"; };
 		AD9AC94123F1A05600BEACBE /* SearchSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubject.swift; sourceTree = "<group>"; };
 		ADCDE7D723EAA37000D6C7EC /* UOS강의검색.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UOS강의검색.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 			children = (
 				AD52109923EB398F0044DB42 /* MyCourseTableViewController.swift */,
 				AD5210A023ED39310044DB42 /* MyCourseTableViewCell.swift */,
+				AD87F2F923F92F6200384D56 /* SearchDept */,
 				AD87F2EA23F7DB0600384D56 /* DeptRemainingSeat */,
 			);
 			name = MyCourse;
@@ -114,6 +119,15 @@
 				AD87F2ED23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift */,
 			);
 			name = DeptRemainingSeat;
+			sourceTree = "<group>";
+		};
+		AD87F2F923F92F6200384D56 /* SearchDept */ = {
+			isa = PBXGroup;
+			children = (
+				AD87F2FA23F92F9600384D56 /* SearchDeptTableViewCell.swift */,
+				AD87F2FC23F92FAC00384D56 /* SearchDeptTableViewController.swift */,
+			);
+			name = SearchDept;
 			sourceTree = "<group>";
 		};
 		ADCDE7CE23EAA37000D6C7EC = {
@@ -257,6 +271,8 @@
 				ADCDE7DB23EAA37000D6C7EC /* AppDelegate.swift in Sources */,
 				AD87F2F223F84AD900384D56 /* extension_Array_dropDuplicates.swift in Sources */,
 				AD9AC94223F1A05600BEACBE /* SearchSubject.swift in Sources */,
+				AD87F2FD23F92FAC00384D56 /* SearchDeptTableViewController.swift in Sources */,
+				AD87F2FB23F92F9600384D56 /* SearchDeptTableViewCell.swift in Sources */,
 				ADCDE7DD23EAA37000D6C7EC /* SceneDelegate.swift in Sources */,
 				AD5210A123ED39310044DB42 /* MyCourseTableViewCell.swift in Sources */,
 				AD52109A23EB398F0044DB42 /* MyCourseTableViewController.swift in Sources */,

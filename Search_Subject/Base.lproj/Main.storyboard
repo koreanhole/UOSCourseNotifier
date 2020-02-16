@@ -466,18 +466,24 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5N-9N-gzd">
                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="10"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="favoriteButtonClicked:" destination="bRr-MP-IQR" eventType="touchUpInside" id="1j9-Ct-cTa"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v51-EE-2pl">
-                                                    <rect key="frame" x="30" y="0.0" width="273" height="10"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="303" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="k5N-9N-gzd"/>
+                                                </mask>
+                                            </variation>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -504,18 +510,24 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJY-CV-M5o">
                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="10"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="favoriteButtonClicked:" destination="r6q-2l-Re5" eventType="touchUpInside" id="RvR-VL-rSz"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-Xy-iA5">
-                                                    <rect key="frame" x="30" y="0.0" width="273" height="10"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="303" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="zJY-CV-M5o"/>
+                                                </mask>
+                                            </variation>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -590,6 +602,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="VVe-U1-Erq">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="Q0x-Me-QUs">
+                            <connections>
+                                <action selector="addButtonClicked:" destination="Uq3-Ke-qR3" id="Jae-vr-3h4"/>
+                                <segue destination="i2u-Bb-pdl" kind="show" id="92i-NO-TXm"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MQi-vA-IcN">
                             <rect key="frame" x="122" y="5.5" width="170" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -613,6 +631,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
+                        <outlet property="addButton" destination="Q0x-Me-QUs" id="KdP-oc-lnX"/>
                         <outlet property="editButton" destination="hMC-Cb-83Q" id="4T8-M0-ij3"/>
                         <outlet property="filterSegmentedControl" destination="MQi-vA-IcN" id="S20-Cc-SB2"/>
                         <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="3i5-WS-HKX"/>
@@ -694,7 +713,62 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDm-If-dCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3326" y="818"/>
+            <point key="canvasLocation" x="3630" y="526"/>
+        </scene>
+        <!--전체 전공-->
+        <scene sceneID="MHi-im-2G4">
+            <objects>
+                <tableViewController id="mYg-XS-X55" customClass="SearchDeptTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lq9-fa-eCp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchedDept" textLabel="qWt-FY-qIy" style="IBUITableViewCellStyleDefault" id="5hI-m5-anx" customClass="SearchDeptTableViewCell" customModule="UOS강의검색" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5hI-m5-anx" id="cqK-6k-QJl">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qWt-FY-qIy">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mYg-XS-X55" id="Uxl-o7-KGX"/>
+                            <outlet property="delegate" destination="mYg-XS-X55" id="uzy-ML-jib"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="전체 전공" prompt="즐겨찾기에 추가하려는 전공 선택" id="fRP-GR-x4S"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5tb-OH-JUB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3629" y="1232"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HJ2-ed-1ZF">
+            <objects>
+                <navigationController id="i2u-Bb-pdl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="p37-yT-XHa"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DdU-xA-4vn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mYg-XS-X55" kind="relationship" relationship="rootViewController" id="Jeo-ps-xb5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wrQ-h5-vmD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2629" y="1232"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9FR-v5-ajo">
@@ -711,7 +785,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uF5-sd-Nw4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2426" y="818"/>
+            <point key="canvasLocation" x="2630" y="526"/>
         </scene>
         <!--알림-->
         <scene sceneID="eoB-ic-igV">
@@ -811,7 +885,7 @@
                 <navigationController id="t9K-wm-O3Q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="빈자리" image="archivebox" catalog="system" id="sdi-93-nmq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xfu-Mu-Si4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

@@ -8,8 +8,11 @@
 
 import UIKit
 import QuartzCore
+import AVFoundation
 
 class MyCourseTableViewController: UITableViewController {
+    
+    @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var filterSegmentedControl: UISegmentedControl!
     //segment = 0 -> 내 강의, segment = 1 -> 교양, segment = 2 -> 전공
@@ -23,10 +26,10 @@ class MyCourseTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         //self.navigationItem.leftBarButtonItem = self.editButtonItem
-        if !CourseData.loadFromFile().isEmpty {
-            CourseData.sharedCourse.savedData = CourseData.loadFromFile()
+        self.navigationItem.leftBarButtonItem = nil
+        if !CourseData.sharedCourse.savedData.isEmpty {
+            fetchingCourseData()
         }
-        fetchingCourseData()
         //self.tableView.allowsSelection = true
 
     }
@@ -124,29 +127,51 @@ class MyCourseTableViewController: UITableViewController {
         //전공
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: "deptList", for: indexPath) as! MyCourseTableViewCell
+            CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
             if indexPath.section == 0 {
                 cell = tableView.dequeueReusableCell(withIdentifier: "myDeptList", for: indexPath) as! MyCourseTableViewCell
                 cell.updateDeptListCell(with: CourseData.sharedCourse.myDept_list[indexPath.row])
-                cell.favoritButton.isHidden = true
             } else if indexPath.section == 1 {
                 cell = tableView.dequeueReusableCell(withIdentifier: "deptList", for: indexPath) as! MyCourseTableViewCell
                 cell.updateDeptListCell(with: CourseData.sharedCourse.dept_list[indexPath.row])
             }
-            if CourseData.sharedCourse.myDept_list.contains(CourseData.sharedCourse.dept_list[indexPath.row]) {
-                cell.favoritButton.setImage(UIImage(systemName: "star"), for: .normal)
-                cell.favoritButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
-                cell.favoritButton.isSelected = true
-            } else {
-                cell.favoritButton.setImage(UIImage(systemName: "star"), for: .normal)
-                cell.favoritButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
-                cell.favoritButton.isSelected = false
-            }
+            CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
             return cell
         default:
             return cell
         }
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let label = UILabel()
+        label.frame = CGRect.init(x: 5, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        switch segment {
+        case 2:
+            if section == 0 {label.text = "즐겨찾기"}
+            else if section == 1 {label.text = "전체 전공"}
+            label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
+            headerView.addSubview(label)
+        default:
+            break
+        }
 
+
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch segment {
+        case 0:
+            return 0
+        case 1:
+            return 0
+        case 2:
+            return 50
+        default:
+            return 0
+        }
+    }
     
 
     @objc func refresh(sender:AnyObject){
@@ -223,15 +248,43 @@ class MyCourseTableViewController: UITableViewController {
     
     // Override to support editing the table view.
    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    if segment == 0 {
         if editingStyle == .delete {
-            CourseData.sharedCourse.savedData.remove(at: indexPath.section)
+            CourseData.sharedCourse.savedData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             //let indexSet = IndexSet(arrayLiteral: indexPath.section)
             //tableView.deleteSections(indexSet, with: .automatic)
             CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+    } else if segment == 2 {
+        if editingStyle == .delete {
+            CourseData.sharedCourse.myDept_list.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
+            //let indexSet = IndexSet(arrayLiteral: indexPath.section)
+            //tableView.deleteSections(indexSet, with: .automatic)
+        } else if editingStyle == .insert {
+            let addedDept = CourseData.sharedCourse.dept_list[indexPath.row]
+            //이미 즐겨찾기에 추가 되어있는 경우
+            if CourseData.sharedCourse.myDept_list.contains(addedDept) {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.error)
+                let alert = UIAlertController(title: "이미 즐겨찾기에 있는 학과입니다.", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
+                }))
+                present(alert, animated: true, completion: nil)
+            //즐겨찾기에 추가 되어있지 않은 경우
+            } else {
+                let generator = UIImpactFeedbackGenerator(style: .medium)
+                generator.impactOccurred()
+                CourseData.sharedCourse.myDept_list.append(addedDept)
+                tableView.insertRows(at: [IndexPath(row: CourseData.sharedCourse.myDept_list.count-1, section: 0)], with: .automatic)
+
+            }
+        }
+        CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
+    }
+        
     }
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         switch segment {
@@ -243,17 +296,35 @@ class MyCourseTableViewController: UITableViewController {
             return .none
         //전공
         case 2:
-            return .delete
+            if indexPath.section == 0 { return .delete }
+            else { return .insert }
         default:
             return .none
         }
     }
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let movedCourse = CourseData.sharedCourse.savedData.remove(at: fromIndexPath.row)
-        CourseData.sharedCourse.savedData.insert(movedCourse, at: to.row)
-        CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
+        if segment == 0 {
+            let movedCourse = CourseData.sharedCourse.savedData.remove(at: fromIndexPath.row)
+            CourseData.sharedCourse.savedData.insert(movedCourse, at: to.row)
+            CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
+        } else if segment == 2 {
+            let movedDept = CourseData.sharedCourse.myDept_list.remove(at: fromIndexPath.row)
+            CourseData.sharedCourse.myDept_list.insert(movedDept, at: to.row)
+        }
+
         tableView.reloadData()
+    }
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        switch segment {
+        case 0:
+            return true
+        case 2:
+            if indexPath.section == 0 { return true }
+            else { return false }
+        default:
+            return false
+        }
     }
     
 
@@ -274,6 +345,8 @@ class MyCourseTableViewController: UITableViewController {
     @IBAction func filterOptionUpdated(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
+            self.setEditing(false, animated: true)
+            self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem = self.editButton
             self.navigationItem.rightBarButtonItem?.title = "편집"
             segment = 0
@@ -281,11 +354,14 @@ class MyCourseTableViewController: UITableViewController {
             segment = 1
             fetchingCultData()
             self.setEditing(false, animated: true)
+            self.navigationItem.leftBarButtonItem = nil
             self.navigationItem.rightBarButtonItem = nil
         case 2:
             segment = 2
             self.setEditing(false, animated: true)
-            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.leftBarButtonItem = self.addButton
+            self.navigationItem.rightBarButtonItem = self.editButton
+            self.navigationItem.rightBarButtonItem?.title = "편집"
         default:
             break
         }
@@ -298,10 +374,11 @@ class MyCourseTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = tableView.indexPathForSelectedRow!
-        let navController = segue.destination as! UINavigationController
+        
         
         if segue.identifier == "showDetail" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let navController = segue.destination as! UINavigationController
             let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
             switch segment {
             case 0:
@@ -312,6 +389,8 @@ class MyCourseTableViewController: UITableViewController {
                 break
             }
         } else if segue.identifier == "showDeptRemainingSeat" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let navController = segue.destination as! UINavigationController
             let DeptRemainingSeatTableViewController = navController.topViewController as! DeptRemainingSeatTableViewController
             if indexPath.section == 0 {
                 DeptRemainingSeatTableViewController.deptName = CourseData.sharedCourse.myDept_list[indexPath.row]
@@ -327,12 +406,18 @@ class MyCourseTableViewController: UITableViewController {
     }
     @IBAction func editButtonClicked(_ sender: UIBarButtonItem) {
         tableView.setEditing(!tableView.isEditing, animated: true)
-
         if tableView.isEditing {
             self.editButton.title = "완료"
+            if segment == 2 {self.navigationItem.leftBarButtonItem = nil}
+            
         } else {
             self.editButton.title = "편집"
+            if segment == 2 {self.navigationItem.leftBarButtonItem = self.addButton}
+            
         }
     }
+    @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+    }
 }
+
 

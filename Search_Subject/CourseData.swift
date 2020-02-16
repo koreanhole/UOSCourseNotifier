@@ -20,19 +20,37 @@ class CourseData: Codable {
     var myDept_list = [String]()
 
     
-    static let archiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("note_test").appendingPathExtension("plist")
+    static let myCourseArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myCourse").appendingPathExtension("plist")
+    static let myDeptArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myCourse").appendingPathExtension("plist")
     
+    // [String:String]의 딕셔너리 타입의 배열을 저장하는 코드
     static func saveToFile(data: [[String:String]]) {
         let propertyListEncoder = PropertyListEncoder()
         let encodedCourseData = try? propertyListEncoder.encode(data)
         
-        try? encodedCourseData?.write(to: CourseData.archiveUrl, options: .noFileProtection)
+        try? encodedCourseData?.write(to: CourseData.myCourseArchiveUrl, options: .noFileProtection)
     }
     static func loadFromFile() -> [[String:String]] {
         var CourseDataFromDisk: [[String:String]] = [[:]]
         let propertyListDecoder = PropertyListDecoder()
-        if let retrievedCourseData = try? Data(contentsOf: CourseData.archiveUrl),
+        if let retrievedCourseData = try? Data(contentsOf: CourseData.myCourseArchiveUrl),
             let decodedCourseData = try? propertyListDecoder.decode([[String:String]].self.self, from: retrievedCourseData){
+                CourseDataFromDisk = decodedCourseData
+        }
+        return CourseDataFromDisk
+    }
+    
+    //String타입의 배열을 저장하는 코드
+    static func saveListToFile(data: [String]) {
+        let propertyListEncoder = PropertyListEncoder()
+        let encodedCourseData = try? propertyListEncoder.encode(data)
+        try? encodedCourseData?.write(to: CourseData.myDeptArchiveUrl, options: .noFileProtection)
+    }
+    static func loadListFromFile() -> [String] {
+        var CourseDataFromDisk: [String] = []
+        let propertyListDecoder = PropertyListDecoder()
+        if let retrievedCourseData = try? Data(contentsOf: CourseData.myDeptArchiveUrl),
+            let decodedCourseData = try? propertyListDecoder.decode([String].self, from: retrievedCourseData){
                 CourseDataFromDisk = decodedCourseData
         }
         return CourseDataFromDisk
@@ -48,7 +66,7 @@ class CourseData: Codable {
                     completion(courseDict)
                 }
             })
-        } else {
+        } else if (subject["subject_div"]?.contains("교양") ?? false) {
             let boardRef = ref.child("course").child("교양").child(subject["subject_nm"]!).child(subject["class_div"]!)
             boardRef.observe(_: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
