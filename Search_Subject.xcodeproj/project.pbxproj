@@ -14,6 +14,7 @@
 		AD52109D23ED26380044DB42 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD52109C23ED26380044DB42 /* CourseTableViewCell.swift */; };
 		AD5210A123ED39310044DB42 /* MyCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5210A023ED39310044DB42 /* MyCourseTableViewCell.swift */; };
 		AD5210A323ED49890044DB42 /* CourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5210A223ED49890044DB42 /* CourseData.swift */; };
+		AD542BC223FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD542BC123FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift */; };
 		AD87F2EE23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2ED23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift */; };
 		AD87F2F223F84AD900384D56 /* extension_Array_dropDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2F123F84AD900384D56 /* extension_Array_dropDuplicates.swift */; };
 		AD87F2FB23F92F9600384D56 /* SearchDeptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2FA23F92F9600384D56 /* SearchDeptTableViewCell.swift */; };
@@ -37,6 +38,7 @@
 		AD52109C23ED26380044DB42 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		AD5210A023ED39310044DB42 /* MyCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseTableViewCell.swift; sourceTree = "<group>"; };
 		AD5210A223ED49890044DB42 /* CourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseData.swift; sourceTree = "<group>"; };
+		AD542BC123FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultRemainingSeatTableViewController.swift; sourceTree = "<group>"; };
 		AD87F2ED23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeptRemainingSeatTableViewController.swift; sourceTree = "<group>"; };
 		AD87F2F123F84AD900384D56 /* extension_Array_dropDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension_Array_dropDuplicates.swift; sourceTree = "<group>"; };
 		AD87F2FA23F92F9600384D56 /* SearchDeptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeptTableViewCell.swift; sourceTree = "<group>"; };
@@ -108,9 +110,18 @@
 				AD52109923EB398F0044DB42 /* MyCourseTableViewController.swift */,
 				AD5210A023ED39310044DB42 /* MyCourseTableViewCell.swift */,
 				AD87F2F923F92F6200384D56 /* SearchDept */,
+				AD542BC023FABDD300E9DA08 /* CultRemainingSeat */,
 				AD87F2EA23F7DB0600384D56 /* DeptRemainingSeat */,
 			);
 			name = MyCourse;
+			sourceTree = "<group>";
+		};
+		AD542BC023FABDD300E9DA08 /* CultRemainingSeat */ = {
+			isa = PBXGroup;
+			children = (
+				AD542BC123FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift */,
+			);
+			name = CultRemainingSeat;
 			sourceTree = "<group>";
 		};
 		AD87F2EA23F7DB0600384D56 /* DeptRemainingSeat */ = {
@@ -270,6 +281,7 @@
 				ADCDE7EF23EAA53600D6C7EC /* URL+Helper.swift in Sources */,
 				ADCDE7DB23EAA37000D6C7EC /* AppDelegate.swift in Sources */,
 				AD87F2F223F84AD900384D56 /* extension_Array_dropDuplicates.swift in Sources */,
+				AD542BC223FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift in Sources */,
 				AD9AC94223F1A05600BEACBE /* SearchSubject.swift in Sources */,
 				AD87F2FD23F92FAC00384D56 /* SearchDeptTableViewController.swift in Sources */,
 				AD87F2FB23F92F9600384D56 /* SearchDeptTableViewCell.swift in Sources */,

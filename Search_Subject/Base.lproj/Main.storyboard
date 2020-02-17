@@ -377,7 +377,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJS-Wk-KZv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="f5d-l7-9e8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5693" y="449"/>
+            <point key="canvasLocation" x="6810" y="1227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k6Q-sv-C6X">
@@ -394,7 +394,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6h-24-O1W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4816" y="449"/>
+            <point key="canvasLocation" x="5933" y="1227"/>
         </scene>
         <!--빈자리-->
         <scene sceneID="8uq-C8-Rh0">
@@ -499,7 +499,7 @@
                                     <segue destination="yNK-89-qPe" kind="show" identifier="showDeptRemainingSeat" trigger="accessoryAction" id="xMY-dh-zxg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myDeptList" rowHeight="50" id="r6q-2l-Re5" userLabel="myDeptList" customClass="MyCourseTableViewCell" customModule="UOS강의검색" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cultClassification" rowHeight="50" id="r6q-2l-Re5" customClass="MyCourseTableViewCell" customModule="UOS강의검색" customModuleProvider="target">
                                 <rect key="frame" x="20" y="197" width="374" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r6q-2l-Re5" id="dj5-vD-018">
@@ -541,6 +541,7 @@
                                 <connections>
                                     <outlet property="deptList_nameLabel" destination="QCH-Xy-iA5" id="C6V-Gg-4TL"/>
                                     <outlet property="favoritButton" destination="zJY-CV-M5o" id="AX6-jQ-fVp"/>
+                                    <segue destination="PnA-5E-Dbq" kind="show" identifier="showCultRemainingSeat" trigger="accessoryAction" id="d3m-At-nbX"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCourse" id="1mV-vN-Ixh" customClass="MyCourseTableViewCell" customModule="UOS강의검색" customModuleProvider="target">
@@ -640,9 +641,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCD-ZF-27G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631.8840579710147" y="817.63392857142856"/>
+            <point key="canvasLocation" x="1632" y="1227"/>
         </scene>
-        <!--Root View Controller-->
+        <!--전공별 빈자리-->
         <scene sceneID="jfh-Ef-HOA">
             <objects>
                 <tableViewController id="yNK-89-qPe" customClass="DeptRemainingSeatTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
@@ -706,7 +707,7 @@
                             <outlet property="delegate" destination="yNK-89-qPe" id="d4P-gI-Tn3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Owi-uq-7WP">
+                    <navigationItem key="navigationItem" title="전공별 빈자리" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Owi-uq-7WP">
                         <barButtonItem key="backBarButtonItem" title="뒤로" id="2TR-ry-4nZ"/>
                     </navigationItem>
                     <connections>
@@ -715,7 +716,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDm-If-dCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3630" y="526"/>
+            <point key="canvasLocation" x="4129" y="1227"/>
         </scene>
         <!--전체 전공-->
         <scene sceneID="MHi-im-2G4">
@@ -760,7 +761,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tb-OH-JUB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="9tv-sN-kZS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3629" y="1232"/>
+            <point key="canvasLocation" x="4130" y="2030"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HJ2-ed-1ZF">
@@ -777,7 +778,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wrQ-h5-vmD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629" y="1232"/>
+            <point key="canvasLocation" x="2967" y="2030"/>
         </scene>
         <!--알림-->
         <scene sceneID="eoB-ic-igV">
@@ -806,7 +807,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9jk-33-MQC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1632" y="1543"/>
+            <point key="canvasLocation" x="1632" y="2204"/>
         </scene>
         <!--설정-->
         <scene sceneID="Orv-Zy-Ke8">
@@ -835,7 +836,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AbK-R8-dtO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1632" y="2238"/>
+            <point key="canvasLocation" x="1633" y="3019"/>
         </scene>
         <!--설정-->
         <scene sceneID="ApU-HO-5lV">
@@ -852,7 +853,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Or-ro-xq1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712" y="2238"/>
+            <point key="canvasLocation" x="713" y="3019"/>
         </scene>
         <!--알림-->
         <scene sceneID="dg5-FM-7g3">
@@ -869,7 +870,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qn-MY-ZiE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712" y="1543"/>
+            <point key="canvasLocation" x="712" y="2204"/>
         </scene>
         <!--빈자리-->
         <scene sceneID="xa8-56-uNo">
@@ -886,7 +887,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Np0-hG-0Xj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="713" y="818"/>
+            <point key="canvasLocation" x="712" y="1227"/>
         </scene>
         <!--검색-->
         <scene sceneID="dP8-qt-KUK">
@@ -926,6 +927,81 @@
             </objects>
             <point key="canvasLocation" x="-197.10144927536234" y="31.473214285714285"/>
         </scene>
+        <!--교양별 빈자리-->
+        <scene sceneID="bIt-f0-jhm">
+            <objects>
+                <tableViewController id="PnA-5E-Dbq" customClass="CultRemainingSeatTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="85U-Ta-Ffb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="majorCult" id="0UK-TT-uUy" customClass="MyCourseTableViewCell" customModule="UOS강의검색" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="91.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0UK-TT-uUy" id="L5G-6x-G0D">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="91.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2E-Ou-xO1">
+                                            <rect key="frame" x="20" y="20" width="374" height="51.5"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kIO-Le-Ikr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343.5" height="51.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfO-FS-v4T">
+                                                            <rect key="frame" x="0.0" y="0.0" width="343.5" height="21"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFw-L0-pte">
+                                                            <rect key="frame" x="0.0" y="31" width="343.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kr9-bv-aXb">
+                                                    <rect key="frame" x="343.5" y="0.0" width="30.5" height="51.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="G2E-Ou-xO1" secondAttribute="bottom" constant="20" symbolic="YES" id="52b-ce-Gtd"/>
+                                        <constraint firstItem="G2E-Ou-xO1" firstAttribute="top" secondItem="L5G-6x-G0D" secondAttribute="top" constant="20" symbolic="YES" id="amY-lg-YbX"/>
+                                        <constraint firstItem="G2E-Ou-xO1" firstAttribute="leading" secondItem="L5G-6x-G0D" secondAttribute="leading" constant="20" symbolic="YES" id="pRH-jG-IS1"/>
+                                        <constraint firstAttribute="trailing" secondItem="G2E-Ou-xO1" secondAttribute="trailing" constant="20" symbolic="YES" id="w9q-Mh-4fp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="majoCultSubjectNameLabel" destination="CfO-FS-v4T" id="GIr-bb-b1l"/>
+                                    <outlet property="majorCultProfessorNameLabel" destination="fFw-L0-pte" id="yul-wW-Uag"/>
+                                    <outlet property="majorCultRemainingSeatLabel" destination="Kr9-bv-aXb" id="Uxs-iG-5Pm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PnA-5E-Dbq" id="wiG-tU-W8b"/>
+                            <outlet property="delegate" destination="PnA-5E-Dbq" id="b1U-wp-QJ3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="교양별 빈자리" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="ATa-Nd-sjc">
+                        <barButtonItem key="backBarButtonItem" title="뒤로" id="XyL-2c-phI"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="2TM-4b-62p"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KrB-Ii-qUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4129" y="155"/>
+        </scene>
     </scenes>
     <resources>
         <image name="archivebox" catalog="system" width="64" height="52"/>
@@ -935,6 +1011,6 @@
         <image name="plus.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z9J-FH-OtD"/>
+        <segue reference="2TM-4b-62p"/>
     </inferredMetricsTieBreakers>
 </document>
