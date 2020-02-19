@@ -232,7 +232,9 @@ class MyCourseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "강의계획표", style: .default, handler: {_ in
+            self.performSegue(withIdentifier: "showCoursePlan", sender: self)
             self.tableView.deselectRow(at: indexPath, animated: true)
+            return
         }))
         alert.addAction(UIAlertAction(title: "상세정보", style: .default, handler: {_ in
             self.performSegue(withIdentifier: "showDetail", sender: self)
@@ -462,6 +464,22 @@ class MyCourseTableViewController: UITableViewController {
             } else if indexPath.row == 1 {
                 CultRemainingSeatTableViewController.cultClassification = "교양필수"
                 CultRemainingSeatTableViewController.cultRemainedSeat = self.nessaceryCult
+            }
+        } else if segue.identifier == "showCoursePlan" {
+            let indexPath = tableView.indexPathForSelectedRow!
+            let navController = segue.destination as! UINavigationController
+            let CoursePlanTableViewController = navController.topViewController as! CoursePlanTableViewController
+            switch segment {
+            case 0:
+                CoursePlanTableViewController.subjectItem = CourseData.sharedCourse.savedData[indexPath.row]
+            case 1:
+                if indexPath.section == 1 {
+                    CoursePlanTableViewController.subjectItem = self.availableCult[indexPath.row]
+                } else if indexPath.section == 2 {
+                    CoursePlanTableViewController.subjectItem = self.zeroRemaingSeat[indexPath.row]
+                } else { break }
+            default:
+                break
             }
         }
         // Get the new view controller using segue.destination.

@@ -66,6 +66,7 @@ class DeptRemainingSeatTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "강의계획표", style: .default, handler: {_ in
+            self.performSegue(withIdentifier: "showCoursePlan", sender: self)
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
         alert.addAction(UIAlertAction(title: "상세정보", style: .default, handler: {_ in
@@ -137,6 +138,9 @@ class DeptRemainingSeatTableViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
             SearchResultTableViewController.subjectItem = CourseData.sharedCourse.majorData[indexPath.row]
+        } else if segue.identifier == "showCoursePlan" {
+            let CoursePlanTableViewController = navController.topViewController as! CoursePlanTableViewController
+            CoursePlanTableViewController.subjectItem = CourseData.sharedCourse.majorData[indexPath.row]
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.

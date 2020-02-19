@@ -9,17 +9,21 @@
 /* Begin PBXBuildFile section */
 		AC07DEF0CFB0513F2ED70E6E /* libPods-Search_Subject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 037915936D1389691578000D /* libPods-Search_Subject.a */; };
 		AD0E444A23F2B9640055EAD6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD0E444923F2B9640055EAD6 /* GoogleService-Info.plist */; };
+		AD4AE55C23FD8FA900DE50C4 /* CoursePlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */; };
+		AD4AE55E23FD931C00DE50C4 /* extension_getCoursePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */; };
+		AD4AE56123FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */; };
 		AD52109423EB18AD0044DB42 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD52109323EB18AD0044DB42 /* SearchResultTableViewController.swift */; };
 		AD52109A23EB398F0044DB42 /* MyCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD52109923EB398F0044DB42 /* MyCourseTableViewController.swift */; };
 		AD52109D23ED26380044DB42 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD52109C23ED26380044DB42 /* CourseTableViewCell.swift */; };
 		AD5210A123ED39310044DB42 /* MyCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5210A023ED39310044DB42 /* MyCourseTableViewCell.swift */; };
 		AD5210A323ED49890044DB42 /* CourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5210A223ED49890044DB42 /* CourseData.swift */; };
 		AD542BC223FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD542BC123FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift */; };
+		AD542BC523FAED8B00E9DA08 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD542BC423FAED8B00E9DA08 /* SettingsTableViewController.swift */; };
 		AD87F2EE23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2ED23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift */; };
 		AD87F2F223F84AD900384D56 /* extension_Array_dropDuplicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2F123F84AD900384D56 /* extension_Array_dropDuplicates.swift */; };
 		AD87F2FB23F92F9600384D56 /* SearchDeptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2FA23F92F9600384D56 /* SearchDeptTableViewCell.swift */; };
 		AD87F2FD23F92FAC00384D56 /* SearchDeptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87F2FC23F92FAC00384D56 /* SearchDeptTableViewController.swift */; };
-		AD9AC94223F1A05600BEACBE /* SearchSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9AC94123F1A05600BEACBE /* SearchSubject.swift */; };
+		AD9AC94223F1A05600BEACBE /* extension_SearchSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9AC94123F1A05600BEACBE /* extension_SearchSubject.swift */; };
 		ADCDE7DB23EAA37000D6C7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */; };
 		ADCDE7DD23EAA37000D6C7EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7DC23EAA37000D6C7EC /* SceneDelegate.swift */; };
 		ADCDE7E223EAA37000D6C7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCDE7E023EAA37000D6C7EC /* Main.storyboard */; };
@@ -33,17 +37,21 @@
 		037915936D1389691578000D /* libPods-Search_Subject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Search_Subject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A521F4418D574212BA32DE5C /* Pods-Search_Subject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Search_Subject.debug.xcconfig"; path = "Target Support Files/Pods-Search_Subject/Pods-Search_Subject.debug.xcconfig"; sourceTree = "<group>"; };
 		AD0E444923F2B9640055EAD6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePlanTableViewController.swift; sourceTree = "<group>"; };
+		AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension_getCoursePlan.swift; sourceTree = "<group>"; };
+		AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCourseTableViewController.swift; sourceTree = "<group>"; };
 		AD52109323EB18AD0044DB42 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		AD52109923EB398F0044DB42 /* MyCourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseTableViewController.swift; sourceTree = "<group>"; };
 		AD52109C23ED26380044DB42 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		AD5210A023ED39310044DB42 /* MyCourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCourseTableViewCell.swift; sourceTree = "<group>"; };
 		AD5210A223ED49890044DB42 /* CourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseData.swift; sourceTree = "<group>"; };
 		AD542BC123FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CultRemainingSeatTableViewController.swift; sourceTree = "<group>"; };
+		AD542BC423FAED8B00E9DA08 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		AD87F2ED23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeptRemainingSeatTableViewController.swift; sourceTree = "<group>"; };
 		AD87F2F123F84AD900384D56 /* extension_Array_dropDuplicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension_Array_dropDuplicates.swift; sourceTree = "<group>"; };
 		AD87F2FA23F92F9600384D56 /* SearchDeptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeptTableViewCell.swift; sourceTree = "<group>"; };
 		AD87F2FC23F92FAC00384D56 /* SearchDeptTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDeptTableViewController.swift; sourceTree = "<group>"; };
-		AD9AC94123F1A05600BEACBE /* SearchSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSubject.swift; sourceTree = "<group>"; };
+		AD9AC94123F1A05600BEACBE /* extension_SearchSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension_SearchSubject.swift; sourceTree = "<group>"; };
 		ADCDE7D723EAA37000D6C7EC /* UOS강의검색.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UOS강의검색.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADCDE7DA23EAA37000D6C7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADCDE7DC23EAA37000D6C7EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,13 +101,31 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
+		AD4AE55A23FD8F3E00DE50C4 /* CoursePlan */ = {
+			isa = PBXGroup;
+			children = (
+				AD4AE55F23FD9F7B00DE50C4 /* WeeklyCoursePlan */,
+				AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */,
+				AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */,
+			);
+			name = CoursePlan;
+			sourceTree = "<group>";
+		};
+		AD4AE55F23FD9F7B00DE50C4 /* WeeklyCoursePlan */ = {
+			isa = PBXGroup;
+			children = (
+				AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */,
+			);
+			name = WeeklyCoursePlan;
+			sourceTree = "<group>";
+		};
 		AD52109523EB2AD10044DB42 /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				AD52109323EB18AD0044DB42 /* SearchResultTableViewController.swift */,
 				ADCDE7F023EAA88C00D6C7EC /* SubjectTableViewController.swift */,
 				AD52109C23ED26380044DB42 /* CourseTableViewCell.swift */,
-				AD9AC94123F1A05600BEACBE /* SearchSubject.swift */,
+				AD9AC94123F1A05600BEACBE /* extension_SearchSubject.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -122,6 +148,14 @@
 				AD542BC123FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift */,
 			);
 			name = CultRemainingSeat;
+			sourceTree = "<group>";
+		};
+		AD542BC323FAED7600E9DA08 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AD542BC423FAED8B00E9DA08 /* SettingsTableViewController.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		AD87F2EA23F7DB0600384D56 /* DeptRemainingSeat */ = {
@@ -169,6 +203,8 @@
 				AD52109B23EB39A60044DB42 /* MyCourse */,
 				AD52109523EB2AD10044DB42 /* Search */,
 				ADCDE7E323EAA37500D6C7EC /* Assets.xcassets */,
+				AD4AE55A23FD8F3E00DE50C4 /* CoursePlan */,
+				AD542BC323FAED7600E9DA08 /* Settings */,
 				ADCDE7E523EAA37500D6C7EC /* LaunchScreen.storyboard */,
 				ADCDE7E823EAA37500D6C7EC /* Info.plist */,
 				ADCDE7EE23EAA53600D6C7EC /* URL+Helper.swift */,
@@ -280,15 +316,19 @@
 				ADCDE7F123EAA88C00D6C7EC /* SubjectTableViewController.swift in Sources */,
 				ADCDE7EF23EAA53600D6C7EC /* URL+Helper.swift in Sources */,
 				ADCDE7DB23EAA37000D6C7EC /* AppDelegate.swift in Sources */,
+				AD4AE55E23FD931C00DE50C4 /* extension_getCoursePlan.swift in Sources */,
 				AD87F2F223F84AD900384D56 /* extension_Array_dropDuplicates.swift in Sources */,
 				AD542BC223FABE0000E9DA08 /* CultRemainingSeatTableViewController.swift in Sources */,
-				AD9AC94223F1A05600BEACBE /* SearchSubject.swift in Sources */,
+				AD9AC94223F1A05600BEACBE /* extension_SearchSubject.swift in Sources */,
+				AD4AE56123FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift in Sources */,
 				AD87F2FD23F92FAC00384D56 /* SearchDeptTableViewController.swift in Sources */,
 				AD87F2FB23F92F9600384D56 /* SearchDeptTableViewCell.swift in Sources */,
 				ADCDE7DD23EAA37000D6C7EC /* SceneDelegate.swift in Sources */,
 				AD5210A123ED39310044DB42 /* MyCourseTableViewCell.swift in Sources */,
 				AD52109A23EB398F0044DB42 /* MyCourseTableViewController.swift in Sources */,
+				AD542BC523FAED8B00E9DA08 /* SettingsTableViewController.swift in Sources */,
 				AD52109423EB18AD0044DB42 /* SearchResultTableViewController.swift in Sources */,
+				AD4AE55C23FD8FA900DE50C4 /* CoursePlanTableViewController.swift in Sources */,
 				AD87F2EE23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift in Sources */,
 				AD52109D23ED26380044DB42 /* CourseTableViewCell.swift in Sources */,
 			);
@@ -435,15 +475,17 @@
 			baseConfigurationReference = A521F4418D574212BA32DE5C /* Pods-Search_Subject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TTZV93GTYP;
+				DEVELOPMENT_TEAM = 3XNY3T64KD;
 				INFOPLIST_FILE = Search_Subject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "koreanhole.Search-Subject";
+				PRODUCT_BUNDLE_IDENTIFIER = koreanhole.UOSCourseNotifier;
 				PRODUCT_NAME = "UOS강의검색";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -454,15 +496,17 @@
 			baseConfigurationReference = EF2ED8E219D7C6902C2ED12C /* Pods-Search_Subject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TTZV93GTYP;
+				DEVELOPMENT_TEAM = 3XNY3T64KD;
 				INFOPLIST_FILE = Search_Subject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "koreanhole.Search-Subject";
+				PRODUCT_BUNDLE_IDENTIFIER = koreanhole.UOSCourseNotifier;
 				PRODUCT_NAME = "UOS강의검색";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

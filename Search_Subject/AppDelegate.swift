@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        UIView.appearance().tintColor = UIColor.systemBlue
+        //UIView.appearance().tintColor = UIColor.systemBlue
         CourseData.sharedCourse.savedData = CourseData.loadFromFile()
         CourseData.sharedCourse.myDept_list = CourseData.loadListFromFile()
         print(CourseData.sharedCourse.savedData)

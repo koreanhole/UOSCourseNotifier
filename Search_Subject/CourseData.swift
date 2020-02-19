@@ -60,14 +60,14 @@ class CourseData: Codable {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         if subject["subject_div"] == "전공선택" || subject["subject_div"] == "전공필수" {
-            let boardRef = ref.child("course").child("전공").child(subject["subject_nm"]!).child(subject["class_div"]!)
+            let boardRef = ref.child("course").child("전공").child(subject["subject_no"]!).child(subject["class_div"]!)
             boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
                 }
             })
         } else if (subject["subject_div"]?.contains("교양") ?? false) {
-            let boardRef = ref.child("course").child("교양").child(subject["subject_nm"]!).child(subject["class_div"]!)
+            let boardRef = ref.child("course").child("교양").child(subject["subject_no"]!).child(subject["class_div"]!)
             boardRef.observe(_: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)

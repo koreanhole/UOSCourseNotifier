@@ -379,6 +379,400 @@
             </objects>
             <point key="canvasLocation" x="6810" y="1227"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="4IX-D1-rFH">
+            <objects>
+                <tableViewController id="Lts-J2-KYq" customClass="CoursePlanTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" estimatedSectionFooterHeight="5" id="3i2-YB-0zY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="교과번호" id="7sq-Ec-cDl">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="subject_no" textLabel="nec-bh-opJ" style="IBUITableViewCellStyleDefault" id="pCT-hy-cru">
+                                        <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pCT-hy-cru" id="HlU-Vf-TCT">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nec-bh-opJ">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="교과목명" id="4JA-P5-TBz">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="subject_nm" textLabel="ZFc-Rp-LrS" style="IBUITableViewCellStyleDefault" id="JFH-d0-X90">
+                                        <rect key="frame" x="20" y="138" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JFH-d0-X90" id="H6a-mg-kzK">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZFc-Rp-LrS">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="성명" id="NEO-yN-F2o">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="prof_nm" textLabel="UEa-5B-gKm" style="IBUITableViewCellStyleDefault" id="h2V-x5-q8s">
+                                        <rect key="frame" x="20" y="220.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h2V-x5-q8s" id="Qok-qa-t18">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UEa-5B-gKm">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="연락처" id="2VJ-vD-qQR">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tel_no" textLabel="CQI-l5-5tD" style="IBUITableViewCellStyleDefault" id="1xe-3P-cXr">
+                                        <rect key="frame" x="20" y="303" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1xe-3P-cXr" id="iDk-WD-XgY">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CQI-l5-5tD">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="성적평가" id="tgW-2M-D7G">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="score_eval_rate" textLabel="S7M-v7-jD1" style="IBUITableViewCellStyleDefault" id="fC4-Ck-NOv">
+                                        <rect key="frame" x="20" y="385.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fC4-Ck-NOv" id="wgK-de-LDx">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S7M-v7-jD1">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="교재" id="U86-f5-7Kb">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="book_nm" textLabel="OO2-hd-ASQ" style="IBUITableViewCellStyleDefault" id="ANa-Tm-kMC">
+                                        <rect key="frame" x="20" y="468" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ANa-Tm-kMC" id="ctt-Qz-dH5">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OO2-hd-ASQ">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="교과목설명" id="CL8-Ee-F1c">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="lec_goal_descr" textLabel="5MB-1e-Xx2" style="IBUITableViewCellStyleDefault" id="KoI-Ig-jcn">
+                                        <rect key="frame" x="20" y="550.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KoI-Ig-jcn" id="P4a-yl-o3u">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5MB-1e-Xx2">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="수업목표" id="0Vz-Lb-3ag">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="curi_edu_goal_nm" textLabel="aLI-fN-vdc" style="IBUITableViewCellStyleDefault" id="Ssh-QK-wTt">
+                                        <rect key="frame" x="20" y="633" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ssh-QK-wTt" id="3pq-uW-fv4">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aLI-fN-vdc">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="Rcn-FO-A7o">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="weekly_plan" id="JC8-45-Qtr">
+                                        <rect key="frame" x="20" y="678.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JC8-45-Qtr" id="mmu-Bj-aDn">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qtw-bQ-EXJ">
+                                                    <rect key="frame" x="20" y="20" width="334" height="3.5"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phw-kc-VhC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="3.5"/>
+                                                            <state key="normal" title="주별 정보 더보기"/>
+                                                            <connections>
+                                                                <action selector="getWeeklyPlanButtonClicked:" destination="Lts-J2-KYq" eventType="touchUpInside" id="BhA-F7-liZ"/>
+                                                                <segue destination="l4K-QY-SqL" kind="show" identifier="showWeeklyPlan" id="5OE-tI-nY5"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Qtw-bQ-EXJ" secondAttribute="trailing" constant="20" symbolic="YES" id="47b-nf-uhN"/>
+                                                <constraint firstItem="Qtw-bQ-EXJ" firstAttribute="leading" secondItem="mmu-Bj-aDn" secondAttribute="leading" constant="20" symbolic="YES" id="TL0-9x-cAv"/>
+                                                <constraint firstItem="Qtw-bQ-EXJ" firstAttribute="top" secondItem="mmu-Bj-aDn" secondAttribute="top" constant="20" symbolic="YES" id="UBU-P2-40p"/>
+                                                <constraint firstAttribute="bottom" secondItem="Qtw-bQ-EXJ" secondAttribute="bottom" constant="20" symbolic="YES" id="USG-wI-HAf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Lts-J2-KYq" id="Mtb-CA-DeA"/>
+                            <outlet property="delegate" destination="Lts-J2-KYq" id="SmS-5b-Ong"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="W4m-5N-0VY">
+                        <barButtonItem key="rightBarButtonItem" title="완료" style="done" id="4ps-y5-eFP">
+                            <connections>
+                                <segue destination="a4x-Oa-baJ" kind="unwind" unwindAction="unwindToSubjectTableViewWithSegue:" id="NLE-k9-BS9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="book_nm" destination="OO2-hd-ASQ" id="ng3-AK-HZN"/>
+                        <outlet property="curi_edu_goal_nm" destination="aLI-fN-vdc" id="8sF-gt-iyb"/>
+                        <outlet property="get_weeklyPlan_Button" destination="phw-kc-VhC" id="Er1-G6-M5w"/>
+                        <outlet property="lec_goal_descr" destination="5MB-1e-Xx2" id="eQ8-ox-BKd"/>
+                        <outlet property="prof_nm" destination="UEa-5B-gKm" id="Vjd-hw-jej"/>
+                        <outlet property="score_eval_rate" destination="S7M-v7-jD1" id="R8h-Dd-q37"/>
+                        <outlet property="subject_nm" destination="ZFc-Rp-LrS" id="2KZ-7T-mBb"/>
+                        <outlet property="subject_no" destination="nec-bh-opJ" id="Dsh-wZ-ho2"/>
+                        <outlet property="tel_no" destination="CQI-l5-5tD" id="WwN-Iu-yLj"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVK-x5-G1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="a4x-Oa-baJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="6843" y="2001"/>
+        </scene>
+        <!--Weekly Course Table View Controller-->
+        <scene sceneID="jqQ-aL-Gxt">
+            <objects>
+                <tableViewController id="l4K-QY-SqL" customClass="WeeklyCourseTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dlR-pU-08M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="주" id="cOh-gk-P2o">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="week" textLabel="i9R-ib-9na" style="IBUITableViewCellStyleDefault" id="KSP-WV-nLj">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KSP-WV-nLj" id="WsA-zq-8R2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i9R-ib-9na">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="수업내용" id="sik-x7-XDK">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="class_cont" textLabel="2WV-eY-hj9" style="IBUITableViewCellStyleDefault" id="sTr-Qz-9Av">
+                                        <rect key="frame" x="0.0" y="127.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sTr-Qz-9Av" id="mlr-a9-3uO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2WV-eY-hj9">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="수업방법" id="xgB-47-3Ay">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="class_meth" textLabel="f08-5A-VlB" style="IBUITableViewCellStyleDefault" id="rsj-Ry-6Vr">
+                                        <rect key="frame" x="0.0" y="227" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rsj-Ry-6Vr" id="HkE-pu-EnO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f08-5A-VlB">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="교재" id="MG4-Cp-iZZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="week_book" textLabel="2qY-9m-BPE" style="IBUITableViewCellStyleDefault" id="chv-1M-jCu">
+                                        <rect key="frame" x="0.0" y="326.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="chv-1M-jCu" id="GqN-wA-CWp">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2qY-9m-BPE">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="준비물,과제,기타" id="Gt8-lH-ahq">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="prjt_etc" textLabel="dop-1B-o94" style="IBUITableViewCellStyleDefault" id="7qN-eQ-KrX">
+                                        <rect key="frame" x="0.0" y="426" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7qN-eQ-KrX" id="qjI-6d-DKw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dop-1B-o94">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="l4K-QY-SqL" id="lcu-qk-agm"/>
+                            <outlet property="delegate" destination="l4K-QY-SqL" id="iNi-By-K9p"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="NE7-82-lXL">
+                        <barButtonItem key="backBarButtonItem" title="뒤로" id="LLu-EQ-zIZ"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="class_cont" destination="2WV-eY-hj9" id="vrc-4f-j1M"/>
+                        <outlet property="class_meth" destination="f08-5A-VlB" id="2JD-v1-6zt"/>
+                        <outlet property="prjt_etc" destination="dop-1B-o94" id="EMr-2V-6Vh"/>
+                        <outlet property="week" destination="i9R-ib-9na" id="Eml-E4-kFQ"/>
+                        <outlet property="week_book" destination="2qY-9m-BPE" id="m5P-rd-MBp"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dvx-T3-Oox" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7985" y="1987"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0RM-mM-anD">
+            <objects>
+                <navigationController id="FjC-dy-d37" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6Qx-k5-SHZ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4PT-Od-761">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Lts-J2-KYq" kind="relationship" relationship="rootViewController" id="9gm-1J-Xsn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5wm-hC-9un" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5928" y="2001"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="k6Q-sv-C6X">
             <objects>
@@ -464,14 +858,6 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TJZ-I0-ker">
                                             <rect key="frame" x="20" y="20" width="303" height="10"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5N-9N-gzd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="10"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                                    <connections>
-                                                        <action selector="favoriteButtonClicked:" destination="bRr-MP-IQR" eventType="touchUpInside" id="1j9-Ct-cTa"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v51-EE-2pl">
                                                     <rect key="frame" x="0.0" y="0.0" width="303" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -479,11 +865,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="k5N-9N-gzd"/>
-                                                </mask>
-                                            </variation>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -495,7 +876,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="deptList_nameLabel" destination="v51-EE-2pl" id="gVB-Oe-jst"/>
-                                    <outlet property="favoritButton" destination="k5N-9N-gzd" id="jw4-Xq-HbZ"/>
                                     <segue destination="yNK-89-qPe" kind="show" identifier="showDeptRemainingSeat" trigger="accessoryAction" id="xMY-dh-zxg"/>
                                 </connections>
                             </tableViewCell>
@@ -509,14 +889,6 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Le-uO-4et">
                                             <rect key="frame" x="20" y="20" width="303" height="10"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJY-CV-M5o">
-                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="10"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                                    <connections>
-                                                        <action selector="favoriteButtonClicked:" destination="r6q-2l-Re5" eventType="touchUpInside" id="RvR-VL-rSz"/>
-                                                    </connections>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCH-Xy-iA5">
                                                     <rect key="frame" x="0.0" y="0.0" width="303" height="10"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -524,11 +896,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="zJY-CV-M5o"/>
-                                                </mask>
-                                            </variation>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -540,7 +907,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="deptList_nameLabel" destination="QCH-Xy-iA5" id="C6V-Gg-4TL"/>
-                                    <outlet property="favoritButton" destination="zJY-CV-M5o" id="AX6-jQ-fVp"/>
                                     <segue destination="PnA-5E-Dbq" kind="show" identifier="showCultRemainingSeat" trigger="accessoryAction" id="d3m-At-nbX"/>
                                 </connections>
                             </tableViewCell>
@@ -637,6 +1003,7 @@
                         <outlet property="editButton" destination="hMC-Cb-83Q" id="4T8-M0-ij3"/>
                         <outlet property="filterSegmentedControl" destination="MQi-vA-IcN" id="S20-Cc-SB2"/>
                         <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="3i5-WS-HKX"/>
+                        <segue destination="FjC-dy-d37" kind="show" identifier="showCoursePlan" id="jWh-bh-IO4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCD-ZF-27G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -712,6 +1079,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="Z9J-FH-OtD"/>
+                        <segue destination="FjC-dy-d37" kind="show" identifier="showCoursePlan" id="1Wa-c3-kCc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDm-If-dCB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -810,35 +1178,6 @@
             <point key="canvasLocation" x="1632" y="2204"/>
         </scene>
         <!--설정-->
-        <scene sceneID="Orv-Zy-Ke8">
-            <objects>
-                <tableViewController id="jnK-xt-buC" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JS3-Z5-Ev9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Wv4-Hj-C2d">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wv4-Hj-C2d" id="7WI-tm-vhd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="jnK-xt-buC" id="J3o-Cq-ahY"/>
-                            <outlet property="delegate" destination="jnK-xt-buC" id="SbU-rh-ei6"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="설정" largeTitleDisplayMode="always" id="XFd-dp-QMB"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AbK-R8-dtO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1633" y="3019"/>
-        </scene>
-        <!--설정-->
         <scene sceneID="ApU-HO-5lV">
             <objects>
                 <navigationController id="Esd-Ig-qjg" sceneMemberID="viewController">
@@ -848,12 +1187,128 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="jnK-xt-buC" kind="relationship" relationship="rootViewController" id="qSj-7e-WQU"/>
+                        <segue destination="rpF-7H-068" kind="relationship" relationship="rootViewController" id="Odt-Re-KcP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Or-ro-xq1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="713" y="3019"/>
+        </scene>
+        <!--설정-->
+        <scene sceneID="5XM-tg-V8X">
+            <objects>
+                <tableViewController id="rpF-7H-068" customClass="SettingsTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="9oz-Sf-vuW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <sections>
+                            <tableViewSection id="oWh-ri-DN0">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="soondol" rowHeight="400" id="3qw-eq-OHl">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="400"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3qw-eq-OHl" id="vkI-Fs-TGB">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="20170506_001522" translatesAutoresizingMaskIntoConstraints="NO" id="eVA-fD-9nc">
+                                                    <rect key="frame" x="20" y="20" width="374" height="360"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="eVA-fD-9nc" secondAttribute="trailing" constant="20" symbolic="YES" id="o1K-IS-HDG"/>
+                                                <constraint firstItem="eVA-fD-9nc" firstAttribute="top" secondItem="vkI-Fs-TGB" secondAttribute="top" constant="20" symbolic="YES" id="tsx-hp-epw"/>
+                                                <constraint firstItem="eVA-fD-9nc" firstAttribute="leading" secondItem="vkI-Fs-TGB" secondAttribute="leading" constant="20" symbolic="YES" id="udI-2I-eZ4"/>
+                                                <constraint firstAttribute="bottom" secondItem="eVA-fD-9nc" secondAttribute="bottom" constant="20" symbolic="YES" id="vzZ-6L-wOj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="BNO-yl-5TN">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="kBQ-7l-AUe" style="IBUITableViewCellStyleDefault" id="uja-rl-mFv">
+                                        <rect key="frame" x="0.0" y="484" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uja-rl-mFv" id="xlX-th-gLY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="오픈소스 라이센스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kBQ-7l-AUe">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="OyL-3D-enh" style="IBUITableViewCellStyleDefault" id="xUf-WI-UvT">
+                                        <rect key="frame" x="0.0" y="527.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xUf-WI-UvT" id="gia-89-NLA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="개발자 칭찬하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OyL-3D-enh">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="VEm-R1-jip" style="IBUITableViewCellStyleDefault" id="VcE-bf-POv">
+                                        <rect key="frame" x="0.0" y="571" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VcE-bf-POv" id="6js-xR-ONg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="개발자 괴롭히기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VEm-R1-jip">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="mDv-cc-G7K" style="IBUITableViewCellStyleDefault" id="AFH-HH-BaJ">
+                                        <rect key="frame" x="0.0" y="614.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AFH-HH-BaJ" id="fls-YO-qPO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Thanks to..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mDv-cc-G7K">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="rpF-7H-068" id="8UJ-RL-XL4"/>
+                            <outlet property="delegate" destination="rpF-7H-068" id="Ide-Zv-3a9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="설정" largeTitleDisplayMode="always" id="CTa-Y2-sR2"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hC4-ck-HEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1669" y="3015"/>
         </scene>
         <!--알림-->
         <scene sceneID="dg5-FM-7g3">
@@ -878,7 +1333,7 @@
                 <navigationController id="t9K-wm-O3Q" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="빈자리" image="archivebox" catalog="system" id="sdi-93-nmq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="xfu-Mu-Si4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -996,6 +1451,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="2TM-4b-62p"/>
+                        <segue destination="FjC-dy-d37" kind="show" identifier="showCoursePlan" id="Ylo-mH-dzA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrB-Ii-qUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1004,6 +1460,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="20170506_001522" width="2268" height="4032"/>
         <image name="archivebox" catalog="system" width="64" height="52"/>
         <image name="bell" catalog="system" width="64" height="62"/>
         <image name="gear" catalog="system" width="64" height="58"/>
@@ -1011,6 +1468,7 @@
         <image name="plus.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2TM-4b-62p"/>
+        <segue reference="3i5-WS-HKX"/>
+        <segue reference="jWh-bh-IO4"/>
     </inferredMetricsTieBreakers>
 </document>

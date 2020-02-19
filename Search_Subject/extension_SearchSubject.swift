@@ -15,7 +15,9 @@ extension SubjectTableViewController: XMLParserDelegate {
     func requestSubjectInfo(searchTerm: String){
         subjectItems = [[String:String]]()
         let query: [String: String] = [
-            "apiKey": "202001610WYX35223",
+            //권순형 apikey = 202001610WYX35223
+            //허가경 apikey = 202002614AWS86830
+            "apiKey": "202002614AWS86830",
             "year": "2020",
             "term": "A10",
             "subjectNm": searchTerm

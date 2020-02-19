@@ -11,34 +11,54 @@ import UIKit
 class CultRemainingSeatTableViewController: UITableViewController {
     var cultClassification = String()
     var cultRemainedSeat = [[String:String]]()
+    var availableCourses = [[String:String]]()
+    var unavailableCourses = [[String:String]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "교양"
         self.title = cultClassification
-
+        for dict in cultRemainedSeat {
+            if Int(dict["remaining_seat"]!)! > 0 {
+                self.availableCourses.append(dict)
+            } else {
+                self.unavailableCourses.append(dict)
+            }
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.cultRemainedSeat.count
+        switch section {
+        case 0:
+            return self.availableCourses.count
+        case 1:
+            return self.unavailableCourses.count
+        default:
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            let cell = tableView.dequeueReusableCell(withIdentifier: "majorCult", for: indexPath)  as! MyCourseTableViewCell
-           cell.updateMajorCultCell(with: self.cultRemainedSeat[indexPath.row])
+        if indexPath.section == 0 {
+            cell.updateMajorCultCell(with: self.availableCourses[indexPath.row])
+        } else if indexPath.section == 1 {
+            cell.updateMajorCultCell(with: self.unavailableCourses[indexPath.row])
+        }
            return cell
        }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "강의계획표", style: .default, handler: {_ in
+            self.performSegue(withIdentifier: "showCoursePlan", sender: self)
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
         alert.addAction(UIAlertAction(title: "상세정보", style: .default, handler: {_ in
@@ -48,9 +68,18 @@ class CultRemainingSeatTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: {_ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
+        var addedCourse = [String:String]()
+        switch indexPath.section {
+        case 0:
+            addedCourse = self.availableCourses[indexPath.row]
+        case 1:
+            addedCourse = self.unavailableCourses[indexPath.row]
+        default:
+            return
+        }
         alert.addAction(UIAlertAction(title: "내 강의에 추가", style: .default, handler: {_ in
-            CourseData.sharedCourse.savedData.append(self.cultRemainedSeat[indexPath.row])
-            let addAlert = UIAlertController(title: "내 강의에 추가하였습니다.", message: self.cultRemainedSeat[indexPath.row]["subject_nm"], preferredStyle: .alert)
+            CourseData.sharedCourse.savedData.append(addedCourse)
+            let addAlert = UIAlertController(title: "내 강의에 추가하였습니다.", message: addedCourse["subject_nm"], preferredStyle: .alert)
             addAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             self.tableView.deselectRow(at: indexPath, animated: true)
             self.present(addAlert, animated: true, completion: nil)
@@ -63,7 +92,22 @@ class CultRemainingSeatTableViewController: UITableViewController {
         
         if segue.identifier == "showDetail" {
             let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
-            SearchResultTableViewController.subjectItem = self.cultRemainedSeat[indexPath.row]
+            var sendingValue = [String:String]()
+            if indexPath.section == 0 {
+                sendingValue = self.availableCourses[indexPath.row]
+            } else if indexPath.section == 1 {
+                sendingValue = self.unavailableCourses[indexPath.row]
+            }
+            SearchResultTableViewController.subjectItem = sendingValue
+        } else if segue.identifier == "showCoursePlan" {
+            let CoursePlanTableViewController = navController.topViewController as! CoursePlanTableViewController
+            var sendingValue = [String:String]()
+            if indexPath.section == 0 {
+                sendingValue = self.availableCourses[indexPath.row]
+            } else if indexPath.section == 1 {
+                sendingValue = self.unavailableCourses[indexPath.row]
+            }
+            CoursePlanTableViewController.subjectItem = sendingValue
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
