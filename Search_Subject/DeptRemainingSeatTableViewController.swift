@@ -41,11 +41,9 @@ class DeptRemainingSeatTableViewController: UITableViewController {
         return CourseData.sharedCourse.majorData.count
     }
     func fetchingMajorData() {
-        self.refreshControl?.beginRefreshing()
         let searchClosure = {(result: [[String:String]]) -> Void in
             CourseData.sharedCourse.majorData = result
             self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
         }
         CourseData.getMajorInfoFB(deptName: self.deptName, completion: searchClosure)
     }

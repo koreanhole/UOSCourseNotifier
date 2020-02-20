@@ -379,7 +379,7 @@
             </objects>
             <point key="canvasLocation" x="6810" y="1227"/>
         </scene>
-        <!--Root View Controller-->
+        <!--강의계획표 없음-->
         <scene sceneID="4IX-D1-rFH">
             <objects>
                 <tableViewController id="Lts-J2-KYq" customClass="CoursePlanTableViewController" customModule="UOS강의검색" customModuleProvider="target" sceneMemberID="viewController">
@@ -597,7 +597,7 @@
                             <outlet property="delegate" destination="Lts-J2-KYq" id="SmS-5b-Ong"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="W4m-5N-0VY">
+                    <navigationItem key="navigationItem" title="강의계획표 없음" id="W4m-5N-0VY">
                         <barButtonItem key="rightBarButtonItem" title="완료" style="done" id="4ps-y5-eFP">
                             <connections>
                                 <segue destination="a4x-Oa-baJ" kind="unwind" unwindAction="unwindToSubjectTableViewWithSegue:" id="NLE-k9-BS9"/>
@@ -1468,7 +1468,7 @@
         <image name="plus.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3i5-WS-HKX"/>
-        <segue reference="jWh-bh-IO4"/>
+        <segue reference="Z9J-FH-OtD"/>
+        <segue reference="1Wa-c3-kCc"/>
     </inferredMetricsTieBreakers>
 </document>

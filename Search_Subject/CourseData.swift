@@ -60,14 +60,14 @@ class CourseData: Codable {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         if subject["subject_div"] == "전공선택" || subject["subject_div"] == "전공필수" {
-            let boardRef = ref.child("course").child("전공").child(subject["subject_no"]!).child(subject["class_div"]!)
+            let boardRef = ref.child("course").child("2020").child("1학기").child("전공").child(subject["subject_nm"]! + subject["class_div"]!)
             boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
                 }
             })
         } else if (subject["subject_div"]?.contains("교양") ?? false) {
-            let boardRef = ref.child("course").child("교양").child(subject["subject_no"]!).child(subject["class_div"]!)
+            let boardRef = ref.child("course").child("교양").child(subject["subject_no"]!).child(subject["subject_nm"]! + subject["class_div"]!)
             boardRef.observe(_: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
@@ -78,15 +78,13 @@ class CourseData: Codable {
     static func getCultInfoFB( completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let boardRef = ref.child("course").child("교양")
+        let boardRef = ref.child("course").child("2020").child("1학기").child("교양")
         boardRef.observe(_: .value, with: { (snapshot) in
             var temp_dict = [[String:String]]()
             for snap in snapshot.children {
                 let recipeSnap = snap as! DataSnapshot
                 let dict = recipeSnap.value as! [String:AnyObject]
-                for dict_child in dict {
-                    temp_dict.append(dict_child.value as! [String:String])
-                }
+                temp_dict.append(dict as! [String : String])
             }
             completion(temp_dict)
         })
@@ -94,18 +92,33 @@ class CourseData: Codable {
     static func getMajorInfoFB(deptName:String, completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let boardRef = ref.child("course").child("전공")
+        let boardRef = ref.child("course").child("2020").child("1학기").child("전공")
         boardRef.observe(_: .value, with: { (snapshot) in
             var temp_dict = [[String:String]]()
             for snap in snapshot.children {
                 let recipeSnap = snap as! DataSnapshot
                 let dict = recipeSnap.value as! [String:AnyObject]
+                if dict.count == 19 {
+                    let dict_String = dict as! [String:String]
+                    if dict_String["sub_dept"] == deptName {
+                        temp_dict.append(dict_String)
+                    }
+                } else {
+                    for (_, values) in dict {
+                        let dict_String = values as! [String:String]
+                        if dict_String["sub_dept"] == deptName {
+                            temp_dict.append(dict_String)
+                        }
+                    }
+                }
+                /*
                 for child in dict.values {
                     let dict_child = child as! [String:String]
                     if dict_child["sub_dept"] == deptName {
                         temp_dict.append(dict_child)
                     }
                 }
+                */
             }
             completion(temp_dict)
         })

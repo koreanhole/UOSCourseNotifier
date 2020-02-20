@@ -38,7 +38,7 @@ extension CoursePlanTableViewController: XMLParserDelegate {
         var coursePlan = [String:String]()
         var courseWeeklyPlan = [[String:String]]()
         
-        let tempDict = coursePlanItems.first!
+        let tempDict = coursePlanItems.first ?? [:]
         
         for (key, value) in tempDict {
             if !weeklyPlanKeys.contains(key) {
