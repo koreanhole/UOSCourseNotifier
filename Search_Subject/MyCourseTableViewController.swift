@@ -427,10 +427,10 @@ class MyCourseTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = tableView.indexPathForSelectedRow!
 
         
         if segue.identifier == "showDetail" {
+            let indexPath = tableView.indexPathForSelectedRow!
             let navController = segue.destination as! UINavigationController
             let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
             switch segment {
@@ -446,6 +446,7 @@ class MyCourseTableViewController: UITableViewController {
                 break
             }
         } else if segue.identifier == "showDeptRemainingSeat" {
+            let indexPath = tableView.indexPathForSelectedRow!
             let DeptRemainingSeatTableViewController = segue.destination as! DeptRemainingSeatTableViewController
             if indexPath.section == 0 {
                 DeptRemainingSeatTableViewController.deptName = CourseData.sharedCourse.myDept_list[indexPath.row]
@@ -453,7 +454,7 @@ class MyCourseTableViewController: UITableViewController {
                 DeptRemainingSeatTableViewController.deptName = CourseData.sharedCourse.dept_list[indexPath.row]
             }
         } else if segue.identifier == "showCultRemainingSeat" {
-            
+            let indexPath = tableView.indexPathForSelectedRow!
             let CultRemainingSeatTableViewController = segue.destination as! CultRemainingSeatTableViewController
             if indexPath.row == 0 {
                 CultRemainingSeatTableViewController.cultClassification = "교양선택"
@@ -463,6 +464,7 @@ class MyCourseTableViewController: UITableViewController {
                 CultRemainingSeatTableViewController.cultRemainedSeat = self.nessaceryCult
             }
         } else if segue.identifier == "showCoursePlan" {
+            let indexPath = tableView.indexPathForSelectedRow!
             let navController = segue.destination as! UINavigationController
             let CoursePlanTableViewController = navController.topViewController as! CoursePlanTableViewController
             switch segment {
