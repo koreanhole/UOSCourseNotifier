@@ -160,4 +160,19 @@ class CourseData: Codable {
             completion(temp_dict)
         })
     }
+    static func getNotifiactionDataFB(completion: @escaping ([[String:String]]) -> Void){
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let token = Messaging.messaging().fcmToken!
+        let boardRef = ref.child("course").child("2020").child("1학기").child("userData").child(token).child("nofification_data")
+        boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            var temp_dict = [[String:String]]()
+            for snap in snapshot.children {
+                let recipeSnap = snap as! DataSnapshot
+                let dict = recipeSnap.value as! [String:AnyObject]
+                temp_dict.append(dict as! [String : String])
+            }
+            completion(temp_dict)
+        })
+    }
 }

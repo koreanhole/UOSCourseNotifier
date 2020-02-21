@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC07DEF0CFB0513F2ED70E6E /* libPods-Search_Subject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 037915936D1389691578000D /* libPods-Search_Subject.a */; };
+		AD0281C324003D020012B462 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281C224003D020012B462 /* NotificationTableViewController.swift */; };
 		AD4AE55C23FD8FA900DE50C4 /* CoursePlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */; };
 		AD4AE55E23FD931C00DE50C4 /* extension_getCoursePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */; };
 		AD4AE56123FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		037915936D1389691578000D /* libPods-Search_Subject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Search_Subject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A521F4418D574212BA32DE5C /* Pods-Search_Subject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Search_Subject.debug.xcconfig"; path = "Target Support Files/Pods-Search_Subject/Pods-Search_Subject.debug.xcconfig"; sourceTree = "<group>"; };
+		AD0281C224003D020012B462 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePlanTableViewController.swift; sourceTree = "<group>"; };
 		AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension_getCoursePlan.swift; sourceTree = "<group>"; };
 		AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCourseTableViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 				EF2ED8E219D7C6902C2ED12C /* Pods-Search_Subject.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AD0281C124003CE10012B462 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				AD0281C224003D020012B462 /* NotificationTableViewController.swift */,
+			);
+			name = Notification;
 			sourceTree = "<group>";
 		};
 		AD0E444623F29B1C0055EAD6 /* Data */ = {
@@ -205,6 +215,7 @@
 				AD52109B23EB39A60044DB42 /* MyCourse */,
 				AD52109523EB2AD10044DB42 /* Search */,
 				ADCDE7E323EAA37500D6C7EC /* Assets.xcassets */,
+				AD0281C124003CE10012B462 /* Notification */,
 				AD4AE55A23FD8F3E00DE50C4 /* CoursePlan */,
 				AD542BC323FAED7600E9DA08 /* Settings */,
 				ADCDE7E523EAA37500D6C7EC /* LaunchScreen.storyboard */,
@@ -324,6 +335,7 @@
 				AD9AC94223F1A05600BEACBE /* extension_SearchSubject.swift in Sources */,
 				AD4AE56123FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift in Sources */,
 				AD87F2FD23F92FAC00384D56 /* SearchDeptTableViewController.swift in Sources */,
+				AD0281C324003D020012B462 /* NotificationTableViewController.swift in Sources */,
 				AD87F2FB23F92F9600384D56 /* SearchDeptTableViewCell.swift in Sources */,
 				ADCDE7DD23EAA37000D6C7EC /* SceneDelegate.swift in Sources */,
 				AD5210A123ED39310044DB42 /* MyCourseTableViewCell.swift in Sources */,
@@ -480,7 +492,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Search_Subject/UOS강의검색.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3XNY3T64KD;
 				INFOPLIST_FILE = Search_Subject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -503,7 +515,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Search_Subject/UOS강의검색.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3XNY3T64KD;
 				INFOPLIST_FILE = Search_Subject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
