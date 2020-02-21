@@ -50,7 +50,7 @@ class CourseTableViewCell: UITableViewCell {
         CourseData.getCourseInfoFB(subject: self.subjectItems, completion: searchClosure)
         let alert = UIAlertController(title: "내 강의에 추가", message: "\(String(describing: self.subjectItems["subject_nm"]!))", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
-            CourseData.sharedCourse.savedData.append(temp_result)
+            CourseData.saveToMyCourse(data: temp_result)
         }))
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         UIApplication.shared.windows.first{$0.isKeyWindow}?.rootViewController?.present(alert, animated: true, completion: nil)

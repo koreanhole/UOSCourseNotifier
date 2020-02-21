@@ -15,6 +15,7 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     var subjectItem: [String:String] = ["subject_no" : "", "subject_nm" : "", "class_div" : "",
                                         "subject_div" : "", "credit" : "", "dept" : "", "prof_nm" : ""]
     var subjectItems = [[String:String]]()
+    var selectedItem = [String:String]()
     
     let searchController = UISearchController(searchResultsController: nil)
     override func viewDidLoad() {
@@ -32,6 +33,8 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         searchController.searchBar.placeholder = "검색"
     }
     
+    /*
+     검색 탭 누르자마자 키보드 나오게 하려면 아래 주석 해제
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchController.isActive = true
@@ -48,11 +51,12 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
             searchController.searchBar.becomeFirstResponder()
         }
     }
+ */
  
  
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let searchText = searchBar.text {
+        if let searchText = searchBar.text?.uppercased() {
             requestSubjectInfo(searchTerm: searchText)
             tableView.reloadData()
         }
@@ -85,7 +89,31 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let searchClosure = {(result: [String:String]) -> Void in
+            self.selectedItem = result
+        }
+        CourseData.getCourseInfoFB(subject: self.subjectItems[indexPath.row], completion: searchClosure)
+        alert.addAction(UIAlertAction(title: "강의계획표", style: .default, handler: {_ in
+            self.performSegue(withIdentifier: "showCoursePlan", sender: self)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "상세정보", style: .default, handler: {_ in
+            self.performSegue(withIdentifier: "showDetail", sender: self)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: {_ in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "내 강의에 추가", style: .default, handler: {_ in
+            CourseData.saveToMyCourse(data: self.subjectItems[indexPath.row])
+            //CourseData.sharedCourse.savedData.append(CourseData.sharedCourse.majorData[indexPath.row])
+            let addAlert = UIAlertController(title: "내 강의에 추가하였습니다.", message: self.subjectItems[indexPath.row]["subject_nm"], preferredStyle: .alert)
+            addAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            self.present(addAlert, animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     /*
     // Override to support conditional editing of the table view.
@@ -122,23 +150,20 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     }
     */
 
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navController = segue.destination as! UINavigationController
         
-        if segue.identifier == "searchResult" {
-            let indexPath = tableView.indexPathForSelectedRow!
-            let navController = segue.destination as! UINavigationController
+        if segue.identifier == "showDetail" {
             let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
+            SearchResultTableViewController.subjectItem = self.selectedItem
 
-            
-            SearchResultTableViewController.subjectItem = subjectItems[indexPath.row]
+        } else if segue.identifier == "showCoursePlan" {
+            let CoursePlanTableViewController = navController.topViewController as! CoursePlanTableViewController
+            CoursePlanTableViewController.subjectItem = self.selectedItem
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    @IBAction func unwindToSubjectTableView(segue: UIStoryboardSegue) {
+    @IBAction func unwindToSearchTableView(segue: UIStoryboardSegue) {
     }
 }

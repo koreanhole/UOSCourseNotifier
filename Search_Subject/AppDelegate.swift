@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //set global tint color
         // Override point for customization after application launch.
         Messaging.messaging().delegate = self
+        
+        
         UNUserNotificationCenter.current().delegate = self
+        
+        //알림센터에 모여있는 알림들 삭제
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: authOptions,completionHandler: {_, _ in })
         application.registerForRemoteNotifications()
@@ -56,7 +63,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 }
 extension AppDelegate: MessagingDelegate {
   func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-    print("Firebase registration token: \(fcmToken)")
     let dataDict:[String: String] = ["token": fcmToken]
     NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
   }

@@ -7,45 +7,81 @@
 //
 
 import UIKit
-import SafariServices
-
-class SettingsTableViewController: UITableViewController {
+import MessageUI
+/*
+ 섹션 0: 알림
+    row0: 알림설정
+ 섹션 1: 피드백 보내기
+    row0: 앱스토어 리뷰남기기
+    row1: 개발자에게 메일 남기기
+    row2: 개발자에게 오픈카톡 보내기
+ 섹션 2: 라이센스
+    row0: 오픈소스 라이센스
+ */
+class SettingsTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {return 1}
-        else if section == 1 {return 4}
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 3
+        case 2:
+            return 1
+        default:
+            return 0
+        }
         // #warning Incomplete implementation, return the number of rows
-        return 0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "순돌이 사진 더보기", style: .default, handler: {_ in
-                if let url = URL(string: "https://photos.app.goo.gl/7WkzJVuAzzqGWEm89") {
-                    let safariViewController = SFSafariViewController(url: url)
-                    self.present(safariViewController, animated: true, completion: nil)
+        //알림설정 열기
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let settingsUrl = URL(string: UIApplication.openSettingsURLString)
+            if UIApplication.shared.canOpenURL(settingsUrl!) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(settingsUrl!, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                } else {
+                    UIApplication.shared.openURL(settingsUrl!)
                 }
-            }))
-            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
+            }
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        } else if indexPath.section == 2 && indexPath.row == 0 {
+            performSegue(withIdentifier: "showOpenSourceLicense", sender: self)
+        }
+        //메일 보내기
+        else if indexPath.section == 1 && indexPath.row == 1 {
+            guard MFMailComposeViewController.canSendMail() else {
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                return
+            }
+
+            let mailComposer = MFMailComposeViewController()
+            mailComposer.mailComposeDelegate = self
+            mailComposer.setToRecipients(["koreanhole1@gmail.com"])
+            mailComposer.setSubject("UOS수강신청 알리미 문의사항입니다.")
+            
+            present(mailComposer, animated: true, completion: nil)
+        }
+        //카카오톡 오픈채팅 문의하기
+        else if indexPath.section == 1 && indexPath.row == 2 {
+            if let url = URL(string: "https://open.kakao.com/o/sLkJmeYb") {
+                UIApplication.shared.open(url, options: [:])
+            }
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 
@@ -103,5 +139,4 @@ class SettingsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
