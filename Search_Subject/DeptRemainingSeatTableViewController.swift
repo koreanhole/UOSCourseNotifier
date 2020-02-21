@@ -28,6 +28,14 @@ class DeptRemainingSeatTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+    }
+    @objc func refresh(sender:AnyObject){
+        // Updating your data here...
+        fetchingMajorData()
+    }
 
     // MARK: - Table view data source
 
@@ -41,9 +49,11 @@ class DeptRemainingSeatTableViewController: UITableViewController {
         return CourseData.sharedCourse.majorData.count
     }
     func fetchingMajorData() {
+        self.refreshControl?.beginRefreshing()
         let searchClosure = {(result: [[String:String]]) -> Void in
             CourseData.sharedCourse.majorData = result
             self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         }
         CourseData.getMajorInfoFB(deptName: self.deptName, completion: searchClosure)
     }
@@ -75,7 +85,8 @@ class DeptRemainingSeatTableViewController: UITableViewController {
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
         alert.addAction(UIAlertAction(title: "내 강의에 추가", style: .default, handler: {_ in
-            CourseData.sharedCourse.savedData.append(CourseData.sharedCourse.majorData[indexPath.row])
+            CourseData.saveToMyCourse(data: CourseData.sharedCourse.majorData[indexPath.row])
+            //CourseData.sharedCourse.savedData.append(CourseData.sharedCourse.majorData[indexPath.row])
             let addAlert = UIAlertController(title: "내 강의에 추가하였습니다.", message: CourseData.sharedCourse.majorData[indexPath.row]["subject_nm"], preferredStyle: .alert)
             addAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             self.tableView.deselectRow(at: indexPath, animated: true)

@@ -1074,9 +1074,12 @@
                             <outlet property="delegate" destination="yNK-89-qPe" id="d4P-gI-Tn3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="전공별 빈자리" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Owi-uq-7WP">
+                    <navigationItem key="navigationItem" title="전공별 빈자리" leftItemsSupplementBackButton="YES" id="Owi-uq-7WP">
                         <barButtonItem key="backBarButtonItem" title="뒤로" id="2TR-ry-4nZ"/>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7jH-46-o0B">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <connections>
                         <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="Z9J-FH-OtD"/>
                         <segue destination="FjC-dy-d37" kind="show" identifier="showCoursePlan" id="1Wa-c3-kCc"/>

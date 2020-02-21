@@ -39,6 +39,7 @@ class CoursePlanTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "강의 계획표 없음"
         (self.coursePlan, self.courseWeeklyPlan) = requestCoursePlan(subjectNo: subjectItem["subject_no"]!, classDiv: subjectItem["class_div"]!)
         self.title = self.coursePlan["subject_nm"]
         self.subject_no.text = self.coursePlan["subject_no"]

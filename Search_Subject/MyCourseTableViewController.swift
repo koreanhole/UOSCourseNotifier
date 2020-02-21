@@ -242,14 +242,14 @@ class MyCourseTableViewController: UITableViewController {
         }))
         switch segment {
         case 0:
-            alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
+            alert.addAction(UIAlertAction(title: "내 강의에서 삭제", style: .destructive, handler: {_ in
                 let deleteAlert = UIAlertController(title: "정말 삭제하시겠습니까?", message: CourseData.sharedCourse.savedData[indexPath.row]["subject_nm"], preferredStyle: .alert)
                 deleteAlert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
-                    CourseData.sharedCourse.savedData.remove(at: indexPath.row)
+                    CourseData.deleteMyCourse(from: indexPath.row)
+                    //CourseData.sharedCourse.savedData.remove(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                     //let indexSet = IndexSet(arrayLiteral: indexPath.row)
                     //tableView.deleteSections(indexSet, with: .automatic)
-                    CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
                 }))
                 deleteAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
                 self.present(deleteAlert, animated: true, completion: nil)
@@ -263,10 +263,12 @@ class MyCourseTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: "내 강의에 추가", style: .default, handler: {_ in
                     var message: String?
                     if indexPath.section == 1 {
-                        CourseData.sharedCourse.savedData.append(self.availableCult[indexPath.row])
+                        CourseData.saveToMyCourse(data: self.availableCult[indexPath.row])
+                        //CourseData.sharedCourse.savedData.append(self.availableCult[indexPath.row])
                         message = self.availableCult[indexPath.row]["subject_nm"]
                     } else if indexPath.section == 2 {
-                        CourseData.sharedCourse.savedData.append(self.zeroRemaingSeat[indexPath.row])
+                        CourseData.saveToMyCourse(data: self.zeroRemaingSeat[indexPath.row])
+                        //CourseData.sharedCourse.savedData.append(self.zeroRemaingSeat[indexPath.row])
                         message = self.zeroRemaingSeat[indexPath.row]["subject_nm"]
                     }
                     
@@ -303,11 +305,10 @@ class MyCourseTableViewController: UITableViewController {
    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if segment == 0 {
         if editingStyle == .delete {
-            CourseData.sharedCourse.savedData.remove(at: indexPath.row)
+            CourseData.deleteMyCourse(from: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             //let indexSet = IndexSet(arrayLiteral: indexPath.section)
             //tableView.deleteSections(indexSet, with: .automatic)
-            CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
         }
     } else if segment == 2 {
         if editingStyle == .delete {

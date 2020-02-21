@@ -78,7 +78,7 @@ class CultRemainingSeatTableViewController: UITableViewController {
             return
         }
         alert.addAction(UIAlertAction(title: "내 강의에 추가", style: .default, handler: {_ in
-            CourseData.sharedCourse.savedData.append(addedCourse)
+            CourseData.saveToMyCourse(data: addedCourse)
             let addAlert = UIAlertController(title: "내 강의에 추가하였습니다.", message: addedCourse["subject_nm"], preferredStyle: .alert)
             addAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             self.tableView.deselectRow(at: indexPath, animated: true)

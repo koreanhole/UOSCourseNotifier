@@ -26,35 +26,31 @@ class SearchResultTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.largeTitleDisplayMode = .automatic
-        let searchClosure = {(result: [String:String]) -> Void in
-            self.title = result["subject_nm"]
-            self.prof_nm.text = result["prof_nm"]
-            self.subject_div.text = result["subject_div"]
-            self.class_div.text = result["class_div"]!+"분반"
-            self.credit.text = result["credit"]!+"학점"
-            self.dept.text = result["sub_dept"]
-            self.shyr.text = result["shyr"]!+"학년"
-            if result["tlsn_count"]!.isEmpty {
-                self.tlsn_count.text = "0명"
-            } else {
-                self.tlsn_count.text = result["tlsn_count"]!+"명"
-            }
-            if result["tlsn_limit_count"]!.isEmpty {
-                self.tlsn_limit_count.text = "0명"
-            } else {
-                self.tlsn_limit_count.text = result["tlsn_limit_count"]!+"명"
-            }
-            if result["remaining_seat"]!.isEmpty {
-                self.remainingSeat.text = "0명"
-            } else {
-                self.remainingSeat.text = result["remaining_seat"]!+"명"
-            }
-            self.sec_permit_yn.text = result["sec_permit_yn"]
-            self.etc_permit_yn.text = result["etc_permit_yn"]
-            self.class_nm.text = result["class_nm"]
+        self.title = subjectItem["subject_nm"]
+        self.prof_nm.text = subjectItem["prof_nm"]
+        self.subject_div.text = subjectItem["subject_div"]
+        self.class_div.text = subjectItem["class_div"]!+"분반"
+        self.credit.text = subjectItem["credit"]!+"학점"
+        self.dept.text = subjectItem["sub_dept"]
+        self.shyr.text = subjectItem["shyr"]!+"학년"
+        if subjectItem["tlsn_count"]!.isEmpty {
+            self.tlsn_count.text = "0명"
+        } else {
+            self.tlsn_count.text = subjectItem["tlsn_count"]!+"명"
         }
-        CourseData.getCourseInfoFB(subject: subjectItem, completion: searchClosure)
+        if subjectItem["tlsn_limit_count"]!.isEmpty {
+            self.tlsn_limit_count.text = "0명"
+        } else {
+            self.tlsn_limit_count.text = subjectItem["tlsn_limit_count"]!+"명"
+        }
+        if subjectItem["remaining_seat"]!.isEmpty {
+            self.remainingSeat.text = "0명"
+        } else {
+            self.remainingSeat.text = subjectItem["remaining_seat"]!+"명"
+        }
+        self.sec_permit_yn.text = subjectItem["sec_permit_yn"]
+        self.etc_permit_yn.text = subjectItem["etc_permit_yn"]
+        self.class_nm.text = subjectItem["class_nm"]
 
         
         /*
