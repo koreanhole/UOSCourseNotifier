@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UIView.appearance().tintColor = UIColor.systemBlue
         CourseData.sharedCourse.savedData = CourseData.loadFromFile()
         CourseData.sharedCourse.myDept_list = CourseData.loadListFromFile()
+        CourseData.updateUserData()
         //set global tint color
         // Override point for customization after application launch.
         Messaging.messaging().delegate = self
@@ -38,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        CourseData.updateUserData()
         CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
         // Called when the user discards a scene session.

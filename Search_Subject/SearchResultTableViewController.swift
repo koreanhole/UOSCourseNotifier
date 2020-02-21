@@ -29,21 +29,21 @@ class SearchResultTableViewController: UITableViewController {
         self.title = subjectItem["subject_nm"]
         self.prof_nm.text = subjectItem["prof_nm"]
         self.subject_div.text = subjectItem["subject_div"]
-        self.class_div.text = subjectItem["class_div"]!+"분반"
-        self.credit.text = subjectItem["credit"]!+"학점"
+        self.class_div.text = subjectItem["class_div"] ?? String()+"분반"
+        self.credit.text = subjectItem["credit"] ?? String()+"학점"
         self.dept.text = subjectItem["sub_dept"]
-        self.shyr.text = subjectItem["shyr"]!+"학년"
-        if subjectItem["tlsn_count"]!.isEmpty {
+        self.shyr.text = subjectItem["shyr"] ?? String()+"학년"
+        if subjectItem["tlsn_count"]?.isEmpty ?? true {
             self.tlsn_count.text = "0명"
         } else {
             self.tlsn_count.text = subjectItem["tlsn_count"]!+"명"
         }
-        if subjectItem["tlsn_limit_count"]!.isEmpty {
+        if subjectItem["tlsn_limit_count"]?.isEmpty ?? true  {
             self.tlsn_limit_count.text = "0명"
         } else {
             self.tlsn_limit_count.text = subjectItem["tlsn_limit_count"]!+"명"
         }
-        if subjectItem["remaining_seat"]!.isEmpty {
+        if subjectItem["remaining_seat"]?.isEmpty ?? true {
             self.remainingSeat.text = "0명"
         } else {
             self.remainingSeat.text = subjectItem["remaining_seat"]!+"명"

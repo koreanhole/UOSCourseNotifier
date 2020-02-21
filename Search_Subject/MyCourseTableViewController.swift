@@ -217,8 +217,13 @@ class MyCourseTableViewController: UITableViewController {
         // Updating your data here...
         switch segment {
         case 0:
-            fetchingCourseData()
-            CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
+            if !CourseData.sharedCourse.savedData.isEmpty {
+                fetchingCourseData()
+                CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
+            } else {
+                self.refreshControl?.endRefreshing()
+            }
+            
         case 1:
             fetchingCultData()
         case 2:
@@ -242,7 +247,7 @@ class MyCourseTableViewController: UITableViewController {
         }))
         switch segment {
         case 0:
-            alert.addAction(UIAlertAction(title: "내 강의에서 삭제", style: .destructive, handler: {_ in
+            alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
                 let deleteAlert = UIAlertController(title: "정말 삭제하시겠습니까?", message: CourseData.sharedCourse.savedData[indexPath.row]["subject_nm"], preferredStyle: .alert)
                 deleteAlert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
                     CourseData.deleteMyCourse(from: indexPath.row)
@@ -251,7 +256,9 @@ class MyCourseTableViewController: UITableViewController {
                     //let indexSet = IndexSet(arrayLiteral: indexPath.row)
                     //tableView.deleteSections(indexSet, with: .automatic)
                 }))
-                deleteAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+                deleteAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: {_ in
+                    self.tableView.deselectRow(at: indexPath, animated: true)
+                }))
                 self.present(deleteAlert, animated: true, completion: nil)
             }))
         case 1:

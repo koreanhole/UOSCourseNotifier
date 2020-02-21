@@ -46,7 +46,20 @@ class CourseData: Codable {
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
     }
     
-    
+    static func updateUserData() {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let token = Messaging.messaging().fcmToken!
+        let data = CourseData.loadFromFile()
+        let boardRef = ref.child("course").child("2020").child("1학기").child("userData")
+        if data.count != 0 {
+            for index in 0..<data.count {
+                let keyValue = data[index]["subject_nm"]! + data[index]["class_div"]!
+                boardRef.child(token).updateChildValues([keyValue : keyValue])
+                boardRef.child(token).updateChildValues(["device_token" : token])
+            }
+        }
+    }
 
     
     static let myCourseArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myCourse").appendingPathExtension("plist")
