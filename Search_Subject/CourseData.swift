@@ -135,7 +135,7 @@ class CourseData: Codable {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let boardRef = ref.child("course").child("2020").child("1학기").child("전공")
-        boardRef.observe(_: .value, with: { (snapshot) in
+        boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
             var temp_dict = [[String:String]]()
             for snap in snapshot.children {
                 let recipeSnap = snap as! DataSnapshot

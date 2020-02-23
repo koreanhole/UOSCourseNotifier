@@ -122,5 +122,9 @@ class CoursePlanTableViewController: UITableViewController {
     }
     @IBAction func getWeeklyPlanButtonClicked(_ sender: UIButton) {
     }
+    @IBAction func doneButtonClicked(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 }

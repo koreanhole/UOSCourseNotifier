@@ -68,13 +68,14 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
                 self.tableView.deselectRow(at: indexPath, animated: true)
                 return
             }
-
             let mailComposer = MFMailComposeViewController()
             mailComposer.mailComposeDelegate = self
             mailComposer.setToRecipients(["koreanhole1@gmail.com"])
             mailComposer.setSubject("UOS수강신청 알리미 문의사항입니다.")
             
             present(mailComposer, animated: true, completion: nil)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+
         }
         //카카오톡 오픈채팅 문의하기
         else if indexPath.section == 1 && indexPath.row == 2 {
@@ -84,6 +85,13 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
             self.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
+    //메일 작성 취소 눌렀을때 액션
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

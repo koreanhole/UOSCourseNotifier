@@ -15,7 +15,6 @@ class NotificationTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchingNotificationData()
-        print(self.notificationData)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,7 +23,7 @@ class NotificationTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        fetchingNotificationData()
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
     }
     @objc func refresh(sender:AnyObject){
@@ -54,9 +53,8 @@ class NotificationTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath)
-        cell.textLabel?.text = self.notificationData[indexPath.row]["notification"]
-        cell.detailTextLabel?.text = self.notificationData[indexPath.row]["time"]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
+        cell.updateNotificationCell(with: self.notificationData[indexPath.row])
         // Configure the cell...
 
         return cell

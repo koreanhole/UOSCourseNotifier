@@ -491,12 +491,6 @@ class MyCourseTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    @IBAction func unwindToSubjectTableView(segue: UIStoryboardSegue) {
-        fetchingCourseData()
-    }
-    @IBAction func unwindWhenSearchCompleted(segue: UIStoryboardSegue) {
-        self.tableView.reloadData()
-    }
     @IBAction func editButtonClicked(_ sender: UIBarButtonItem) {
         tableView.setEditing(!tableView.isEditing, animated: true)
         if tableView.isEditing {

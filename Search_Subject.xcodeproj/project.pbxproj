@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC07DEF0CFB0513F2ED70E6E /* libPods-Search_Subject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 037915936D1389691578000D /* libPods-Search_Subject.a */; };
 		AD0281C324003D020012B462 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281C224003D020012B462 /* NotificationTableViewController.swift */; };
+		AD0281C72402D57A0012B462 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281C62402D57A0012B462 /* NotificationTableViewCell.swift */; };
 		AD4AE55C23FD8FA900DE50C4 /* CoursePlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */; };
 		AD4AE55E23FD931C00DE50C4 /* extension_getCoursePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */; };
 		AD4AE56123FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */; };
@@ -38,6 +39,7 @@
 		037915936D1389691578000D /* libPods-Search_Subject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Search_Subject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A521F4418D574212BA32DE5C /* Pods-Search_Subject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Search_Subject.debug.xcconfig"; path = "Target Support Files/Pods-Search_Subject/Pods-Search_Subject.debug.xcconfig"; sourceTree = "<group>"; };
 		AD0281C224003D020012B462 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		AD0281C62402D57A0012B462 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePlanTableViewController.swift; sourceTree = "<group>"; };
 		AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension_getCoursePlan.swift; sourceTree = "<group>"; };
 		AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCourseTableViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				AD0281C224003D020012B462 /* NotificationTableViewController.swift */,
+				AD0281C62402D57A0012B462 /* NotificationTableViewCell.swift */,
 			);
 			name = Notification;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD0281C72402D57A0012B462 /* NotificationTableViewCell.swift in Sources */,
 				AD5210A323ED49890044DB42 /* CourseData.swift in Sources */,
 				ADCDE7F123EAA88C00D6C7EC /* SubjectTableViewController.swift in Sources */,
 				ADCDE7EF23EAA53600D6C7EC /* URL+Helper.swift in Sources */,
