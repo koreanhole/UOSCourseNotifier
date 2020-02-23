@@ -65,6 +65,9 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
         //메일 보내기
         else if indexPath.section == 1 && indexPath.row == 1 {
             guard MFMailComposeViewController.canSendMail() else {
+                let mailAlert = UIAlertController(title: "메일을 보낼 수 없습니다.", message: nil, preferredStyle: .alert)
+                mailAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                present(mailAlert, animated: true, completion: nil)
                 self.tableView.deselectRow(at: indexPath, animated: true)
                 return
             }
