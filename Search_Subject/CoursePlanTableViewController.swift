@@ -39,17 +39,28 @@ class CoursePlanTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "강의 계획표 없음"
         (self.coursePlan, self.courseWeeklyPlan) = requestCoursePlan(subjectNo: subjectItem["subject_no"]!, classDiv: subjectItem["class_div"]!)
-        self.title = self.coursePlan["subject_nm"]
-        self.subject_no.text = self.coursePlan["subject_no"]
-        self.subject_nm.text = self.coursePlan["subject_nm"]
-        self.prof_nm.text = self.coursePlan["prof_nm"]
-        self.tel_no.text = self.coursePlan["tel_no"]
-        self.score_eval_rate.text = self.coursePlan["score_eval_rate"]
-        self.book_nm.text = self.coursePlan["book_nm"]
-        self.lec_goal_descr.text = self.coursePlan["lec_goal_descr"]
-        self.curi_edu_goal_nm.text = self.coursePlan["curi_edu_goal_nm"]
+        
+        //강의 계획표 로딩 실패할 경우 경고창 표시
+        if self.coursePlan.isEmpty {
+            self.title = ""
+            let emptyAlert = UIAlertController(title: "강의 계획표 로딩중\n 오류가 발생했습니다.", message: nil, preferredStyle: .alert)
+            emptyAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(emptyAlert, animated: true, completion: nil)
+        } else {
+            //강의 계획표 로딩이 성공한 경우
+            self.title = self.coursePlan["subject_nm"]
+            self.subject_no.text = self.coursePlan["subject_no"]
+            self.subject_nm.text = self.coursePlan["subject_nm"]
+            self.prof_nm.text = self.coursePlan["prof_nm"]
+            self.tel_no.text = self.coursePlan["tel_no"]
+            self.score_eval_rate.text = self.coursePlan["score_eval_rate"]
+            self.book_nm.text = self.coursePlan["book_nm"]
+            self.lec_goal_descr.text = self.coursePlan["lec_goal_descr"]
+            self.curi_edu_goal_nm.text = self.coursePlan["curi_edu_goal_nm"]
+        }
     }
 
     // MARK: - Table view data source
