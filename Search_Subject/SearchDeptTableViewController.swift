@@ -4,7 +4,7 @@
 //
 //  Created by koreanhole on 2020/02/16.
 //  Copyright © 2020 권순형. All rights reserved.
-//
+//  학과 검색하는 tableView
 
 import UIKit
 
@@ -25,18 +25,11 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
         searchController.searchBar.delegate = self
         searchController.delegate = self
         searchController.searchBar.placeholder = "검색"
-        //self.navigationItem.titleView?.addSubview(searchController.searchBar)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -50,7 +43,6 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchedDept", for: indexPath)
         cell.textLabel?.text = searchResult[indexPath.row]
 
-        // Configure the cell...
 
         return cell
     }
@@ -74,7 +66,9 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
         present(alert, animated: true, completion: nil)
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
+    //사용자가 입력한 데이터가 변할때마다 그에 대한 검색결과를 화면에 보여준다.
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        //사용자가 입력한 값의 앞부분이 맞는것을 보여준다.
         searchResult = CourseData.sharedCourse.dept_list.filter({$0.prefix(searchText.count) == searchText})
         self.tableView.reloadData()
     }
@@ -82,50 +76,8 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
         searchResult = CourseData.sharedCourse.dept_list
         self.tableView.reloadData()
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    @IBAction func doneButtonClicked(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

@@ -4,7 +4,7 @@
 //
 //  Created by koreanhole on 2020/02/16.
 //  Copyright © 2020 권순형. All rights reserved.
-//
+//  배열의 중복된 값 제거하는 함수
 
 import Foundation
 

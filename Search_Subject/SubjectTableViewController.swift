@@ -21,9 +21,7 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //searchController.searchResultsUpdater = self
         self.definesPresentationContext = true
-        //self.navigationItem.titleView?.addSubview(searchController.searchBar)
         self.navigationItem.titleView = searchController.searchBar
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
@@ -72,12 +70,10 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.subjectItems.count
     }
 
@@ -107,7 +103,6 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         }))
         alert.addAction(UIAlertAction(title: "내 강의에 추가", style: .default, handler: {_ in
             CourseData.saveToMyCourse(data: self.subjectItems[indexPath.row])
-            //CourseData.sharedCourse.savedData.append(CourseData.sharedCourse.majorData[indexPath.row])
             let addAlert = UIAlertController(title: "내 강의에 추가하였습니다.", message: self.subjectItems[indexPath.row]["subject_nm"], preferredStyle: .alert)
             addAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
             self.tableView.deselectRow(at: indexPath, animated: true)
@@ -115,55 +110,20 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navController = segue.destination as! UINavigationController
         
+        //강의 상세정보를 보기 위해서 데이터 넘겨주기
         if segue.identifier == "showDetail" {
             let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
             SearchResultTableViewController.subjectItem = self.selectedItem
 
-        } else if segue.identifier == "showCoursePlan" {
+        }
+        //강의 계획표 보기 위해서 데이터 넘겨주기
+        else if segue.identifier == "showCoursePlan" {
             let CoursePlanTableViewController = navController.topViewController as! CoursePlanTableViewController
             CoursePlanTableViewController.subjectItem = self.selectedItem
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    @IBAction func unwindToSearchTableView(segue: UIStoryboardSegue) {
     }
 }

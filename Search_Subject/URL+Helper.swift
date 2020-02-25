@@ -4,7 +4,7 @@
 //
 //  Created by koreanhole on 2020/02/05.
 //  Copyright © 2020 권순형. All rights reserved.
-//
+//  URL에 쿼리 추가하는 함수
 
 import Foundation
 

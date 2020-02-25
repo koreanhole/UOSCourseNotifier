@@ -13,12 +13,18 @@ class CourseData: Codable {
     
     
     static let sharedCourse = CourseData()
+    //디바이스에 저장하는 내 강의 데이터
     var savedData = [[String:String]]()
+    //임시로 사용하는 교양 데이터
     var cultData = [[String:String]]()
+    //임시로 사용하는 전공데이터
     var majorData = [[String:String]]()
     var dept_list = ["건축공학과", "건축학과", "경영학과", "경영학과(EMBA)", "경영학부", "경제학과", "경제학부", "공간정보공학과", "공과대학(학과)", "교통공학과", "교통관리학과", "국사학과", "국어국문학과", "국제관계학과", "국제교육원(학사-과)", "국제도시개발프로그램", "글로벌건설학과", "기계공학과", "기계정보공학과", "도시계획학과", "도시공학과", "도시사회학과", "도시행정학과", "문화예술관광학과", "물리학과", "방재공학과", "법학과", "법학과(LLM)", "법학전문대학원", "부동산학과", "사회복지학과", "산업디자인학과", "생명과학과", "세무학과", "소방방재학과", "수학과", "수학교육전공", "스포츠과학과", "신소재공학과", "역사교육전공", "영어교육전공", "영어영문학과", "음악학과", "재난과학과", "전자전기컴퓨터공학과", "전자전기컴퓨터공학부", "조경학과", "중국어문화학과", "철학과", "첨단녹색도시개발학과", "컴퓨터과학과", "컴퓨터과학부", "토목공학과", "통계학과", "행정학과", "행정학과(EMPA)", "화학공학과", "환경공학과", "환경공학부", "환경원예학과", "환경조각학과"]
+    //디바이스에 저장하는 학과목록
     var myDept_list = [String]()
     
+    //내 강의를 추가하는 함수
+    //내 강의가 추가되면 디바이스와 데이터베이스에 저장한다.
     static func saveToMyCourse(data: [String:String]) {
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -30,10 +36,10 @@ class CourseData: Codable {
             let keyValue = data["subject_nm"]! + data["class_div"]!
             boardRef.child(token).updateChildValues([keyValue : keyValue])
             boardRef.child(token).updateChildValues(["device_token" : token])
-        } else {
-            print("이미 저장된 데이터입니다.")
         }
     }
+    //내 강의에서 강좌를 삭제하는 함수
+    //내 강의에서 삭제되면 디바이스와 데이터베이스에서 삭제한다.
     static func deleteMyCourse(from: Int) {
         let token = Messaging.messaging().fcmToken
         let data = CourseData.sharedCourse.savedData[from]
@@ -46,6 +52,7 @@ class CourseData: Codable {
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
     }
     
+    //데이터베이스에서 사용자의 디바이스 토큰을 포함하는 데이터를 저장하는 함수
     static func updateUserData() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -61,17 +68,20 @@ class CourseData: Codable {
         }
     }
 
-    
+    //내 강의를 저장하는 경로
     static let myCourseArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myCourse").appendingPathExtension("plist")
+    //학과를 저장하는 경로
     static let myDeptArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myDeptList").appendingPathExtension("plist")
     
     // [String:String]의 딕셔너리 타입의 배열을 저장하는 코드
+    //내 강의를 디바이스에 저장하는 함수
     static func saveToFile(data: [[String:String]]) {
         let propertyListEncoder = PropertyListEncoder()
         let encodedCourseData = try? propertyListEncoder.encode(data)
         
         try? encodedCourseData?.write(to: CourseData.myCourseArchiveUrl, options: .noFileProtection)
     }
+    //디바이스에 저장된 내 강의목록을 불러오는 함수
     static func loadFromFile() -> [[String:String]] {
         var CourseDataFromDisk = [[String:String]]()
         let propertyListDecoder = PropertyListDecoder()
@@ -83,11 +93,13 @@ class CourseData: Codable {
     }
     
     //String타입의 배열을 저장하는 코드
+    //학과목록을 저장하는 함수
     static func saveListToFile(data: [String]) {
         let propertyListEncoder = PropertyListEncoder()
         let encodedCourseData = try? propertyListEncoder.encode(data)
         try? encodedCourseData?.write(to: CourseData.myDeptArchiveUrl, options: .noFileProtection)
     }
+    //디바이스에 저장된 학과 목록을 불러오는 함수
     static func loadListFromFile() -> [String] {
         var CourseDataFromDisk: [String] = []
         let propertyListDecoder = PropertyListDecoder()
@@ -98,25 +110,28 @@ class CourseData: Codable {
         return CourseDataFromDisk
     }
     
+    // [String:String]타입의 강좌를 입력하면 강의의 '상세정보'를 불러오는 함수
     static func getCourseInfoFB(subject: [String:String], completion: @escaping ([String:String]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
         if subject["subject_div"] == "전공선택" || subject["subject_div"] == "전공필수" {
             let boardRef = ref.child("course").child("2020").child("1학기").child("전공").child(subject["subject_nm"]! + subject["class_div"]!)
-            boardRef.observe(_: .value, with: { (snapshot) in
+            boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
                 }
             })
         } else {
             let boardRef = ref.child("course").child("2020").child("1학기").child("교양").child(subject["subject_nm"]! + subject["class_div"]!)
-            boardRef.observe(_: .value, with: { (snapshot) in
+            boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
                 }
             })
         }
     }
+    
+    //교양 강의 목록을 전부 가져오는 함수
     static func getCultInfoFB( completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -131,6 +146,8 @@ class CourseData: Codable {
             completion(temp_dict)
         })
     }
+    
+    //강의 제목을 입력하면 강좌정보를 가져오는 함수
     static func getMajorInfoFB(deptName:String, completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -160,6 +177,8 @@ class CourseData: Codable {
             completion(temp_dict)
         })
     }
+    
+    //사용자에게 발송된 푸시알림의 데이터들을 가져오는 함수
     static func getNotifiactionDataFB(completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()

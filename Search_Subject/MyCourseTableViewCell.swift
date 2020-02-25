@@ -31,7 +31,6 @@ class MyCourseTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     func updateMyCourseCell (with courseInfo: [String:String]) {
         let subject_name = courseInfo["subject_nm"]
@@ -39,11 +38,13 @@ class MyCourseTableViewCell: UITableViewCell {
         let class_div = courseInfo["class_div"] ?? ""
         let remainingSeat = courseInfo["remaining_seat"] ?? ""
         subjectNameLabel.text = subject_name
+        //교수이름 데이터가 없는 경우
         if professor_name == "" {
              professorNameLabel.text = "교수 미정" + " (\(class_div))"
         } else {
              professorNameLabel.text = professor_name + " (\(class_div))"
         }
+        //남은자리 데이터가 없는 경우
         if remainingSeat.isEmpty || Int(remainingSeat)! <= 0 {
             remainingSeatLabel.text = "남은자리: 0명"
             subjectNameLabel.textColor = UIColor.systemRed
@@ -58,11 +59,13 @@ class MyCourseTableViewCell: UITableViewCell {
         let class_div = courseInfo["class_div"] ?? ""
         let remainingSeat = courseInfo["remaining_seat"] ?? ""
         majoCultSubjectNameLabel.text = subject_name
+        //교수이름 데이터가 없는 경우
         if professor_name == "" {
              majorCultProfessorNameLabel.text = "교수 미정" + " (\(class_div))"
         } else {
              majorCultProfessorNameLabel.text = professor_name + " (\(class_div))"
         }
+        //남은자리 데이터가 없는 경우
         if remainingSeat.isEmpty || Int(remainingSeat)! <= 0 {
             majorCultRemainingSeatLabel.text = "남은자리: 0명"
             majoCultSubjectNameLabel.textColor = UIColor.systemRed
@@ -74,6 +77,9 @@ class MyCourseTableViewCell: UITableViewCell {
     func updateDeptListCell (with deptName: String) {
         deptList_nameLabel.text = deptName
     }
+    //삭제된 기능
+    /*
+    //전체 학과 목록에서 추가 버튼을 누를 경우 저장된 학과로 추가되는 함수
     @IBAction func favoriteButtonClicked(_ sender: UIButton) {
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()
@@ -90,4 +96,5 @@ class MyCourseTableViewCell: UITableViewCell {
         }
         CourseData.sharedCourse.myDept_list = CourseData.sharedCourse.myDept_list.dropDuplicates()
     }
+ */
 }

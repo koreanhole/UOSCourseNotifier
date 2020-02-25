@@ -34,6 +34,7 @@ extension SubjectTableViewController: XMLParserDelegate {
         xmlParser.parse()
         self.tableView.reloadData()
     }
+    //파싱이 시작될때
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElement = elementName
         if elementName == "list" {
@@ -42,11 +43,13 @@ extension SubjectTableViewController: XMLParserDelegate {
             }
         }
     }
+    //파싱중
     public func parser(_ parser: XMLParser, foundCharacters string: String) {
         if subjectItem.keys.contains(currentElement) {
             subjectItem.updateValue(string, forKey: currentElement)
         }
     }
+    //파싱이 끝났을때
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentElement = ""
         if elementName == "list" {

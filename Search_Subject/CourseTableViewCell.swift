@@ -19,7 +19,6 @@ class CourseTableViewCell: UITableViewCell {
     var subjectItems = [String:String]()
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         addButton.imageView?.contentMode = .scaleAspectFit
     }
     
@@ -27,7 +26,6 @@ class CourseTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     func update (with subjectItems: [String:String]) {
         subjectNameLabel.text = subjectItems["subject_nm"]
@@ -35,10 +33,8 @@ class CourseTableViewCell: UITableViewCell {
         let professor_name = subjectItems["prof_nm"]!
         let class_div = subjectItems["class_div"]! + "분반"
         if professor_name.isEmpty {
-            //professorNameLabel.text = "교수 미정"
              professorNameLabel.text = "교수 미정" + " (\(class_div))"
         } else {
-            //professorNameLabel.text = subjectItems[indexPath.row]["prof_nm"]
              professorNameLabel.text = professor_name + " (\(class_div))"
         }
 }
@@ -53,14 +49,6 @@ class CourseTableViewCell: UITableViewCell {
             CourseData.saveToMyCourse(data: temp_result)
         }))
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        UIApplication.shared.windows.first{$0.isKeyWindow}?.rootViewController?.present(alert, animated: true, completion: nil)
-        /*if addButton.image(for: .normal) == .add {
-            addButton.setImage(.checkmark, for: .normal)
-            MyData.sharedCourse.data.append(["subj_nm":subjectNameLabel.text!, "prof_nm":professorNameLabel.text!, "saved": true])
-        } else if addButton.image(for: .normal) == .checkmark {
-            addButton.setImage(.add, for: .normal)
-            MyData.sharedCourse.data.removeLast()
-        }*/
-        
+        UIApplication.shared.windows.first{$0.isKeyWindow}?.rootViewController?.present(alert, animated: true, completion: nil)        
     }
 }

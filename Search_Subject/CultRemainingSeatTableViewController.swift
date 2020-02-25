@@ -19,9 +19,12 @@ class CultRemainingSeatTableViewController: UITableViewController {
         self.navigationController?.navigationBar.topItem?.title = "교양"
         self.title = cultClassification
         for dict in cultRemainedSeat {
+            //빈자리가 있는 교양의 경우
             if Int(dict["remaining_seat"]!)! > 0 {
                 self.availableCourses.append(dict)
-            } else {
+            }
+            //빈자리가 없는 교양의 경우
+            else {
                 self.unavailableCourses.append(dict)
             }
         }
@@ -68,6 +71,7 @@ class CultRemainingSeatTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: {_ in
             self.tableView.deselectRow(at: indexPath, animated: true)
         }))
+        //내 강의에 추가할 강의
         var addedCourse = [String:String]()
         switch indexPath.section {
         case 0:
@@ -89,7 +93,7 @@ class CultRemainingSeatTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = tableView.indexPathForSelectedRow!
         let navController = segue.destination as! UINavigationController
-        
+        //강의 상세정보 보기
         if segue.identifier == "showDetail" {
             let SearchResultTableViewController = navController.topViewController as! SearchResultTableViewController
             var sendingValue = [String:String]()
@@ -99,7 +103,9 @@ class CultRemainingSeatTableViewController: UITableViewController {
                 sendingValue = self.unavailableCourses[indexPath.row]
             }
             SearchResultTableViewController.subjectItem = sendingValue
-        } else if segue.identifier == "showCoursePlan" {
+        }
+        //강의 계획표 보기
+        else if segue.identifier == "showCoursePlan" {
             let CoursePlanTableViewController = navController.topViewController as! CoursePlanTableViewController
             var sendingValue = [String:String]()
             if indexPath.section == 0 {
@@ -109,7 +115,5 @@ class CultRemainingSeatTableViewController: UITableViewController {
             }
             CoursePlanTableViewController.subjectItem = sendingValue
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
 }

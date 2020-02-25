@@ -4,7 +4,9 @@
 //
 //  Created by koreanhole on 2020/02/20.
 //  Copyright © 2020 권순형. All rights reserved.
-//
+//  주차별 강의 계획표를 보여주는 화면
+//  아직 구현하지 못함
+//  구현 완료되면 storyboard에서 installed 체크해야함
 
 import UIKit
 

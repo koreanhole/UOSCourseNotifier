@@ -308,7 +308,7 @@
                                         <rect key="frame" x="0.0" y="880.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d6f-WA-jiM" id="RqR-DC-6l1">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B4Z-Bl-p3V">
@@ -1121,13 +1121,12 @@
                     <navigationItem key="navigationItem" title="전체 전공" prompt="즐겨찾기에 추가하려는 전공 선택" id="fRP-GR-x4S">
                         <barButtonItem key="rightBarButtonItem" title="완료" style="done" id="1wF-7O-1Z9">
                             <connections>
-                                <segue destination="9tv-sN-kZS" kind="unwind" identifier="searchCompleted" unwindAction="unwindWhenSearchCompletedWithSegue:" id="8FF-Vh-xVK"/>
+                                <action selector="doneButtonClicked:" destination="mYg-XS-X55" id="wW9-pn-ej0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tb-OH-JUB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="9tv-sN-kZS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4130" y="2030"/>
         </scene>

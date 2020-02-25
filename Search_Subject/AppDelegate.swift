@@ -14,12 +14,16 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        //시스템 tintcolor 정하는것
         //UIView.appearance().tintColor = UIColor.systemBlue
+        
+        //앱이 시작되면서 저장된 내 강의, 학과 목록 가져오기
         CourseData.sharedCourse.savedData = CourseData.loadFromFile()
         CourseData.sharedCourse.myDept_list = CourseData.loadListFromFile()
+        
+        //불러온 저장된 데이터를 파이어베이스에 업로드
         CourseData.updateUserData()
-        //set global tint color
-        // Override point for customization after application launch.
         Messaging.messaging().delegate = self
         
         
@@ -46,19 +50,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        
+        //앱이 종료하면서 파이어베이스에 사용자데이터를 업로드 한다.
         CourseData.updateUserData()
+        
+        //내 강의, 학과를 디바이스에 저장한다.
         CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 extension AppDelegate: UNUserNotificationCenterDelegate {
   func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    print("\(#function)")
   }
 }
 extension AppDelegate: MessagingDelegate {
