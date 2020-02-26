@@ -60,7 +60,7 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
             alert.message = searchResult[indexPath.row]
             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
                 CourseData.sharedCourse.myDept_list.append(self.searchResult[indexPath.row])
-                self.performSegue(withIdentifier: "searchCompleted", sender: self)
+                self.performSegue(withIdentifier: "deptAdded", sender: self)
             }))
         }
         present(alert, animated: true, completion: nil)
@@ -77,7 +77,6 @@ class SearchDeptTableViewController: UITableViewController, UISearchBarDelegate,
         self.tableView.reloadData()
     }
     @IBAction func doneButtonClicked(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "deptAdded", sender: self)
     }
-    
 }

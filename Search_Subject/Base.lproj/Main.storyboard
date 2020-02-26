@@ -1122,11 +1122,13 @@
                         <barButtonItem key="rightBarButtonItem" title="완료" style="done" id="1wF-7O-1Z9">
                             <connections>
                                 <action selector="doneButtonClicked:" destination="mYg-XS-X55" id="wW9-pn-ej0"/>
+                                <segue destination="53x-c4-Nyi" kind="unwind" identifier="deptAdded" unwindAction="unwindSegueWithSegue:" id="UaF-XI-UJ6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tb-OH-JUB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="53x-c4-Nyi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4130" y="2030"/>
         </scene>
@@ -1784,7 +1786,7 @@
         <image name="plus.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z9J-FH-OtD"/>
-        <segue reference="1Wa-c3-kCc"/>
+        <segue reference="3i5-WS-HKX"/>
+        <segue reference="jWh-bh-IO4"/>
     </inferredMetricsTieBreakers>
 </document>

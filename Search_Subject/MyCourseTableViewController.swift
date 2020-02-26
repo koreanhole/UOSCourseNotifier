@@ -520,6 +520,12 @@ class MyCourseTableViewController: UITableViewController {
     }
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
     }
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        guard segue.identifier == "deptAdded" else {
+            return
+        }
+        tableView.reloadData()
+    }
 }
 
 
