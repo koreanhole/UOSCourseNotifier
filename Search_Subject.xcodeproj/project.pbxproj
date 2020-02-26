@@ -217,7 +217,6 @@
 				ADCDE7E023EAA37000D6C7EC /* Main.storyboard */,
 				AD52109B23EB39A60044DB42 /* MyCourse */,
 				AD52109523EB2AD10044DB42 /* Search */,
-				ADCDE7E323EAA37500D6C7EC /* Assets.xcassets */,
 				AD0281C124003CE10012B462 /* Notification */,
 				AD4AE55A23FD8F3E00DE50C4 /* CoursePlan */,
 				AD542BC323FAED7600E9DA08 /* Settings */,
@@ -226,6 +225,7 @@
 				ADCDE7EE23EAA53600D6C7EC /* URL+Helper.swift */,
 				AD87F2F123F84AD900384D56 /* extension_Array_dropDuplicates.swift */,
 				AD5048B023FEAA63002973A6 /* GoogleService-Info.plist */,
+				ADCDE7E323EAA37500D6C7EC /* Assets.xcassets */,
 			);
 			path = Search_Subject;
 			sourceTree = "<group>";
@@ -496,7 +496,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Search_Subject/UOS강의검색.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3XNY3T64KD;
 				INFOPLIST_FILE = Search_Subject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -520,7 +520,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Search_Subject/UOS강의검색.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3XNY3T64KD;
 				INFOPLIST_FILE = Search_Subject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
