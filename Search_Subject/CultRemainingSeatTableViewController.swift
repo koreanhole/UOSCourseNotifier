@@ -6,6 +6,7 @@
 //  Copyright © 2020 권순형. All rights reserved.
 //
 
+
 import UIKit
 import Firebase
 
@@ -18,7 +19,7 @@ class CultRemainingSeatTableViewController: UITableViewController, GADBannerView
     //admob변수
     lazy var adBannerView: GADBannerView = {
         let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        adBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adBannerView.adUnitID = AdmobData.adUnitID
         adBannerView.delegate = self
         adBannerView.rootViewController = self
         

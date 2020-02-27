@@ -11,6 +11,7 @@
 		AD0281C324003D020012B462 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281C224003D020012B462 /* NotificationTableViewController.swift */; };
 		AD0281C72402D57A0012B462 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281C62402D57A0012B462 /* NotificationTableViewCell.swift */; };
 		AD28EE0724076F69006C83C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD28EE0624076F68006C83C0 /* GoogleService-Info.plist */; };
+		AD28EE0924079514006C83C0 /* AdmobData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28EE0824079514006C83C0 /* AdmobData.swift */; };
 		AD4AE55C23FD8FA900DE50C4 /* CoursePlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */; };
 		AD4AE55E23FD931C00DE50C4 /* extension_getCoursePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */; };
 		AD4AE56123FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */; };
@@ -41,6 +42,7 @@
 		AD0281C224003D020012B462 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		AD0281C62402D57A0012B462 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		AD28EE0624076F68006C83C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AD28EE0824079514006C83C0 /* AdmobData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobData.swift; sourceTree = "<group>"; };
 		AD4AE55B23FD8FA900DE50C4 /* CoursePlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursePlanTableViewController.swift; sourceTree = "<group>"; };
 		AD4AE55D23FD931C00DE50C4 /* extension_getCoursePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension_getCoursePlan.swift; sourceTree = "<group>"; };
 		AD4AE56023FD9FA200DE50C4 /* WeeklyCourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCourseTableViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				AD5210A223ED49890044DB42 /* CourseData.swift */,
+				AD28EE0824079514006C83C0 /* AdmobData.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				AD5210A123ED39310044DB42 /* MyCourseTableViewCell.swift in Sources */,
 				AD52109A23EB398F0044DB42 /* MyCourseTableViewController.swift in Sources */,
 				AD542BC523FAED8B00E9DA08 /* SettingsTableViewController.swift in Sources */,
+				AD28EE0924079514006C83C0 /* AdmobData.swift in Sources */,
 				AD52109423EB18AD0044DB42 /* SearchResultTableViewController.swift in Sources */,
 				AD4AE55C23FD8FA900DE50C4 /* CoursePlanTableViewController.swift in Sources */,
 				AD87F2EE23F7DB7800384D56 /* DeptRemainingSeatTableViewController.swift in Sources */,
