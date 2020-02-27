@@ -23,7 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CourseData.sharedCourse.myDept_list = CourseData.loadListFromFile()
         
         //불러온 저장된 데이터를 파이어베이스에 업로드
-        CourseData.updateUserData()
+        if TARGET_OS_SIMULATOR != 0 {
+            print("running on simulator")
+        } else {
+            CourseData.updateUserData()
+        }
         Messaging.messaging().delegate = self
         
         
@@ -52,7 +56,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         
         //앱이 종료하면서 파이어베이스에 사용자데이터를 업로드 한다.
-        CourseData.updateUserData()
+        if TARGET_OS_SIMULATOR != 0 {
+            print("running on simulator")
+        } else {
+            CourseData.updateUserData()
+        }
         
         //내 강의, 학과를 디바이스에 저장한다.
         CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
