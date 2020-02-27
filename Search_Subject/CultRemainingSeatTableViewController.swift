@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
-class CultRemainingSeatTableViewController: UITableViewController {
+class CultRemainingSeatTableViewController: UITableViewController, GADBannerViewDelegate {
     var cultClassification = String()
     var cultRemainedSeat = [[String:String]]()
     var availableCourses = [[String:String]]()
     var unavailableCourses = [[String:String]]()
+    
+    //admob변수
+    lazy var adBannerView: GADBannerView = {
+        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        adBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adBannerView.delegate = self
+        adBannerView.rootViewController = self
+        
+        return adBannerView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +39,22 @@ class CultRemainingSeatTableViewController: UITableViewController {
                 self.unavailableCourses.append(dict)
             }
         }
+        adBannerView.load(GADRequest())
+        
     }
-
+    //admob설정
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner loaded successfully")
+        tableView.tableHeaderView?.frame = bannerView.frame
+        tableView.tableHeaderView = bannerView
+        
+    }
+     
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("Fail to receive ads")
+        print(error)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -7,11 +7,22 @@
 //  전공별 빈자리 보여주는 화면
 
 import UIKit
+import Firebase
 
-class DeptRemainingSeatTableViewController: UITableViewController {
+class DeptRemainingSeatTableViewController: UITableViewController, GADBannerViewDelegate {
     
     var deptName = String()
     var remainedSeat = [[String:String]]()
+    
+    //admob변수
+    lazy var adBannerView: GADBannerView = {
+        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        adBannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        adBannerView.delegate = self
+        adBannerView.rootViewController = self
+        
+        return adBannerView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +30,23 @@ class DeptRemainingSeatTableViewController: UITableViewController {
         fetchingMajorData()
         
         self.navigationController?.navigationBar.topItem?.title = "전공"
+        
+        adBannerView.load(GADRequest())
 
     }
+    //admob설정
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner loaded successfully")
+        tableView.tableHeaderView?.frame = bannerView.frame
+        tableView.tableHeaderView = bannerView
+        
+    }
+     
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("Fail to receive ads")
+        print(error)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)

@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("running on simulator")
         } else {
             CourseData.updateUserData()
+            // Initialize the Google Mobile Ads SDK.
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
         }
         Messaging.messaging().delegate = self
         
