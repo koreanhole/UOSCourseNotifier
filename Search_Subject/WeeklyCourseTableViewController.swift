@@ -9,16 +9,22 @@
 //  구현 완료되면 storyboard에서 installed 체크해야함
 
 import UIKit
+import Firebase
 
-class WeeklyCourseTableViewController: UITableViewController {
+class WeeklyCourseTableViewController: UITableViewController, GADBannerViewDelegate  {
     
     var courseWeeklyPlan = [[String:String]]()
+    
+    //admob변수
+    lazy var adBannerView: GADBannerView = {
+        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        adBannerView.adUnitID = AdmobData.adUnitID
+        adBannerView.delegate = self
+        adBannerView.rootViewController = self
+        
+        return adBannerView
+    }()
 
-    @IBOutlet var week: UILabel!
-    @IBOutlet var class_cont: UILabel!
-    @IBOutlet var class_meth: UILabel!
-    @IBOutlet var week_book: UILabel!
-    @IBOutlet var prjt_etc: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,22 @@ class WeeklyCourseTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        //광고 게시
+        adBannerView.load(GADRequest())
+    }
+    
+    //admob설정
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner loaded successfully")
+        tableView.tableHeaderView?.frame = bannerView.frame
+        tableView.tableHeaderView = bannerView
+        
+    }
+     
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("Fail to receive ads")
+        print(error)
     }
 
     // MARK: - Table view data source

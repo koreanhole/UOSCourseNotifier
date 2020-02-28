@@ -48,7 +48,6 @@ class CultRemainingSeatTableViewController: UITableViewController, GADBannerView
         print("Banner loaded successfully")
         tableView.tableHeaderView?.frame = bannerView.frame
         tableView.tableHeaderView = bannerView
-        
     }
      
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {

@@ -51,22 +51,29 @@ class CourseData: Codable {
         CourseData.sharedCourse.savedData.remove(at: from)
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
     }
-    
+
     //데이터베이스에서 사용자의 디바이스 토큰을 포함하는 데이터를 저장하는 함수
     static func updateUserData() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let token = Messaging.messaging().fcmToken!
-        let data = CourseData.loadFromFile()
+        let data = CourseData.sharedCourse.savedData
         let boardRef = ref.child("course").child("2020").child("1학기").child("userData")
+        var handle: UInt = 0
         if data.count != 0 {
             for index in 0..<data.count {
                 let keyValue = data[index]["subject_nm"]! + data[index]["class_div"]!
-                boardRef.child(token).updateChildValues([keyValue : keyValue])
-                boardRef.child(token).updateChildValues(["device_token" : token])
+                handle = boardRef.child(token).observe(_: .value, with: { (snapshot) in
+                    if !snapshot.hasChild(keyValue) {
+                        boardRef.child(token).updateChildValues([keyValue : keyValue])
+                        boardRef.child(token).updateChildValues(["device_token" : token])
+                    }
+                })
             }
         }
+        boardRef.removeObserver(withHandle: handle)
     }
+ 
 
     //내 강의를 저장하는 경로
     static let myCourseArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myCourse").appendingPathExtension("plist")

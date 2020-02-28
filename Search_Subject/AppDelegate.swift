@@ -21,15 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //앱이 시작되면서 저장된 내 강의, 학과 목록 가져오기
         CourseData.sharedCourse.savedData = CourseData.loadFromFile()
         CourseData.sharedCourse.myDept_list = CourseData.loadListFromFile()
+        //앱이 시작되면서 파이어베이스 데이터베이스와 저장된 데이터를 일치화
+        CourseData.updateUserData()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
-        //불러온 저장된 데이터를 파이어베이스에 업로드
-        if TARGET_OS_SIMULATOR != 0 {
-            print("running on simulator")
-        } else {
-            CourseData.updateUserData()
-            // Initialize the Google Mobile Ads SDK.
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-        }
         Messaging.messaging().delegate = self
         
         
@@ -55,15 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        
-        //앱이 종료하면서 파이어베이스에 사용자데이터를 업로드 한다.
-        if TARGET_OS_SIMULATOR != 0 {
-            print("running on simulator")
-        } else {
-            CourseData.updateUserData()
-        }
-        
+    //유저가 홈버튼을 누르고 나가면서 실행되는 저장작업들
+    func applicationDidEnterBackground(_ application: UIApplication) {
         //내 강의, 학과를 디바이스에 저장한다.
         CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)

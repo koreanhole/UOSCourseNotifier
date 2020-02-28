@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Firebase
 
-class SearchResultTableViewController: UITableViewController {
+class SearchResultTableViewController: UITableViewController, GADBannerViewDelegate {
     @IBOutlet weak var prof_nm: UILabel!
     @IBOutlet weak var subject_div: UILabel!
     @IBOutlet weak var class_div: UILabel!
@@ -23,6 +24,16 @@ class SearchResultTableViewController: UITableViewController {
     @IBOutlet var class_nm: UILabel!
     
     var subjectItem = [String:String]()
+    
+    //admob변수
+    lazy var adBannerView: GADBannerView = {
+        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        adBannerView.adUnitID = AdmobData.adUnitID
+        adBannerView.delegate = self
+        adBannerView.rootViewController = self
+        
+        return adBannerView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +63,21 @@ class SearchResultTableViewController: UITableViewController {
         self.etc_permit_yn.text = subjectItem["etc_permit_yn"]
         self.class_nm.text = subjectItem["class_nm"]
 
+        //광고 게시
+        adBannerView.load(GADRequest())
+    }
+    
+    //admob설정
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner loaded successfully")
+        tableView.tableHeaderView?.frame = bannerView.frame
+        tableView.tableHeaderView = bannerView
+        
+    }
+     
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("Fail to receive ads")
+        print(error)
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -7,8 +7,10 @@
 //  강의 계획표를 보여주는 화면
 
 import UIKit
+import Firebase
 
-class CoursePlanTableViewController: UITableViewController {
+
+class CoursePlanTableViewController: UITableViewController, GADBannerViewDelegate {
     
     var subjectItem = [String:String]()
     
@@ -35,6 +37,16 @@ class CoursePlanTableViewController: UITableViewController {
     //함수 결과값
     var coursePlan = [String:String]()
     var courseWeeklyPlan = [[String:String]]()
+    
+    //admob변수
+    lazy var adBannerView: GADBannerView = {
+        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        adBannerView.adUnitID = AdmobData.adUnitID
+        adBannerView.delegate = self
+        adBannerView.rootViewController = self
+        
+        return adBannerView
+    }()
         
 
     override func viewDidLoad() {
@@ -46,7 +58,8 @@ class CoursePlanTableViewController: UITableViewController {
             self.title = ""
             let emptyAlert = UIAlertController(title: "강의계획표를 불러올 수 없습니다.", message: nil, preferredStyle: .alert)
             emptyAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
-                self.dismiss(animated: true, completion: nil)
+                //테스트 위해 주석처리
+                //self.dismiss(animated: true, completion: nil)
             }))
             self.present(emptyAlert, animated: true, completion: nil)
         } else {
@@ -61,7 +74,25 @@ class CoursePlanTableViewController: UITableViewController {
             self.lec_goal_descr.text = self.coursePlan["lec_goal_descr"]
             self.curi_edu_goal_nm.text = self.coursePlan["curi_edu_goal_nm"]
         }
+        
+        //광고 게시
+        adBannerView.load(GADRequest())
     }
+    
+    
+    //admob설정
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner loaded successfully")
+        tableView.tableHeaderView?.frame = bannerView.frame
+        tableView.tableHeaderView = bannerView
+        
+    }
+     
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("Fail to receive ads")
+        print(error)
+    }
+
 
     // MARK: - Table view data source
 
