@@ -202,4 +202,29 @@ class CourseData: Codable {
             completion(temp_dict)
         })
     }
+    
+    //교과목 검색 함수
+    static func searchCourseDataFB(searchQuery: String, completion: @escaping ([[String:String]]) -> Void){
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        var temp_dict = [[String:String]]()
+        var handle: UInt = 0
+        let boardRef = ref.child("course").child("2020").child("1학기")
+        handle = boardRef.child("교양").queryOrdered(byChild: "subject_nm").queryStarting(atValue: searchQuery).queryEnding(atValue: searchQuery+"\u{f8ff}").observe(_: .value, with: { (snapshot) in
+            for snap in snapshot.children {
+                let recipeSnap = snap as! DataSnapshot
+                let dict = recipeSnap.value as! [String:AnyObject]
+                temp_dict.append(dict as! [String : String])
+            }
+        })
+        handle = boardRef.child("전공").queryOrdered(byChild: "subject_nm").queryStarting(atValue: searchQuery).queryEnding(atValue: searchQuery+"\u{f8ff}").observe(_: .value, with: { (snapshot) in
+            for snap in snapshot.children {
+                let recipeSnap = snap as! DataSnapshot
+                let dict = recipeSnap.value as! [String:AnyObject]
+                temp_dict.append(dict as! [String : String])
+            }
+            completion(temp_dict)
+        })
+        boardRef.removeObserver(withHandle: handle)
+    }
 }

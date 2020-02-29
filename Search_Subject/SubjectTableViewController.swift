@@ -30,7 +30,13 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         searchController.delegate = self
         searchController.searchBar.placeholder = "검색"
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+    }
+    @objc func refresh(sender:AnyObject){
+        self.refreshControl?.endRefreshing()
+    }
     /*
      검색 탭 누르자마자 키보드 나오게 하려면 아래 주석 해제
     override func viewDidAppear(_ animated: Bool) {
@@ -50,15 +56,45 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         }
     }
  */
- 
- 
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+ /*
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let searchText = searchBar.text?.uppercased() {
-            requestSubjectInfo(searchTerm: searchText)
-            tableView.reloadData()
+            //requestSubjectInfo(searchTerm: searchText)
+            let searchClosure = {(result: [[String:String]]) -> Void in
+                self.subjectItems = result
+                self.tableView.reloadData()
+            }
+            CourseData.searchCourseDataFB(searchQuery: searchText, completion: searchClosure)
+            
         }
     }
+    */
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        subjectItems = [[String:String]]()
+        tableView.reloadData()
+        self.refreshControl?.beginRefreshing()
+        if let searchText = searchBar.text?.uppercased() {
+            //requestSubjectInfo(searchTerm: searchText)
+            let searchClosure = {(result: [[String:String]]) -> Void in
+                //검색결과가 없을 경우 경고창 띄움
+                if result.isEmpty {
+                    let alert = UIAlertController(title: "검색결과가 없습니다.", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
+                        self.refreshControl?.endRefreshing()
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    self.subjectItems = result
+                    self.tableView.reloadData()
+                    self.refreshControl?.endRefreshing()
+                }
+            }
+            CourseData.searchCourseDataFB(searchQuery: searchText, completion: searchClosure)
+            
+        }
+    }
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         subjectItems = [[String:String]]()
         tableView.reloadData()

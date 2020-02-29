@@ -73,6 +73,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="검색" id="jgy-aU-Jv0"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="P2D-gG-qtx">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
                     <connections>
                         <segue destination="j2I-Qe-9zA" kind="show" identifier="showDetail" id="eDn-3v-FPX"/>
                         <segue destination="FjC-dy-d37" kind="show" identifier="showCoursePlan" id="Q3b-gy-Cfo"/>
@@ -560,11 +563,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="강의계획표 없음" id="W4m-5N-0VY">
-                        <barButtonItem key="leftBarButtonItem" title="더보기" id="l7p-GO-niU">
-                            <connections>
-                                <segue destination="l4K-QY-SqL" kind="show" id="0w8-j8-zrv"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="완료" style="done" id="4ps-y5-eFP">
                             <connections>
                                 <action selector="doneButtonClicked:" destination="Lts-J2-KYq" id="Qzy-U6-eAw"/>
@@ -1661,7 +1659,7 @@
         <image name="plus.circle" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3i5-WS-HKX"/>
-        <segue reference="jWh-bh-IO4"/>
+        <segue reference="eDn-3v-FPX"/>
+        <segue reference="Q3b-gy-Cfo"/>
     </inferredMetricsTieBreakers>
 </document>

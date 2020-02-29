@@ -59,7 +59,7 @@ class CoursePlanTableViewController: UITableViewController, GADBannerViewDelegat
             let emptyAlert = UIAlertController(title: "강의계획표를 불러올 수 없습니다.", message: nil, preferredStyle: .alert)
             emptyAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
                 //테스트 위해 주석처리
-                //self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }))
             self.present(emptyAlert, animated: true, completion: nil)
         } else {
@@ -76,6 +76,7 @@ class CoursePlanTableViewController: UITableViewController, GADBannerViewDelegat
         }
         
         //광고 게시
+        //광고게시는 일단 비활성화
         adBannerView.load(GADRequest())
     }
     
