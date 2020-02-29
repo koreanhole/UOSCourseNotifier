@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate {
+class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate, GADBannerViewDelegate  {
     var xmlParser = XMLParser()
     var currentElement = ""
     var subjectItem: [String:String] = ["subject_no" : "", "subject_nm" : "", "class_div" : "",
@@ -18,6 +18,17 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     var selectedItem = [String:String]()
     
     let searchController = UISearchController(searchResultsController: nil)
+    
+    //admob변수
+    lazy var adBannerView: GADBannerView = {
+        let adBannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        adBannerView.adUnitID = AdmobData.adUnitID
+        adBannerView.delegate = self
+        adBannerView.rootViewController = self
+        
+        return adBannerView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +47,18 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     }
     @objc func refresh(sender:AnyObject){
         self.refreshControl?.endRefreshing()
+    }
+    
+    //admob설정
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner loaded successfully")
+        tableView.tableHeaderView?.frame = bannerView.frame
+        tableView.tableHeaderView = bannerView
+    }
+     
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print("Fail to receive ads")
+        print(error)
     }
     /*
      검색 탭 누르자마자 키보드 나오게 하려면 아래 주석 해제
@@ -69,10 +92,10 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         }
     }
     */
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         subjectItems = [[String:String]]()
         tableView.reloadData()
+        adBannerView.load(GADRequest())
         self.refreshControl?.beginRefreshing()
         if let searchText = searchBar.text?.uppercased() {
             //requestSubjectInfo(searchTerm: searchText)

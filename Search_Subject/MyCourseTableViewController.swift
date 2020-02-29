@@ -10,6 +10,8 @@ import UIKit
 import QuartzCore
 import AVFoundation
 
+
+
 class MyCourseTableViewController: UITableViewController {
 
     
@@ -41,6 +43,20 @@ class MyCourseTableViewController: UITableViewController {
         if !CourseData.sharedCourse.savedData.isEmpty {
             fetchingCourseData()
         }
+        showUpdateAlert(updateMessage: "검색기능이 향상되었습니다.\n(학교API에 접근불가능 할때도 강의를 검색할 수 있습니다.)")
+    }
+    func showUpdateAlert(updateMessage: String) {
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey:     "CFBundleShortVersionString") as? String
+        let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
+        //앱이 새로 설치 되었거나 업데이트 되었을때 알림창 띄움
+        if versionOfLastRun == nil  || versionOfLastRun != currentVersion  {
+            let updateAlert = UIAlertController(title: "[Ver\(currentVersion!)] 업데이트 내역", message: updateMessage, preferredStyle: .alert)
+            updateAlert.addAction((UIAlertAction(title: "확인", style: .default, handler: nil)))
+            self.present(updateAlert, animated: true, completion: nil)
+        }
+
+        UserDefaults.standard.set(currentVersion, forKey: "VersionOfLastRun")
+        UserDefaults.standard.synchronize()
     }
     //내 강의 목록을 새로고침하는 함수
     func fetchingCourseData() {
