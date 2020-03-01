@@ -83,17 +83,10 @@ class CoursePlanTableViewController: UITableViewController, GADBannerViewDelegat
     
     //admob설정
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("Banner loaded successfully")
         tableView.tableHeaderView?.frame = bannerView.frame
         tableView.tableHeaderView = bannerView
         
     }
-     
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        print("Fail to receive ads")
-        print(error)
-    }
-
 
     // MARK: - Table view data source
 

@@ -53,6 +53,7 @@ class CourseData: Codable {
     }
 
     //데이터베이스에서 사용자의 디바이스 토큰을 포함하는 데이터를 저장하는 함수
+    /*
     static func updateUserData() {
         var ref: DatabaseReference!
         ref = Database.database().reference()
@@ -73,6 +74,7 @@ class CourseData: Codable {
         }
         boardRef.removeObserver(withHandle: handle)
     }
+ */
  
 
     //내 강의를 저장하는 경로

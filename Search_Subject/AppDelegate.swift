@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //앱이 시작되면서 저장된 내 강의, 학과 목록 가져오기
         CourseData.sharedCourse.savedData = CourseData.loadFromFile()
         CourseData.sharedCourse.myDept_list = CourseData.loadListFromFile()
-        //앱이 시작되면서 파이어베이스 데이터베이스와 저장된 데이터를 일치화
-        CourseData.updateUserData()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         Messaging.messaging().delegate = self

@@ -500,7 +500,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Search_Subject/UOS강의검색.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3XNY3T64KD;
 				INFOPLIST_FILE = Search_Subject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -508,12 +508,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = koreanhole.UOSCourseNotifier;
 				PRODUCT_NAME = "UOS강의검색";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -525,7 +526,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Search_Subject/UOS강의검색.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3XNY3T64KD;
 				INFOPLIST_FILE = Search_Subject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -533,12 +534,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = koreanhole.UOSCourseNotifier;
 				PRODUCT_NAME = "UOS강의검색";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

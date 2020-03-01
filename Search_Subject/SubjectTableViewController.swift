@@ -40,6 +40,7 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         searchController.searchBar.delegate = self
         searchController.delegate = self
         searchController.searchBar.placeholder = "검색"
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,14 +52,8 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     
     //admob설정
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        print("Banner loaded successfully")
         tableView.tableHeaderView?.frame = bannerView.frame
         tableView.tableHeaderView = bannerView
-    }
-     
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        print("Fail to receive ads")
-        print(error)
     }
     /*
      검색 탭 누르자마자 키보드 나오게 하려면 아래 주석 해제

@@ -43,7 +43,7 @@ class MyCourseTableViewController: UITableViewController {
         if !CourseData.sharedCourse.savedData.isEmpty {
             fetchingCourseData()
         }
-        showUpdateAlert(updateMessage: "검색기능이 향상되었습니다.\n(학교API에 접근불가능 할때도 강의를 검색할 수 있습니다.)")
+        showUpdateAlert(updateMessage: "업데이트 후 크래쉬 나던 현상을 수정했습니다.")
     }
     func showUpdateAlert(updateMessage: String) {
         let currentVersion = Bundle.main.object(forInfoDictionaryKey:     "CFBundleShortVersionString") as? String
