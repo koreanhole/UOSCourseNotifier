@@ -5,7 +5,6 @@
 //  Created by koreanhole on 2020/02/07.
 //  Copyright © 2020 권순형. All rights reserved.
 //
-
 import UIKit
 
 
@@ -39,6 +38,7 @@ class CourseTableViewCell: UITableViewCell {
         }
 }
     @IBAction func addButtonClicked(_ sender: UIButton) {
+        
         var temp_result = [String:String]()
         let searchClosure = {(result: [String:String]) -> Void in
             temp_result = result

@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC07DEF0CFB0513F2ED70E6E /* libPods-Search_Subject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 037915936D1389691578000D /* libPods-Search_Subject.a */; };
 		AD0281C324003D020012B462 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281C224003D020012B462 /* NotificationTableViewController.swift */; };
 		AD0281C72402D57A0012B462 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0281C62402D57A0012B462 /* NotificationTableViewCell.swift */; };
 		AD28EE0924079514006C83C0 /* AdmobData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD28EE0824079514006C83C0 /* AdmobData.swift */; };
@@ -34,10 +33,11 @@
 		ADCDE7E723EAA37500D6C7EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADCDE7E523EAA37500D6C7EC /* LaunchScreen.storyboard */; };
 		ADCDE7EF23EAA53600D6C7EC /* URL+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7EE23EAA53600D6C7EC /* URL+Helper.swift */; };
 		ADCDE7F123EAA88C00D6C7EC /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCDE7F023EAA88C00D6C7EC /* SubjectTableViewController.swift */; };
+		BFE0EBAC419DF765988998B8 /* Pods_Search_Subject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07F397FE944D19202346DB87 /* Pods_Search_Subject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		037915936D1389691578000D /* libPods-Search_Subject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Search_Subject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07F397FE944D19202346DB87 /* Pods_Search_Subject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Search_Subject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A521F4418D574212BA32DE5C /* Pods-Search_Subject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Search_Subject.debug.xcconfig"; path = "Target Support Files/Pods-Search_Subject/Pods-Search_Subject.debug.xcconfig"; sourceTree = "<group>"; };
 		AD0281C224003D020012B462 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		AD0281C62402D57A0012B462 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC07DEF0CFB0513F2ED70E6E /* libPods-Search_Subject.a in Frameworks */,
+				BFE0EBAC419DF765988998B8 /* Pods_Search_Subject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,7 @@
 		554C638731597AF2DCE1DB48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				037915936D1389691578000D /* libPods-Search_Subject.a */,
+				07F397FE944D19202346DB87 /* Pods_Search_Subject.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -244,6 +244,8 @@
 				ADCDE7D323EAA37000D6C7EC /* Sources */,
 				ADCDE7D423EAA37000D6C7EC /* Frameworks */,
 				ADCDE7D523EAA37000D6C7EC /* Resources */,
+				AD28EE4F240BD54B006C83C0 /* ShellScript */,
+				73AE2F60978CFF0D07E1504A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -323,6 +325,40 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		73AE2F60978CFF0D07E1504A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Search_Subject/Pods-Search_Subject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Search_Subject/Pods-Search_Subject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Search_Subject/Pods-Search_Subject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD28EE4F240BD54B006C83C0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -508,13 +544,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = koreanhole.UOSCourseNotifier;
 				PRODUCT_NAME = "UOS강의검색";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -534,13 +570,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = koreanhole.UOSCourseNotifier;
 				PRODUCT_NAME = "UOS강의검색";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -3,9 +3,11 @@ platform :ios, '13.0'
 
 target 'Search_Subject' do
   # Comment the next line if you don't want to use dynamic frameworks
-  #use_frameworks!
+  use_frameworks!
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
+  pod 'Fabric', '~> 1.10.2'
+  pod 'Crashlytics', '~> 3.14.0'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
   pod 'Firebase/Core'

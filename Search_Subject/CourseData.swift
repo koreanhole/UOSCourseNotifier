@@ -229,4 +229,30 @@ class CourseData: Codable {
         })
         boardRef.removeObserver(withHandle: handle)
     }
+    //공지사항 가져오는 함수
+    static func getNoticeDataFB(completion: @escaping ([[String:String]]) -> Void){
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        var temp_dict = [[String:String]]()
+        var first3Notice = [[String:String]]()
+        let boardRef = ref.child("course").child("2020").child("1학기").child("notice")
+        boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            for snap in snapshot.children {
+                let recipeSnap = snap as! DataSnapshot
+                let dict = recipeSnap.value as! [String:AnyObject]
+                temp_dict.append(dict as! [String : String])
+            }
+            temp_dict = temp_dict.reversed()
+            var i = 0
+            for dict in temp_dict{
+                if i < 3 {
+                    first3Notice.append(dict)
+                    i += 1
+                } else if i >= 3 {
+                    break
+                }
+            }
+            completion(first3Notice)
+        })
+    }
 }

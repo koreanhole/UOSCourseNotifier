@@ -8,9 +8,6 @@
 
 import Foundation
 
-import Foundation
-
-
 extension CoursePlanTableViewController: XMLParserDelegate {
     
     func requestCoursePlan(subjectNo: String, classDiv: String) -> (coursePlan: [String:String], courseWeeklyPlan: [[String:String]]) {

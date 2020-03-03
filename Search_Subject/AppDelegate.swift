@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         //시스템 tintcolor 정하는것
-        //UIView.appearance().tintColor = UIColor.systemBlue
+        //UIView.appearance().tintColor = UIColor.systemOrange
         
         //앱이 시작되면서 저장된 내 강의, 학과 목록 가져오기
         CourseData.sharedCourse.savedData = CourseData.loadFromFile()

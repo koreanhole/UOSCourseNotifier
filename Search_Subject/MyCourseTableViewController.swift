@@ -35,18 +35,18 @@ class MyCourseTableViewController: UITableViewController {
     var segment = 0
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
 
         self.navigationItem.leftBarButtonItem = nil
         //디바이스에 내 강의가 저장되어 있다면 이를 새로고침
         if !CourseData.sharedCourse.savedData.isEmpty {
             fetchingCourseData()
         }
-        showUpdateAlert(updateMessage: "업데이트 후 크래쉬 나던 현상을 수정했습니다.")
+        showUpdateAlert(updateMessage: "1. 앱 안정성을 향상했어요\n2. 소소한 디자인을 개선했어요\n3. 공지사항을 볼 수 있어요\n(종 모양 아이콘 -> 공지사항)")
     }
     func showUpdateAlert(updateMessage: String) {
-        let currentVersion = Bundle.main.object(forInfoDictionaryKey:     "CFBundleShortVersionString") as? String
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         let versionOfLastRun = UserDefaults.standard.object(forKey: "VersionOfLastRun") as? String
         //앱이 새로 설치 되었거나 업데이트 되었을때 알림창 띄움
         if versionOfLastRun == nil  || versionOfLastRun != currentVersion  {
@@ -61,10 +61,12 @@ class MyCourseTableViewController: UITableViewController {
     //내 강의 목록을 새로고침하는 함수
     func fetchingCourseData() {
         self.refreshControl?.beginRefreshing()
+        self.tableView.isUserInteractionEnabled = false
         for index in 0..<CourseData.sharedCourse.savedData.count {
             let searchClosure = {(result: [String:String]) -> Void in
                 CourseData.sharedCourse.savedData[index] = result
                 self.tableView.reloadData()
+                self.tableView.isUserInteractionEnabled = true
                 self.refreshControl?.endRefreshing()
             }
             CourseData.getCourseInfoFB(subject: CourseData.sharedCourse.savedData[index], completion: searchClosure)

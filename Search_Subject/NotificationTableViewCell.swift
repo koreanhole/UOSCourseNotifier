@@ -22,7 +22,10 @@ class NotificationTableViewCell: UITableViewCell {
     func updateNotificationCell (with notificationData: [String:String]) {
         titleLabel.text = notificationData["message"]
         timeLabel.text = notificationData["time"]
-        
+    }
+    func updateNoticeCell (with noticeData: [String:String]) {
+        titleLabel.text = noticeData["content"]
+        timeLabel.text = noticeData["time"]
     }
 
 }
