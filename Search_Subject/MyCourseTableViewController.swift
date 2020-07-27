@@ -43,7 +43,7 @@ class MyCourseTableViewController: UITableViewController {
         if !CourseData.sharedCourse.savedData.isEmpty {
             fetchingCourseData()
         }
-        showUpdateAlert(updateMessage: "1. 앱 안정성을 향상했어요\n2. 소소한 디자인을 개선했어요\n3. 공지사항을 볼 수 있어요\n(종 모양 아이콘 -> 공지사항)")
+        showUpdateAlert(updateMessage: "1. 2020학년도 2학기 시간표를 업데이트 했어요")
     }
     func showUpdateAlert(updateMessage: String) {
         let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
@@ -79,13 +79,15 @@ class MyCourseTableViewController: UITableViewController {
         let searchClosure = {(result: [[String:String]]) -> Void in
             for dict in result {
                 //빈자리가 있는 경우
-                if Int(dict["remaining_seat"]!)! > 0 {
+                let cultRemainingSeat = dict["remaining_seat"] ?? "0"
+                if Int(cultRemainingSeat) ?? 0 > 0 {
                     self.availableCult.append(dict)
                 }
                 //빈자리가 없는 경우
                 else {
                     self.zeroRemaingSeat.append(dict)
                 }
+                
                 if dict["subject_div"] == "교양선택" {
                     self.selectableCult.append(dict)
                 } else if dict["subject_div"] == "교양필수" {
@@ -526,17 +528,47 @@ class MyCourseTableViewController: UITableViewController {
     }
     @IBAction func editButtonClicked(_ sender: UIBarButtonItem) {
         tableView.setEditing(!tableView.isEditing, animated: true)
+        
+        let deleteAllButton = UIBarButtonItem(title: "전체 삭제", style: .plain, target: self, action: #selector(self.deleteAllButtonClicked))
+        deleteAllButton.tintColor = .red
         if tableView.isEditing {
             self.editButton.title = "완료"
+            if segment == 0 {
+                if CourseData.sharedCourse.savedData.count != 0 {
+                    self.navigationItem.leftBarButtonItem = deleteAllButton
+                }
+            }
             if segment == 2 {self.navigationItem.leftBarButtonItem = nil}
             
         } else {
             self.editButton.title = "편집"
+            if segment == 0 {self.navigationItem.leftBarButtonItem = nil}
             if segment == 2 {self.navigationItem.leftBarButtonItem = self.addButton}
             
         }
     }
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+    }
+    @objc func deleteAllButtonClicked() {
+        let deleteAlert = UIAlertController(title: "정말 삭제하겠습니까?", message: nil, preferredStyle: .alert)
+        deleteAlert.addAction(UIAlertAction(title: "확인", style: .destructive, handler: {_ in
+            for _ in 0..<CourseData.sharedCourse.savedData.count {
+                CourseData.deleteMyCourse(from: 0)
+                self.tableView.setEditing(false, animated: true)
+                self.navigationItem.leftBarButtonItem = nil
+                self.navigationItem.rightBarButtonItem = nil
+                self.tableView.reloadData()
+            }
+        }))
+        deleteAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+//        for _ in 0..<CourseData.sharedCourse.savedData.count {
+//            CourseData.deleteMyCourse(from: 0)
+//            tableView.setEditing(false, animated: true)
+//            self.navigationItem.leftBarButtonItem = nil
+//            self.navigationItem.rightBarButtonItem = nil
+//            tableView.reloadData()
+//        }
+        self.present(deleteAlert, animated: true, completion: nil)
     }
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         guard segue.identifier == "deptAdded" else {

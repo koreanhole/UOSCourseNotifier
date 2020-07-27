@@ -31,11 +31,10 @@ class CultRemainingSeatTableViewController: UITableViewController, GADBannerView
         self.navigationController?.navigationBar.topItem?.title = "교양"
         self.title = cultClassification
         for dict in cultRemainedSeat {
-            //빈자리가 있는 교양의 경우
-            if Int(dict["remaining_seat"]!)! > 0 {
+            let courseRemainingSeat = dict["remaining_seat"] ?? "0"
+            if Int(courseRemainingSeat) ?? 0 < 0 {
                 self.availableCourses.append(dict)
             }
-            //빈자리가 없는 교양의 경우
             else {
                 self.unavailableCourses.append(dict)
             }

@@ -19,7 +19,7 @@ extension SubjectTableViewController: XMLParserDelegate {
             //허가경 apikey = 202002614AWS86830
             "apiKey": "202002614AWS86830",
             "year": "2020",
-            "term": "A10",
+            "term": "A20",
             "subjectNm": searchTerm
         ]
         let baseURL = URL(string: "https://wise.uos.ac.kr/uosdoc/api.ApiApiSubjectList.oapi?")!

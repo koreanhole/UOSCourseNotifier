@@ -16,7 +16,7 @@ extension CoursePlanTableViewController: XMLParserDelegate {
             //허가경 apikey = 202002614AWS86830
             "apiKey": "202002614AWS86830",
             "year": "2020",
-            "term": "A10",
+            "term": "A20",
             "subjectNo": subjectNo,
             "classDiv" : classDiv
         ]

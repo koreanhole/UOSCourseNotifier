@@ -8,6 +8,12 @@
 
 import Foundation
 import Firebase
+import FirebaseDatabase
+import FirebaseMessaging
+
+let CURRENT_YEAR = String(Calendar.current.component(.year, from: Date()))
+let CURRENT_MONTH = Calendar.current.component(.month, from: Date())
+let CURRENT_SEMESTER: String = "A20"
 
 class CourseData: Codable {
     
@@ -28,7 +34,7 @@ class CourseData: Codable {
     static func saveToMyCourse(data: [String:String]) {
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let boardRef = ref.child("course").child("2020").child("1학기").child("userData")
+        let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("userData")
         if !self.sharedCourse.savedData.contains(data) {
             self.sharedCourse.savedData.append(data)
             self.saveToFile(data: self.sharedCourse.savedData)
@@ -46,11 +52,18 @@ class CourseData: Codable {
         let keyValue = data["subject_nm"]! + data["class_div"]!
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let boardRef = ref.child("course").child("2020").child("1학기").child("userData").child(token!).child(keyValue)
+        let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("userData").child(token!).child(keyValue)
         boardRef.removeValue()
         CourseData.sharedCourse.savedData.remove(at: from)
         CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
     }
+    
+//    static func loadMyCourse() -> [[String:String]] {
+//        let token = Messaging.messaging().fcmToken
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//        let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("userData").child(token!
+//    }
 
     //데이터베이스에서 사용자의 디바이스 토큰을 포함하는 데이터를 저장하는 함수
     /*
@@ -81,16 +94,16 @@ class CourseData: Codable {
     static let myCourseArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myCourse").appendingPathExtension("plist")
     //학과를 저장하는 경로
     static let myDeptArchiveUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("myDeptList").appendingPathExtension("plist")
-    
-    // [String:String]의 딕셔너리 타입의 배열을 저장하는 코드
-    //내 강의를 디바이스에 저장하는 함수
+
+//     [String:String]의 딕셔너리 타입의 배열을 저장하는 코드
+//    내 강의를 디바이스에 저장하는 함수
     static func saveToFile(data: [[String:String]]) {
         let propertyListEncoder = PropertyListEncoder()
         let encodedCourseData = try? propertyListEncoder.encode(data)
-        
+
         try? encodedCourseData?.write(to: CourseData.myCourseArchiveUrl, options: .noFileProtection)
     }
-    //디바이스에 저장된 내 강의목록을 불러오는 함수
+//    디바이스에 저장된 내 강의목록을 불러오는 함수
     static func loadFromFile() -> [[String:String]] {
         var CourseDataFromDisk = [[String:String]]()
         let propertyListDecoder = PropertyListDecoder()
@@ -124,14 +137,14 @@ class CourseData: Codable {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         if subject["subject_div"] == "전공선택" || subject["subject_div"] == "전공필수" {
-            let boardRef = ref.child("course").child("2020").child("1학기").child("전공").child(subject["subject_nm"]! + subject["class_div"]!)
+            let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("전공").child(subject["subject_nm"]! + subject["class_div"]!)
             boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
                 }
             })
         } else {
-            let boardRef = ref.child("course").child("2020").child("1학기").child("교양").child(subject["subject_nm"]! + subject["class_div"]!)
+            let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("교양").child(subject["subject_nm"]! + subject["class_div"]!)
             boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let courseDict = snapshot.value as? [String:String] {
                     completion(courseDict)
@@ -144,7 +157,7 @@ class CourseData: Codable {
     static func getCultInfoFB( completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let boardRef = ref.child("course").child("2020").child("1학기").child("교양")
+        let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("교양")
         boardRef.observe(_: .value, with: { (snapshot) in
             var temp_dict = [[String:String]]()
             for snap in snapshot.children {
@@ -160,7 +173,7 @@ class CourseData: Codable {
     static func getMajorInfoFB(deptName:String, completion: @escaping ([[String:String]]) -> Void){
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        let boardRef = ref.child("course").child("2020").child("1학기").child("전공")
+        let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("전공")
         boardRef.observe(_: .value, with: { (snapshot) in
             var temp_dict = [[String:String]]()
             for snap in snapshot.children {
@@ -192,7 +205,7 @@ class CourseData: Codable {
         var ref: DatabaseReference!
         ref = Database.database().reference()
         let token = Messaging.messaging().fcmToken!
-        let boardRef = ref.child("course").child("2020").child("1학기").child("userData").child(token).child("nofification_data")
+        let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("userData").child(token).child("nofification_data")
         boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
             var temp_dict = [[String:String]]()
             for snap in snapshot.children {
@@ -211,7 +224,7 @@ class CourseData: Codable {
         ref = Database.database().reference()
         var temp_dict = [[String:String]]()
         var handle: UInt = 0
-        let boardRef = ref.child("course").child("2020").child("1학기")
+        let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER)
         handle = boardRef.child("교양").queryOrdered(byChild: "subject_nm").queryStarting(atValue: searchQuery).queryEnding(atValue: searchQuery+"\u{f8ff}").observe(_: .value, with: { (snapshot) in
             for snap in snapshot.children {
                 let recipeSnap = snap as! DataSnapshot
@@ -235,7 +248,7 @@ class CourseData: Codable {
         ref = Database.database().reference()
         var temp_dict = [[String:String]]()
         var first3Notice = [[String:String]]()
-        let boardRef = ref.child("course").child("2020").child("1학기").child("notice")
+        let boardRef = ref.child("course").child(CURRENT_YEAR).child(CURRENT_SEMESTER).child("notice")
         boardRef.observeSingleEvent(of: .value, with: { (snapshot) in
             for snap in snapshot.children {
                 let recipeSnap = snap as! DataSnapshot

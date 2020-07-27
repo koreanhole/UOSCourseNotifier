@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         //내 강의, 학과를 디바이스에 저장한다.
         CourseData.saveListToFile(data: CourseData.sharedCourse.myDept_list)
-        CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
+//        CourseData.saveToFile(data: CourseData.sharedCourse.savedData)
     }
 }
 extension AppDelegate: UNUserNotificationCenterDelegate {
